@@ -2,7 +2,7 @@ package com.rainng.coursesystem.manager.admin;
 
 import com.rainng.coursesystem.dao.ClassDAO;
 import com.rainng.coursesystem.dao.MajorDAO;
-import com.rainng.coursesystem.dao.StudentDAO;
+import com.rainng.coursesystem.dao.CustomerDAO;
 import com.rainng.coursesystem.manager.BaseManager;
 import com.rainng.coursesystem.model.entity.ClassEntity;
 import com.rainng.coursesystem.model.entity.MajorEntity;
@@ -17,12 +17,12 @@ import java.util.List;
 public class ClassManager extends BaseManager {
     private final MajorDAO majorDAO;
     private final ClassDAO classDAO;
-    private final StudentDAO studentDAO;
+    private final CustomerDAO customerDAO;
 
-    public ClassManager(MajorDAO majorDAO, ClassDAO classDAO, StudentDAO studentDAO) {
+    public ClassManager(MajorDAO majorDAO, ClassDAO classDAO, CustomerDAO customerDAO) {
         this.majorDAO = majorDAO;
         this.classDAO = classDAO;
-        this.studentDAO = studentDAO;
+        this.customerDAO = customerDAO;
     }
 
     public Integer getPageCount(String departmentName, String majorName, String name) {
@@ -54,8 +54,8 @@ public class ClassManager extends BaseManager {
         return majorDAO.get(majorId);
     }
 
-    public boolean hasStudent(Integer classId) {
-        return studentDAO.countByClassId(classId) > 0;
+    public boolean hasCustomer(Integer id){
+        return id==1;
     }
 
     public List<IdNameVO> listName() {

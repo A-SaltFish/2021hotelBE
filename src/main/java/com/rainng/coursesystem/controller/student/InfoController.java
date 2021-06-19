@@ -2,7 +2,7 @@ package com.rainng.coursesystem.controller.student;
 
 import com.rainng.coursesystem.config.themis.annotation.Student;
 import com.rainng.coursesystem.controller.BaseController;
-import com.rainng.coursesystem.model.vo.request.StudentInfoFormVO;
+import com.rainng.coursesystem.model.vo.request.CustomerInfoFormVO;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
 import com.rainng.coursesystem.service.student.InfoService;
 import org.springframework.validation.annotation.Validated;
@@ -24,7 +24,7 @@ public class InfoController extends BaseController {
     }
 
     @PutMapping
-    public ResultVO update(@RequestBody @Validated StudentInfoFormVO formVO) {
+    public ResultVO update(@RequestBody @Validated CustomerInfoFormVO formVO) {
         return service.update(formVO);
     }
 }

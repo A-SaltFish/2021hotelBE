@@ -1,7 +1,7 @@
 package com.rainng.coursesystem.service.admin;
 
 import com.rainng.coursesystem.manager.admin.StudentManager;
-import com.rainng.coursesystem.model.entity.StudentEntity;
+import com.rainng.coursesystem.model.entity.CustomerEntity;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
 import com.rainng.coursesystem.service.BaseService;
 import com.rainng.coursesystem.service.UserService;
@@ -26,7 +26,7 @@ public class StudentService extends BaseService {
     }
 
     public ResultVO get(Integer id) {
-        StudentEntity entity = manager.get(id);
+        CustomerEntity entity = manager.get(id);
         if (entity == null) {
             return failedResult("学生Id: " + id + "不存在!");
         }
@@ -36,13 +36,10 @@ public class StudentService extends BaseService {
         return result(entity);
     }
 
-    public ResultVO update(StudentEntity entity) {
-        StudentEntity origin = manager.get(entity.getId());
+    public ResultVO update(CustomerEntity entity) {
+        CustomerEntity origin = manager.get(entity.getId());
         if (origin == null) {
-            return failedResult("学生Id: " + entity.getId() + "不存在!");
-        }
-        if (manager.getClassById(entity.getClassId()) == null) {
-            return failedResult("所属班级Id: " + entity.getClassId() + "不存在!");
+            return failedResult("顾客ID: " + entity.getId() + "不存在!");
         }
 
    //     if (entity.getPassword().equals("")) {
@@ -67,12 +64,9 @@ public class StudentService extends BaseService {
         return result("删除成功");
     }
 
-    public ResultVO create(StudentEntity entity) {
+    public ResultVO create(CustomerEntity entity) {
         if (manager.get(entity.getId()) != null) {
-            return failedResult("学生Id: " + entity.getId() + "已存在!");
-        }
-        if (manager.getClassById(entity.getClassId()) == null) {
-            return failedResult("所属班级Id: " + entity.getClassId() + "不存在!");
+            return failedResult("顾客ID: " + entity.getId() + "已存在!");
         }
 
         manager.create(entity);

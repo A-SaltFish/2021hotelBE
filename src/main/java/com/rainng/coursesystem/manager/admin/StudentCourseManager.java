@@ -2,11 +2,11 @@ package com.rainng.coursesystem.manager.admin;
 
 import com.rainng.coursesystem.dao.CourseDAO;
 import com.rainng.coursesystem.dao.StudentCourseDAO;
-import com.rainng.coursesystem.dao.StudentDAO;
+import com.rainng.coursesystem.dao.CustomerDAO;
 import com.rainng.coursesystem.manager.BaseManager;
 import com.rainng.coursesystem.model.entity.CourseEntity;
 import com.rainng.coursesystem.model.entity.StudentCourseEntity;
-import com.rainng.coursesystem.model.entity.StudentEntity;
+import com.rainng.coursesystem.model.entity.CustomerEntity;
 import com.rainng.coursesystem.model.vo.response.table.StudentCourseItemVO;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,12 +17,12 @@ import java.util.List;
 public class StudentCourseManager extends BaseManager {
     private final CourseDAO courseDAO;
     private final StudentCourseDAO studentCourseDAO;
-    private final StudentDAO studentDAO;
+    private final CustomerDAO customerDAO;
 
-    public StudentCourseManager(CourseDAO courseDAO, StudentCourseDAO studentCourseDAO, StudentDAO studentDAO) {
+    public StudentCourseManager(CourseDAO courseDAO, StudentCourseDAO studentCourseDAO, CustomerDAO customerDAO) {
         this.courseDAO = courseDAO;
         this.studentCourseDAO = studentCourseDAO;
-        this.studentDAO = studentDAO;
+        this.customerDAO = customerDAO;
     }
 
     public Integer getPageCount(String className, String courseName, String studentName) {
@@ -58,8 +58,8 @@ public class StudentCourseManager extends BaseManager {
         return courseDAO.get(courseId);
     }
 
-    public StudentEntity getStudentById(Integer studentId) {
-        return studentDAO.get(studentId);
+    public CustomerEntity getStudentById(Integer studentId) {
+        return customerDAO.get(studentId);
     }
 
     public StudentCourseEntity getByCourseIdAndStudentId(Integer courseId, Integer studentId) {
@@ -67,11 +67,11 @@ public class StudentCourseManager extends BaseManager {
     }
 
     public Integer getStudentGradeById(Integer studentId) {
-        return studentDAO.getGradeById(studentId);
+        return customerDAO.getGradeById(studentId);
     }
 
     public boolean inSameDepartment(Integer courseId, Integer studentId) {
         return courseDAO.getDepartmentIdById(courseId)
-                .equals(studentDAO.getDepartmentIdById(studentId));
+                .equals(customerDAO.getDepartmentIdById(studentId));
     }
 }

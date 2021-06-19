@@ -12,30 +12,26 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
-@TableName("rc_student")
+@TableName("ht_customer")
 @Data
-public class StudentEntity {
-    public static final String ID = "student_id";
-    public static final String CLASS_ID = "student_class_id";
-    public static final String NUMBER = "student_number";
-    public static final String NAME = "student_name";
-    public static final String PASSWORD = "student_password";
-    public static final String EMAIL = "student_email";
-    public static final String BIRTHDAY = "student_birthday";
-    public static final String SEX = "student_sex";
-    public static final String LAST_LOGIN_TIME = "student_last_login_time";
+public class CustomerEntity {
+    public static final String ID = "customer_id";
+    public static final String TEL="customer_tel";
+    public static final String NAME = "customer_name";
+    public static final String PASSWORD = "customer_password";
+    public static final String EMAIL = "customer_email";
+    public static final String BIRTHDAY = "customer_birthday";
+    public static final String SEX = "customer_sex";
+    public static final String CITY= "customer_city";
+    public static final String LAST_LOGIN_TIME = "customer_last_login_time";
 
     @NotNull
     @TableId(value = ID, type = IdType.AUTO)
     private Integer id;
 
-    @NotNull(message = "必须选择所属班级")
-    @TableField(CLASS_ID)
-    private Integer classId;
-
-    @Length(min = 12, max = 12, message = "学号长度必须为12位")
-    @TableField(NUMBER)
-    private String number;
+    @Length(min=13,max=13,message = "手机号码长度必须为13位")
+    @TableField(TEL)
+    private String tel;
 
     @NotBlank(message = "学生姓名不能为空")
     @TableField(NAME)
@@ -61,6 +57,9 @@ public class StudentEntity {
     @TableField(LAST_LOGIN_TIME)
     private Date lastLoginTime;
 
+	@TableField(CITY)
+	private String city;
+
 	public Integer getId() {
 		return id;
 	}
@@ -69,20 +68,12 @@ public class StudentEntity {
 		this.id = id;
 	}
 
-	public Integer getClassId() {
-		return classId;
+	public String getTel() {
+		return tel;
 	}
 
-	public void setClassId(Integer classId) {
-		this.classId = classId;
-	}
-
-	public String getNumber() {
-		return number;
-	}
-
-	public void setNumber(String number) {
-		this.number = number;
+	public void setTel(String tel) {
+		this.tel = tel;
 	}
 
 	public String getName() {
@@ -91,6 +82,14 @@ public class StudentEntity {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
 	}
 
 	public String getPassword() {

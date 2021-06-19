@@ -2,32 +2,32 @@ package com.rainng.coursesystem.dao;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.rainng.coursesystem.dao.mapper.StudentMapper;
-import com.rainng.coursesystem.model.entity.StudentEntity;
-import com.rainng.coursesystem.model.vo.response.StudentInfoVO;
+import com.rainng.coursesystem.dao.mapper.CustomerMapper;
+import com.rainng.coursesystem.model.entity.CustomerEntity;
+import com.rainng.coursesystem.model.vo.response.CustomerInfoVo;
 import com.rainng.coursesystem.model.vo.response.table.StudentItemVO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public class StudentDAO extends BaseDAO {
+public class CustomerDAO extends BaseDAO {
     public static final int PAGE_SIZE = 20;
-    private final StudentMapper mapper;
+    private final CustomerMapper mapper;
 
-    public StudentDAO(StudentMapper mapper) {
+    public CustomerDAO(CustomerMapper mapper) {
         this.mapper = mapper;
     }
 
-    public StudentEntity getByNumber(String number) {
-        LambdaQueryWrapper<StudentEntity> wrapper = new LambdaQueryWrapper<>();
-        wrapper.eq(StudentEntity::getNumber, number);
+    public CustomerEntity getById(String id) {
+        LambdaQueryWrapper<CustomerEntity> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(CustomerEntity::getId, id);
 
         return mapper.selectOne(wrapper);
     }
 
 
-    public int insert(StudentEntity entity) {
+    public int insert(CustomerEntity entity) {
         return mapper.insert(entity);
     }
 
@@ -35,11 +35,11 @@ public class StudentDAO extends BaseDAO {
         return mapper.deleteById(id);
     }
 
-    public StudentEntity get(Integer id) {
+    public CustomerEntity get(Integer id) {
         return mapper.selectById(id);
     }
 
-    public int update(StudentEntity entity) {
+    public int update(CustomerEntity entity) {
         return mapper.updateById(entity);
     }
 
@@ -53,16 +53,17 @@ public class StudentDAO extends BaseDAO {
         return mapper.getPage(page, majorName, className, name).getRecords();
     }
 
-    public Integer countByClassId(Integer id) {
-        LambdaQueryWrapper<StudentEntity> wrapper = new LambdaQueryWrapper<>();
-        wrapper.eq(StudentEntity::getClassId, id);
+    //
+   // public Integer countByClassId(Integer id) {
+   //     LambdaQueryWrapper<CustomerEntity> wrapper = new LambdaQueryWrapper<>();
+   //     wrapper.eq(CustomerEntity::getClassId, id);
+//
+   //     return mapper.selectCount(wrapper);
+   // }
 
-        return mapper.selectCount(wrapper);
-    }
-
-    public List<StudentEntity> listName() {
-        LambdaQueryWrapper<StudentEntity> wrapper = new LambdaQueryWrapper<>();
-        wrapper.select(StudentEntity::getId, StudentEntity::getName);
+    public List<CustomerEntity> listName() {
+        LambdaQueryWrapper<CustomerEntity> wrapper = new LambdaQueryWrapper<>();
+        wrapper.select(CustomerEntity::getId, CustomerEntity::getName);
 
         return mapper.selectList(wrapper);
     }
@@ -75,7 +76,7 @@ public class StudentDAO extends BaseDAO {
         return mapper.getGradeById(studentId);
     }
 
-    public StudentInfoVO getStudentInfoById(Integer studentId) {
+    public CustomerInfoVo getStudentInfoById(Integer studentId) {
         return mapper.getStudentInfoById(studentId);
     }
 }

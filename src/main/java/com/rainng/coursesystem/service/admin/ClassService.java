@@ -47,8 +47,8 @@ public class ClassService extends BaseService {
         if (manager.get(id) == null) {
             return failedResult("班级Id: " + id + "不存在!");
         }
-        if (manager.hasStudent(id)) {
-            return failedResult("此班级中还有学生未被删除");
+        if (manager.hasCustomer(id)) {
+            return failedResult("此酒店还有顾客");
         }
 
         manager.delete(id);

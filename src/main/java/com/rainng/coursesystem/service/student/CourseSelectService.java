@@ -5,7 +5,7 @@ import com.rainng.coursesystem.manager.student.CourseSelectManager;
 import com.rainng.coursesystem.model.bo.StudentCourseSelectItemBO;
 import com.rainng.coursesystem.model.entity.CourseEntity;
 import com.rainng.coursesystem.model.entity.StudentCourseEntity;
-import com.rainng.coursesystem.model.entity.StudentEntity;
+import com.rainng.coursesystem.model.entity.CustomerEntity;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
 import com.rainng.coursesystem.model.vo.response.table.StudentCourseSelectItemVO;
 import com.rainng.coursesystem.service.BaseService;
@@ -55,7 +55,7 @@ public class CourseSelectService extends BaseService {
         if (!optionManager.getAllowStudentSelect()) {
             return failedResult("现在不是选课时间!");
         }
-        StudentEntity student = manager.getStudentById(studentId);
+        CustomerEntity student = manager.getStudentById(studentId);
         CourseEntity course = manager.getCourseById(courseId);
         if (student == null) {
             return failedResult("学生Id:" + studentId + "不存在!");

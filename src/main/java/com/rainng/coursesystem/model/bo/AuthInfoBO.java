@@ -2,13 +2,14 @@ package com.rainng.coursesystem.model.bo;
 
 import com.rainng.coursesystem.model.constant.UserType;
 import com.rainng.coursesystem.model.entity.AdminEntity;
-import com.rainng.coursesystem.model.entity.StudentEntity;
+import com.rainng.coursesystem.model.entity.CustomerEntity;
 import com.rainng.coursesystem.model.entity.TeacherEntity;
 import lombok.Data;
 
 @Data
 public class AuthInfoBO {
     private Integer id;
+    private String tel;
     private String username;
     private String password;
     private Integer userType;
@@ -29,11 +30,11 @@ public class AuthInfoBO {
         this.permission = permission;
     }
 
-    public static AuthInfoBO fromStudent(StudentEntity entity) {
+    public static AuthInfoBO fromStudent(CustomerEntity entity) {
         if (entity == null) {
             return null;
         }
-        return new AuthInfoBO(entity.getId(), entity.getNumber(), entity.getPassword(), UserType.STUDENT);
+        return new AuthInfoBO(entity.getId(), entity.getName(), entity.getPassword(), UserType.STUDENT);
     }
 
     public static AuthInfoBO fromTeacher(TeacherEntity entity) {
@@ -51,13 +52,21 @@ public class AuthInfoBO {
                 entity.getPrivilege());
     }
 
-	public Integer getId() {
-		return id;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
 
 	public String getUsername() {
 		return username;

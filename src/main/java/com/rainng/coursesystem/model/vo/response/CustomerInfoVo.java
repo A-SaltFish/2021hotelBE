@@ -6,12 +6,10 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class StudentInfoVO {
+public class CustomerInfoVo {
     private String number;
-    private String name;
-    private String departmentName;
-    private String majorName;
-    private String className;
+    private String name;	//昵称
+    private String tel;	//电话
     private String email;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
@@ -23,29 +21,17 @@ public class StudentInfoVO {
 	public void setNumber(String number) {
 		this.number = number;
 	}
+	public String getTel() {
+		return tel;
+	}
+	public void setTel(String Tel) {
+		this.tel = Tel;
+	}
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public String getDepartmentName() {
-		return departmentName;
-	}
-	public void setDepartmentName(String departmentName) {
-		this.departmentName = departmentName;
-	}
-	public String getMajorName() {
-		return majorName;
-	}
-	public void setMajorName(String majorName) {
-		this.majorName = majorName;
-	}
-	public String getClassName() {
-		return className;
-	}
-	public void setClassName(String className) {
-		this.className = className;
 	}
 	public String getEmail() {
 		return email;

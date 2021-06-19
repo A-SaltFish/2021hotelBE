@@ -27,8 +27,8 @@ public class UserService extends BaseService {
         this.md5Encrypt = md5Encrypt;
     }
 
-    public ResultVO login(String username, String password, Integer userType) {
-        AuthInfoBO authInfo = manager.getAuthInfoByUsername(username, userType);
+    public ResultVO login(String userId, String password, Integer userType) {
+        AuthInfoBO authInfo = manager.getAuthInfoByUsername(userId, userType);
         if (authInfo == null) {
             return failedResult("用户不存在");
         }
@@ -38,7 +38,7 @@ public class UserService extends BaseService {
         }
 
         if (authInfo.getUserType().equals(UserType.STUDENT)) {
-            manager.updateStudentLastLoginTime(username);
+            manager.updateStudentLastLoginTime(userId);
         }
 
         LoginStatusBO statusBO = LoginStatusBO.fromAuthInfo(authInfo);

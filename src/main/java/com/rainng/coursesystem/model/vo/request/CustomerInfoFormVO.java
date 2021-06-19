@@ -8,7 +8,7 @@ import javax.validation.constraints.Email;
 import java.util.Date;
 
 @Data
-public class StudentInfoFormVO {
+public class CustomerInfoFormVO {
     private String password;
 
     @Email(message = "邮箱格式不正确")

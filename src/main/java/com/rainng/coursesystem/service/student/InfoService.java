@@ -1,8 +1,8 @@
 package com.rainng.coursesystem.service.student;
 
 import com.rainng.coursesystem.manager.student.InfoManager;
-import com.rainng.coursesystem.model.entity.StudentEntity;
-import com.rainng.coursesystem.model.vo.request.StudentInfoFormVO;
+import com.rainng.coursesystem.model.entity.CustomerEntity;
+import com.rainng.coursesystem.model.vo.request.CustomerInfoFormVO;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
 import com.rainng.coursesystem.service.BaseService;
 import com.rainng.coursesystem.service.UserService;
@@ -26,8 +26,8 @@ public class InfoService extends BaseService {
         return result(manager.getStudentInfoByStudentId(getUserId()));
     }
 
-    public ResultVO update(@RequestBody @Validated StudentInfoFormVO studentInfoForm) {
-        StudentEntity student = manager.getStudentById(getUserId());
+    public ResultVO update(@RequestBody @Validated CustomerInfoFormVO studentInfoForm) {
+        CustomerEntity student = manager.getStudentById(getUserId());
 
         String password = studentInfoForm.getPassword();
       //  if (password == null || password.equals("")) {
