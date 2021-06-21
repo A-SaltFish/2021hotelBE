@@ -29,7 +29,7 @@ public class CustomerEntity {
     @TableId(value = ID, type = IdType.AUTO)
     private Integer id;
 
-    @Length(min=13,max=13,message = "手机号码长度必须为13位")
+    @Length(min=11,max=11,message = "手机号码长度必须为11位")
     @TableField(TEL)
     private String tel;
 

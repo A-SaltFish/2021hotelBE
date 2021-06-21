@@ -1,6 +1,6 @@
 package com.rainng.coursesystem.manager.admin;
 
-import com.rainng.coursesystem.dao.CourseDAO;
+import com.rainng.coursesystem.dao.OrderDAO;
 import com.rainng.coursesystem.dao.DepartmentDAO;
 import com.rainng.coursesystem.dao.TeacherDAO;
 import com.rainng.coursesystem.manager.BaseManager;
@@ -17,12 +17,12 @@ import java.util.List;
 public class TeacherManager extends BaseManager {
     private final DepartmentDAO departmentDAO;
     private final TeacherDAO teacherDAO;
-    private final CourseDAO courseDAO;
+    private final OrderDAO orderDAO;
 
-    public TeacherManager(DepartmentDAO departmentDAO, TeacherDAO teacherDAO, CourseDAO courseDAO) {
+    public TeacherManager(DepartmentDAO departmentDAO, TeacherDAO teacherDAO, OrderDAO orderDAO) {
         this.departmentDAO = departmentDAO;
         this.teacherDAO = teacherDAO;
-        this.courseDAO = courseDAO;
+        this.orderDAO = orderDAO;
     }
 
     public Integer getPageCount(String departmentName, String name) {
@@ -51,7 +51,7 @@ public class TeacherManager extends BaseManager {
     }
 
     public boolean hasCourse(Integer teacherId) {
-        return courseDAO.countByTeacherId(teacherId) > 0;
+        return orderDAO.countByTeacherId(teacherId) > 0;
     }
 
     public DepartmentEntity getDepartmentById(Integer id) {

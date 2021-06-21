@@ -2,7 +2,7 @@ package com.rainng.coursesystem.service.teacher;
 
 import com.rainng.coursesystem.manager.OptionManager;
 import com.rainng.coursesystem.manager.teacher.GradeManager;
-import com.rainng.coursesystem.model.entity.StudentCourseEntity;
+import com.rainng.coursesystem.model.entity.CustomerOrderEntity;
 import com.rainng.coursesystem.model.vo.TeacherGradeVO;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
 import com.rainng.coursesystem.service.BaseService;
@@ -35,7 +35,7 @@ public class GradeService extends BaseService {
         }
 
         Integer teacherId = getUserId();
-        StudentCourseEntity studentCourse = manager.getStudentCourseById(vo.getStudentCourseId());
+        CustomerOrderEntity studentCourse = manager.getStudentCourseById(vo.getStudentCourseId());
         if (studentCourse == null) {
             return failedResult("学生选课Id:" + vo.getStudentCourseId() + "不存在");
         }
@@ -55,7 +55,7 @@ public class GradeService extends BaseService {
         }
 
         Integer teacherId = getUserId();
-        StudentCourseEntity studentCourse = manager.getStudentCourseById(studentCourseId);
+        CustomerOrderEntity studentCourse = manager.getStudentCourseById(studentCourseId);
         if (studentCourse == null) {
             return failedResult("学生选课Id:" + studentCourseId + "不存在");
         }

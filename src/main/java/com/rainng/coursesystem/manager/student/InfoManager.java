@@ -18,11 +18,11 @@ public class InfoManager extends BaseManager {
         return customerDAO.getStudentInfoById(studentId);
     }
 
-    public CustomerEntity getStudentById(Integer studentId) {
-        return customerDAO.get(studentId);
+    public CustomerEntity getCustomerById(Integer customerId) {
+        return customerDAO.get(customerId);
     }
 
-    public int updateStudent(CustomerEntity entity) {
+    public int updateCustomer(CustomerEntity entity) {
         return customerDAO.update(entity);
     }
 }

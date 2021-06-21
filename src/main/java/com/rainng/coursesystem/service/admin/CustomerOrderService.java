@@ -1,17 +1,17 @@
 package com.rainng.coursesystem.service.admin;
 
-import com.rainng.coursesystem.manager.admin.StudentCourseManager;
-import com.rainng.coursesystem.model.entity.CourseEntity;
-import com.rainng.coursesystem.model.entity.StudentCourseEntity;
+import com.rainng.coursesystem.manager.admin.CustomerOrderManager;
+import com.rainng.coursesystem.model.entity.OrderEntity;
+import com.rainng.coursesystem.model.entity.CustomerOrderEntity;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
 import com.rainng.coursesystem.service.BaseService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class StudentCourseService extends BaseService {
-    private final StudentCourseManager manager;
+public class CustomerOrderService extends BaseService {
+    private final CustomerOrderManager manager;
 
-    public StudentCourseService(StudentCourseManager manager) {
+    public CustomerOrderService(CustomerOrderManager manager) {
         this.manager = manager;
     }
 
@@ -19,12 +19,13 @@ public class StudentCourseService extends BaseService {
         return result(manager.getPageCount(className, courseName, studentName));
     }
 
-    public ResultVO getPage(Integer index, String className, String courseName, String studentName) {
-        return result(manager.getPage(index, className, courseName, studentName));
+    public ResultVO getPage(Integer index) {
+        Integer customerId=getUserId();
+        return result(manager.getPage(index,customerId));
     }
 
     public ResultVO get(Integer id) {
-        StudentCourseEntity entity = manager.get(id);
+        CustomerOrderEntity entity = manager.get(id);
         if (entity == null) {
             return failedResult("学生选课Id: " + id + "不存在!");
         }
@@ -32,8 +33,8 @@ public class StudentCourseService extends BaseService {
         return result(entity);
     }
 
-    public ResultVO update(StudentCourseEntity entity) {
-        StudentCourseEntity originEntity = manager.get(entity.getId());
+    public ResultVO update(CustomerOrderEntity entity) {
+        CustomerOrderEntity originEntity = manager.get(entity.getId());
         if (originEntity == null) {
             return failedResult("学生选课Id: " + entity.getId() + "不存在!");
         }
@@ -49,7 +50,7 @@ public class StudentCourseService extends BaseService {
     }
 
     public ResultVO delete(Integer id) {
-        StudentCourseEntity entity = manager.get(id);
+        CustomerOrderEntity entity = manager.get(id);
         if (entity == null) {
             return failedResult("学生选课Id: " + id + "不存在!");
         }
@@ -58,7 +59,7 @@ public class StudentCourseService extends BaseService {
         return result("删除成功");
     }
 
-    public ResultVO create(StudentCourseEntity entity) {
+    public ResultVO create(CustomerOrderEntity entity) {
         if (manager.get(entity.getId()) != null) {
             return failedResult("学生选课Id: " + entity.getId() + "已存在!");
         }
@@ -68,7 +69,7 @@ public class StudentCourseService extends BaseService {
         if (manager.getByCourseIdAndStudentId(entity.getCourseId(), entity.getStudentId()) != null) {
             return failedResult("学生已经选修此课程");
         }
-        CourseEntity course = manager.getCourseById(entity.getCourseId());
+        OrderEntity course = manager.getCourseById(entity.getCourseId());
         if (course == null) {
             return failedResult("所属课程Id: " + entity.getCourseId() + "不存在!");
         }

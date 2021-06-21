@@ -27,18 +27,18 @@ public class InfoService extends BaseService {
     }
 
     public ResultVO update(@RequestBody @Validated CustomerInfoFormVO studentInfoForm) {
-        CustomerEntity student = manager.getStudentById(getUserId());
+        CustomerEntity customer = manager.getCustomerById(getUserId());
 
-        String password = studentInfoForm.getPassword();
+        //String password = studentInfoForm.getPassword();
       //  if (password == null || password.equals("")) {
-            password = student.getPassword();
+            String password = customer.getPassword();
      //   } else {
      //       password = userService.computePasswordHash(password);
      //   }
 
-        BeanUtils.copyProperties(studentInfoForm, student);
-        student.setPassword(password);
-        manager.updateStudent(student);
+        BeanUtils.copyProperties(studentInfoForm, customer);
+        customer.setPassword(password);
+        manager.updateCustomer(customer);
 
         return result("更新成功");
     }

@@ -1,25 +1,31 @@
 package com.rainng.coursesystem.service.student;
 
 import com.rainng.coursesystem.manager.OptionManager;
-import com.rainng.coursesystem.manager.student.CourseManager;
-import com.rainng.coursesystem.model.entity.StudentCourseEntity;
+import com.rainng.coursesystem.manager.student.PreOrderManager;
+import com.rainng.coursesystem.model.entity.CustomerOrderEntity;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
 import com.rainng.coursesystem.service.BaseService;
 import org.springframework.stereotype.Service;
 
 @Service("student_courseService")
-public class CourseService extends BaseService {
-    private final CourseManager manager;
+public class OrderService extends BaseService {
+    private final PreOrderManager manager;
     private final OptionManager optionManager;
 
-    public CourseService(CourseManager manager, OptionManager optionManager) {
+    public OrderService(PreOrderManager manager, OptionManager optionManager) {
         this.manager = manager;
         this.optionManager = optionManager;
     }
 
     public ResultVO list() {
-        Integer studentId = getUserId();
-        return result(manager.listStudentCourseSelected(studentId));
+        Integer customerId = getUserId();
+        return result(manager.listCustomerPreOrder(customerId));
+    }
+
+    public ResultVO cancelOrder(Integer OrderId){
+        if (manager.cancelOrder(OrderId))
+            return result("退单成功！");
+        else return result("退单失败！");
     }
 
     public ResultVO delete(Integer studentCourseId) {
@@ -27,7 +33,7 @@ public class CourseService extends BaseService {
         if (!optionManager.getAllowStudentSelect()) {
             return failedResult("现在不是选课退课时间!");
         }
-        StudentCourseEntity studentCourse = manager.getStudentCourseById(studentCourseId);
+        CustomerOrderEntity studentCourse = manager.getStudentCourseById(studentCourseId);
         if (studentCourse == null) {
             return failedResult("学生选课Id:" + studentCourseId + "不存在");
         }

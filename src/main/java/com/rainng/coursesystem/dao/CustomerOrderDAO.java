@@ -2,36 +2,42 @@ package com.rainng.coursesystem.dao;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.rainng.coursesystem.dao.mapper.StudentCourseMapper;
-import com.rainng.coursesystem.model.entity.StudentCourseEntity;
+import com.rainng.coursesystem.dao.mapper.CustomerOrderMapper;
+import com.rainng.coursesystem.model.entity.CustomerOrderEntity;
 import com.rainng.coursesystem.model.vo.response.table.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public class StudentCourseDAO extends BaseDAO {
+public class CustomerOrderDAO extends BaseDAO {
     public static final int PAGE_SIZE = 20;
-    private final StudentCourseMapper mapper;
+    private final CustomerOrderMapper mapper;
 
-    public StudentCourseDAO(StudentCourseMapper mapper) {
+    public CustomerOrderDAO(CustomerOrderMapper mapper) {
         this.mapper = mapper;
     }
 
 
-    public int insert(StudentCourseEntity entity) {
+    public int insert(CustomerOrderEntity entity) {
         return mapper.insert(entity);
     }
 
-    public int delete(Integer id) {
-        return mapper.deleteById(id);
+    public Boolean deleteOrder(Integer id) {
+        return mapper.deleteByOrderId(id);
     }
 
-    public StudentCourseEntity get(Integer id) {
+    public int delete(Integer id){return mapper.deleteById(id);}
+
+    public Boolean cancelOrderById(Integer id){
+        return mapper.cancelByOrderId(id);
+    }
+
+    public CustomerOrderEntity get(Integer id) {
         return mapper.selectById(id);
     }
 
-    public int update(StudentCourseEntity entity) {
+    public int update(CustomerOrderEntity entity) {
         return mapper.updateById(entity);
     }
 
@@ -39,37 +45,38 @@ public class StudentCourseDAO extends BaseDAO {
         return mapper.count(className, courseName, studentName);
     }
 
-    public List<StudentCourseItemVO> getPage(Integer index, String className, String courseName, String studentName) {
-        Page<StudentCourseItemVO> page = new Page<>(index, PAGE_SIZE);
+    public List<CustomerOrderItemVO> getPage(Integer index, Integer customerId) {
+        Page<CustomerOrderItemVO> page = new Page<>(index, PAGE_SIZE);
 
-        return mapper.getPage(page, className, courseName, studentName).getRecords();
+        return mapper.getPage(page,customerId).getRecords();
     }
 
     public int countByCourseId(Integer courseId) {
-        LambdaQueryWrapper<StudentCourseEntity> wrapper = new LambdaQueryWrapper<>();
-        wrapper.eq(StudentCourseEntity::getCourseId, courseId);
+        LambdaQueryWrapper<CustomerOrderEntity> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(CustomerOrderEntity::getCourseId, courseId);
 
         return mapper.selectCount(wrapper);
     }
 
-    public int countByStudentId(Integer studentId) {
-        LambdaQueryWrapper<StudentCourseEntity> wrapper = new LambdaQueryWrapper<>();
-        wrapper.eq(StudentCourseEntity::getStudentId, studentId);
+    public int countByCustomerId(Integer customerId) {
+        LambdaQueryWrapper<CustomerOrderEntity> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(CustomerOrderEntity::getStudentId, customerId);
 
         return mapper.selectCount(wrapper);
     }
 
-    public StudentCourseEntity getByCourseIdAndStudentId(Integer courseId, Integer studentId) {
-        LambdaQueryWrapper<StudentCourseEntity> wrapper = new LambdaQueryWrapper<>();
-        wrapper.select(StudentCourseEntity::getId)
-                .eq(StudentCourseEntity::getCourseId, courseId)
-                .eq(StudentCourseEntity::getStudentId, studentId);
+    public CustomerOrderEntity getByCourseIdAndStudentId(Integer courseId, Integer studentId) {
+        LambdaQueryWrapper<CustomerOrderEntity> wrapper = new LambdaQueryWrapper<>();
+        wrapper.select(CustomerOrderEntity::getId)
+                .eq(CustomerOrderEntity::getCourseId, courseId)
+                .eq(CustomerOrderEntity::getStudentId, studentId);
 
         return mapper.selectOne(wrapper);
     }
 
-    public List<StudentCourseSelectedItemVO> listStudentCourseSelected(Integer studentId) {
-        return mapper.listStudentCourseSelected(studentId);
+    //对应前端顾客端的preorder页面，用于初始化
+    public List<CustomerPreOrderVO> listCustomerPreOrder(Integer customerId) {
+        return mapper.listCustomerPreOrder(customerId);
     }
 
     public List<StudentExamItemVO> listStudentExam(Integer studentId) {

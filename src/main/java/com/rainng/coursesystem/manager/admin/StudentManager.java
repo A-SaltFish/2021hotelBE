@@ -1,7 +1,7 @@
 package com.rainng.coursesystem.manager.admin;
 
 import com.rainng.coursesystem.dao.ClassDAO;
-import com.rainng.coursesystem.dao.StudentCourseDAO;
+import com.rainng.coursesystem.dao.CustomerOrderDAO;
 import com.rainng.coursesystem.dao.CustomerDAO;
 import com.rainng.coursesystem.manager.BaseManager;
 import com.rainng.coursesystem.model.entity.ClassEntity;
@@ -16,12 +16,12 @@ import java.util.List;
 @Component
 public class StudentManager extends BaseManager {
     private final ClassDAO classDAO;
-    private final StudentCourseDAO studentCourseDAO;
+    private final CustomerOrderDAO customerOrderDAO;
     private final CustomerDAO customerDAO;
 
-    public StudentManager(ClassDAO classDAO, StudentCourseDAO studentCourseDAO, CustomerDAO customerDAO) {
+    public StudentManager(ClassDAO classDAO, CustomerOrderDAO customerOrderDAO, CustomerDAO customerDAO) {
         this.classDAO = classDAO;
-        this.studentCourseDAO = studentCourseDAO;
+        this.customerOrderDAO = customerOrderDAO;
         this.customerDAO = customerDAO;
     }
 
@@ -55,7 +55,7 @@ public class StudentManager extends BaseManager {
     }
 
     public boolean hasStudentCourse(Integer studentId) {
-        return studentCourseDAO.countByStudentId(studentId) > 0;
+        return customerOrderDAO.countByCustomerId(studentId) > 0;
     }
 
     public List<IdNameVO> listName() {

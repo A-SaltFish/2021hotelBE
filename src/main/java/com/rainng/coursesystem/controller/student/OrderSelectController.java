@@ -3,7 +3,7 @@ package com.rainng.coursesystem.controller.student;
 import com.rainng.coursesystem.config.themis.annotation.Student;
 import com.rainng.coursesystem.controller.BaseController;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
-import com.rainng.coursesystem.service.student.CourseSelectService;
+import com.rainng.coursesystem.service.student.OrderSelectService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,25 +13,30 @@ import org.springframework.web.bind.annotation.RestController;
 @Student
 @RequestMapping("/student/course/select")
 @RestController
-public class CourseSelectController extends BaseController {
-    private final CourseSelectService service;
+public class OrderSelectController extends BaseController {
+    private final OrderSelectService service;
 
-    public CourseSelectController(CourseSelectService service) {
+    public OrderSelectController(OrderSelectService service) {
         this.service = service;
     }
 
     @RequestMapping("/page/count")
-    public ResultVO getPageCount(String courseName, String teacherName) {
-        return service.getPageCount(courseName, teacherName);
+    public ResultVO getPageCount(Integer Id) {
+        return service.getPageCount(Id);
     }
 
     @RequestMapping("/page/{index}")
-    public ResultVO getPage(@PathVariable Integer index, String courseName, String teacherName) {
-        return service.getPage(index, courseName, teacherName);
+    public ResultVO getPage(@PathVariable Integer index) {
+        return service.getPage(index);
     }
 
     @PostMapping("/{id}")
-    public ResultVO create(@PathVariable Integer id) {
-        return service.create(id);
+    public ResultVO showOrder(@PathVariable Integer id) {
+        return service.showOrder(id);
+    }
+
+    @PostMapping("/delete/{id}")
+    public ResultVO deleteOrder(@PathVariable Integer id) {
+        return service.deleteOrder(id);
     }
 }

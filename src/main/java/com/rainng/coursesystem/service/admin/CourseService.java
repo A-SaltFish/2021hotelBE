@@ -1,10 +1,10 @@
 package com.rainng.coursesystem.service.admin;
 
 import com.rainng.coursesystem.manager.admin.CourseManager;
-import com.rainng.coursesystem.model.bo.CourseItemBO;
-import com.rainng.coursesystem.model.entity.CourseEntity;
+import com.rainng.coursesystem.model.bo.OrderItemBo;
+import com.rainng.coursesystem.model.entity.OrderEntity;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
-import com.rainng.coursesystem.model.vo.response.table.CourseItemVO;
+import com.rainng.coursesystem.model.vo.response.table.OrderItemVO;
 import com.rainng.coursesystem.service.BaseService;
 import com.rainng.coursesystem.util.LessonTimeConverter;
 import org.springframework.beans.BeanUtils;
@@ -28,13 +28,12 @@ public class CourseService extends BaseService {
     }
 
     public ResultVO getPage(Integer index, String departmentName, String teacherName, String name) {
-        List<CourseItemBO> boList = manager.getPage(index, departmentName, teacherName, name);
-        List<CourseItemVO> voList = new ArrayList<>(boList.size());
+        List<OrderItemBo> boList = manager.getPage(index, departmentName, teacherName, name);
+        List<OrderItemVO> voList = new ArrayList<>(boList.size());
 
-        for (CourseItemBO bo : boList) {
-            CourseItemVO vo = new CourseItemVO();
+        for (OrderItemBo bo : boList) {
+            OrderItemVO vo = new OrderItemVO();
             BeanUtils.copyProperties(bo, vo);
-            vo.setTime(lessonTimeConverter.covertTimePart(bo.getTime()));
             voList.add(vo);
         }
 
@@ -42,7 +41,7 @@ public class CourseService extends BaseService {
     }
 
     public ResultVO get(Integer id) {
-        CourseEntity entity = manager.get(id);
+        OrderEntity entity = manager.get(id);
         if (entity == null) {
             return failedResult("课程Id: " + id + "不存在!");
         }
@@ -50,8 +49,8 @@ public class CourseService extends BaseService {
         return result(entity);
     }
 
-    public ResultVO update(CourseEntity entity) {
-        CourseEntity origin = manager.get(entity.getId());
+    public ResultVO update(OrderEntity entity) {
+        OrderEntity origin = manager.get(entity.getId());
         if (origin == null) {
             return failedResult("课程Id: " + entity.getId() + "不存在!");
         }
@@ -77,7 +76,7 @@ public class CourseService extends BaseService {
         return result("删除成功");
     }
 
-    public ResultVO create(CourseEntity entity) {
+    public ResultVO create(OrderEntity entity) {
         if (manager.get(entity.getId()) != null) {
             return failedResult("课程Id: " + entity.getId() + "已存在!");
         }
