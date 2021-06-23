@@ -1,38 +1,38 @@
 package com.rainng.coursesystem.controller;
 
-import com.rainng.coursesystem.model.vo.request.LoginVO;
-import com.rainng.coursesystem.model.vo.response.ResultVO;
-import com.rainng.coursesystem.service.UserService;
-import org.springframework.validation.annotation.Validated;
+import com.rainng.coursesystem.model.vo.UserVo;
+import com.rainng.coursesystem.service.MailService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-@RequestMapping("/user")
-@RestController
-public class UserController extends BaseController {
-    private final UserService service;
+import javax.servlet.http.HttpSession;
 
-    public UserController(UserService service) {
-        this.service = service;
+@Controller
+public class UserController {
+    @Autowired
+    private MailService mailService;
+
+    @PostMapping("/sendEmail")
+    @ResponseBody
+    public String sendEmail(String email,HttpSession httpSession){
+        mailService.sendMimeMail(email,httpSession);
+        return "sucess";
     }
 
-    @PostMapping("/login")
-    public ResultVO login(@Validated @RequestBody LoginVO loginVO) {
-        String username = loginVO.getUsername();
-        String password = loginVO.getPassword();
-        Integer userType = loginVO.getUserType();
-        return service.login(username, password, userType);
+    @PostMapping("/regist")
+    @ResponseBody
+    public String regist(UserVo userVo, HttpSession session){
+        mailService.registered(userVo,session);
+        return "success";
     }
 
-    @RequestMapping("/login/status")
-    public ResultVO getLoginStatus() {
-        return service.getLoginStatus();
+    @PostMapping("login")
+    @ResponseBody
+    public String login(String email,String password){
+        mailService.loginIn(email,password);
+        return "success";
     }
 
-    @RequestMapping("/logout")
-    public ResultVO logout() {
-        return service.logout();
-    }
 }
