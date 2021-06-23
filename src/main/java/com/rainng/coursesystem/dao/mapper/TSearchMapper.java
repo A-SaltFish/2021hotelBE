@@ -1,6 +1,7 @@
 package com.rainng.coursesystem.dao.mapper;
 
 import com.rainng.coursesystem.model.entity.TSearch;
+import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -9,7 +10,9 @@ import java.util.List;
 @Repository
 public interface TSearchMapper {
     public TSearch findById(Integer hotel_id);
-    public TSearch findByName(String hotel_name);
+//    public TSearch findByName(String hotel_name);
+    public List<TSearch> findByName(String hotel_name);
+    public List<TSearch> findByCity(String city_name);
     public List<TSearch> findTSearchAll();
 //    private Integer hotel_id;
 //    private String hotel_name;//酒店名称

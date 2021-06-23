@@ -1,16 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace = "com.rainng.coursesystem.dao.mapper.TSearchMapper">
-    <select id="findById" resultType="com.rainng.coursesystem.model.entity.TSearch">
+    <resultMap id="BaseMap" type="com.rainng.coursesystem.model.entity.TSearch">
+        <id property="hotel_id" column="hotel_id"/>
+        <result property="hotel_name" column="hotel_name"/>
+    </resultMap>
+
+    <resultMap id="FindByNameMap" type="com.rainng.coursesystem.model.entity.TSearch">
+            <id property="hotel_name" column="hotel_name"/>
+            <result property="hotel_id" column="hotel_id"/>
+    </resultMap>
+
+    <resultMap id="FindByCityMap" type="com.rainng.coursesystem.model.entity.TSearch">
+        <id property="city_name" column="city_name"/>
+        <result property="hotel_name" column="hotel_name"/>
+    </resultMap>
+
+    <select id="findById" resultMap="BaseMap">
          SELECT hotel_id,hotel_name FROM ht_specification WHERE hotel_id = #{hotel_id}
     </select>
 
-    <select id="findByName" resultType="com.rainng.coursesystem.model.entity.TSearch">
+    <!--<select id="findTSearchAll" resultMap="BaseMap">-->
+        <!--select * from ht_specification-->
+    <!--</select>-->
+
+    <select id="findByName" resultMap="FindByNameMap">
         select hotel_id,hotel_name from ht_specification where hotel_name = #{hotel_name}
     </select>
 
-    <select id="findTSearchAll" resultType="com.rainng.coursesystem.model.entity.TSearch">
-        select * from ht_specification
+    <select id="findByCity" resultMap="FindByCityMap">
+        select city_name,hotel_name from ht_specification where city_name = #{city_name}
     </select>
+
+
+    <!--<select id="findTSearchAll" resultMap="BaseMap">-->
+        <!--select * from ht_specification-->
+    <!--</select>-->
 
 </mapper>

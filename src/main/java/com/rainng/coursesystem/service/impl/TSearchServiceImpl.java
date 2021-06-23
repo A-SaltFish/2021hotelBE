@@ -19,12 +19,17 @@ public class TSearchServiceImpl implements TSearchService {
     }
 
     @Override
-    public TSearch findByName(String hotel_name){
+    public List<TSearch> findByName(String hotel_name){
         return tSearchMapper.findByName(hotel_name);
     }
 
     @Override
-    public List<TSearch> findTSearchAll(){
+    public List<TSearch> findByCity(String city_name){
+        return tSearchMapper.findByCity(city_name);
+    }
+
+    @Override
+        public List<TSearch> findTSearchAll(){
         return tSearchMapper.findTSearchAll();
     }
 

@@ -22,3 +22,6 @@ spring:
 mybatis-plus:
   mapper-locations: classpath:mapping/*.xml
   type-aliases-package: com.rainng.coursesystem.model
+logging:
+  level:
+    com.rainng.coursesystem.dao: debug
