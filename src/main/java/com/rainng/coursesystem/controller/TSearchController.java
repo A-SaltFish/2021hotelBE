@@ -34,8 +34,8 @@ public class TSearchController {
     }
 
     @GetMapping("/getName")//通过城市获取酒店名称
-    public List<TSearch> getName(@Param("city_name") String city_name){
-        List<TSearch> list = tSearchService.findByCity(city_name);
+    public List<TSearch> getName(@Param("ht_city_name") String ht_city_name){
+        List<TSearch> list = tSearchService.findByCity(ht_city_name);
         return list;
     }
 
@@ -45,11 +45,11 @@ public class TSearchController {
 //        Gson gson = new Gson();
 //        return gson.toJson(tSearch);
 //    }
-    @GetMapping("/getAll")
-    public List<TSearch> getAll(){
-        List<TSearch> list = tSearchService.findTSearchAll();
-        return list;
-    }
+//    @GetMapping("/getAll")
+//    public List<TSearch> getAll(){
+//        List<TSearch> list = tSearchService.findTSearchAll();
+//        return list;
+//    }
 //
 //    @GetMapping("/getAllJson")//同上 返回json数据格式
 //    public String getAllJson(){

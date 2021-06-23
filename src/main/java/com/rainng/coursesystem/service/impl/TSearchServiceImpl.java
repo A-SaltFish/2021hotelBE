@@ -24,13 +24,13 @@ public class TSearchServiceImpl implements TSearchService {
     }
 
     @Override
-    public List<TSearch> findByCity(String city_name){
-        return tSearchMapper.findByCity(city_name);
+    public List<TSearch> findByCity(String ht_city_name){
+        return tSearchMapper.findByCity(ht_city_name);
     }
 
-    @Override
-        public List<TSearch> findTSearchAll(){
-        return tSearchMapper.findTSearchAll();
-    }
+//    @Override
+//        public List<TSearch> findTSearchAll(){
+//        return tSearchMapper.findTSearchAll();
+//    }
 
 }

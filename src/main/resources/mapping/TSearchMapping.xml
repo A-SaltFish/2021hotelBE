@@ -12,8 +12,14 @@
     </resultMap>
 
     <resultMap id="FindByCityMap" type="com.rainng.coursesystem.model.entity.TSearch">
-        <id property="city_name" column="city_name"/>
+        <id property="ht_city_name" column="ht_city_name"/>
+        <result property="hotel_id" column="hotel_id"/>
         <result property="hotel_name" column="hotel_name"/>
+        <result property="hotel_rank" column="hotel_rank"/>
+        <!--<result property="rm_breakfast_type" column="rm_breakfast_type"/>-->
+        <result property="hotel_room_num" column="hotel_room_num"/>
+        <result property="hotel_isopen" column="hotel_isopen"/>
+
     </resultMap>
 
     <select id="findById" resultMap="BaseMap">
@@ -29,7 +35,10 @@
     </select>
 
     <select id="findByCity" resultMap="FindByCityMap">
-        select city_name,hotel_name from ht_specification where city_name = #{city_name}
+        select * from ht_specification
+        where ht_city_name = #{ht_city_name}
+        and hotel_room_num &gt; 0
+        and hotel_isopen = 1
     </select>
 
 
