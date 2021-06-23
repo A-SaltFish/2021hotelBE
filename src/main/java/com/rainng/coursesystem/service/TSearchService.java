@@ -1,6 +1,5 @@
 package com.rainng.coursesystem.service;
 
-import com.rainng.coursesystem.model.entity.Search;
 import com.rainng.coursesystem.model.entity.TSearch;
 
 import java.util.List;
