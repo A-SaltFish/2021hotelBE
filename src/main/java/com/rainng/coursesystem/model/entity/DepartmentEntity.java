@@ -10,7 +10,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 
-@TableName("rc_department")
+@TableName("")
 @Data
 public class DepartmentEntity {
     public static final String ID = "department_id";

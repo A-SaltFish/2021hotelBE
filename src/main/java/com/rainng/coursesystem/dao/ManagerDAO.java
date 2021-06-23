@@ -6,7 +6,7 @@ import com.rainng.coursesystem.dao.mapper.ManagerMapper;
 import com.rainng.coursesystem.model.entity.ManagerEntity;
 import com.rainng.coursesystem.model.vo.response.table.HotelPreOrderItemVO;
 import com.rainng.coursesystem.model.vo.response.table.TeacherItemVO;
-import com.rainng.coursesystem.model.vo.response.table.TimetableItemVO;
+import com.rainng.coursesystem.model.vo.response.table.ManagerAllOrderItemVO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -41,12 +41,6 @@ public class ManagerDAO extends BaseDAO {
         return mapper.count(departmentName, name);
     }
 
-    public List<TeacherItemVO> getPage(Integer index, String departmentName, String name) {
-        Page<TeacherItemVO> page = new Page<>(index, PAGE_SIZE);
-
-        return mapper.getPage(page, departmentName, name).getRecords();
-    }
-
     public ManagerEntity getById(String id) {
         LambdaQueryWrapper<ManagerEntity> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(ManagerEntity::getId, id);
@@ -68,7 +62,7 @@ public class ManagerDAO extends BaseDAO {
         return mapper.selectList(wrapper);
     }
 
-    public List<TimetableItemVO> listTeacherTimetable(Integer teacherId) {
+    public List<ManagerAllOrderItemVO> listTeacherTimetable(Integer teacherId) {
         return mapper.listTeacherTimetable(teacherId);
     }
 

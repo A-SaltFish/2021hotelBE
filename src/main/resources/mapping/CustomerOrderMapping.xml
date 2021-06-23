@@ -45,7 +45,7 @@
     </update>
 
     <select id="listCustomerPreOrder" resultType="CustomerPreOrderVO">
-        SELECT order_id as"orderId",hotel_name as"hotelName",room_name as"roomName",order_ctime as"cTime",
+        SELECT order_id as"orderId",hotel_name as"hotelName",room_type as"roomName",order_ctime as"cTime",
         order_cost as"orderCost",order_payment as"payment",order_status as"status",od_customer_id as"customerId",
         hotel_tel as"hotelTel"
         FROM ht_order_form

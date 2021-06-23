@@ -51,16 +51,16 @@ public class CustomerOrderDAO extends BaseDAO {
         return mapper.getPage(page,customerId).getRecords();
     }
 
-    public int countByCourseId(Integer courseId) {
+    public int countByCourseId(Integer managerId) {
         LambdaQueryWrapper<CustomerOrderEntity> wrapper = new LambdaQueryWrapper<>();
-        wrapper.eq(CustomerOrderEntity::getCourseId, courseId);
+        wrapper.eq(CustomerOrderEntity::getId, managerId);
 
         return mapper.selectCount(wrapper);
     }
 
     public int countByCustomerId(Integer customerId) {
         LambdaQueryWrapper<CustomerOrderEntity> wrapper = new LambdaQueryWrapper<>();
-        wrapper.eq(CustomerOrderEntity::getStudentId, customerId);
+        wrapper.eq(CustomerOrderEntity::getId, customerId);
 
         return mapper.selectCount(wrapper);
     }
@@ -68,8 +68,8 @@ public class CustomerOrderDAO extends BaseDAO {
     public CustomerOrderEntity getByCourseIdAndStudentId(Integer courseId, Integer studentId) {
         LambdaQueryWrapper<CustomerOrderEntity> wrapper = new LambdaQueryWrapper<>();
         wrapper.select(CustomerOrderEntity::getId)
-                .eq(CustomerOrderEntity::getCourseId, courseId)
-                .eq(CustomerOrderEntity::getStudentId, studentId);
+                .eq(CustomerOrderEntity::getHotelId, courseId)
+                .eq(CustomerOrderEntity::getId, studentId);
 
         return mapper.selectOne(wrapper);
     }
@@ -87,7 +87,7 @@ public class CustomerOrderDAO extends BaseDAO {
         return mapper.countStudentCourseSelectedByTimePart(studentId, timePart);
     }
 
-    public List<TimetableItemVO> listStudentTimetable(Integer studentId) {
+    public List<ManagerAllOrderItemVO> listStudentTimetable(Integer studentId) {
         return mapper.listStudentTimetable(studentId);
     }
 

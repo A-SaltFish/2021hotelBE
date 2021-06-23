@@ -1,94 +1,81 @@
 package com.rainng.coursesystem.model.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.hibernate.validator.constraints.Range;
 
 import javax.validation.constraints.NotNull;
 
 
-@TableName("rc_student_course")
+@TableName("ht_customer")
 @Data
 public class CustomerOrderEntity {
-    public static final String ID = "sc_id";
-    public static final String STUDENT_ID = "sc_student_id";
-    public static final String COURSE_ID = "sc_course_id";
-    public static final String DAILY_SCORE = "sc_daily_score";
-    public static final String EXAM_SCORE = "sc_exam_score";
-    public static final String SCORE = "sc_score";
+    public static final String ID = "order_id";
+    public static final String HOTEL_ID = "od_hotel_id";
+    public static final String ROOM_ID = "od_room_id";
+    public static final String CUSTOMER_ID = "od_customer_id";
+    public static final String CTIME = "order_ctime";
+	public static final String STATUS = "order_status";
+	public static final String IFSHOW = "order_ifshow";
 
     @NotNull
     @TableId(value = ID, type = IdType.AUTO)
     private Integer id;
 
-    @NotNull(message = "必须选择学生")
-    @TableField(STUDENT_ID)
-    private Integer studentId;
+    @NotNull(message = "必须选择顾客")
+    @TableField(CUSTOMER_ID)
+    private Integer customerId;
 
-    @NotNull(message = "必须选择课程")
-    @TableField(COURSE_ID)
-    private Integer courseId;
+	@NotNull(message = "必须选择酒店ID")
+	@TableField(HOTEL_ID)
+	private Integer hotelId;
 
-    @Range(min = 0, max = 100, message = "分数必须在0-100之间")
-    @TableField(value = DAILY_SCORE, updateStrategy = FieldStrategy.IGNORED)
-    private Integer dailyScore;
+	@NotNull(message = "必须选择房间ID")
+	@TableField(ROOM_ID)
+	private Integer roomId;
 
-    @Range(min = 0, max = 100, message = "分数必须在0-100之间")
-    @TableField(value = EXAM_SCORE, updateStrategy = FieldStrategy.IGNORED)
-    private Integer examScore;
+	@NotNull(message = "必须创建时间")
+	@JsonFormat(pattern = "yyyy-MM-dd")
+    @TableField(CTIME)
+    private Integer ctime;
 
-    @Range(min = 0, max = 100, message = "分数必须在0-100之间")
-    @TableField(value = SCORE, updateStrategy = FieldStrategy.IGNORED)
-    private Integer score;
+	@NotNull(message = "必须有状态")
+	@TableField(STATUS)
+	private Integer status;
+
+	@NotNull(message = "必须选择是否可见")
+	@TableField(IFSHOW)
+	private Integer ifShow;
 
 	public Integer getId() {
 		return id;
 	}
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public Integer getStudentId() {
-		return studentId;
+	public Integer getRoomId() {
+		return roomId;
+	}
+	public void setRoomId(Integer id) {
+		this.roomId = id;
 	}
 
-	public void setStudentId(Integer studentId) {
-		this.studentId = studentId;
+	public Integer getCustomerId() {
+		return customerId;
+	}
+	public void setCustomerId(Integer id) {
+		this.customerId = id;
 	}
 
-	public Integer getCourseId() {
-		return courseId;
+	public Integer getHotelId() {
+		return hotelId;
+	}
+	public void setHotelId(Integer id) {
+		this.hotelId = id;
 	}
 
-	public void setCourseId(Integer courseId) {
-		this.courseId = courseId;
-	}
-
-	public Integer getDailyScore() {
-		return dailyScore;
-	}
-
-	public void setDailyScore(Integer dailyScore) {
-		this.dailyScore = dailyScore;
-	}
-
-	public Integer getExamScore() {
-		return examScore;
-	}
-
-	public void setExamScore(Integer examScore) {
-		this.examScore = examScore;
-	}
-
-
-	public void setScore(Integer score) {
-		this.score = score;
-	}
-
-	public Integer getScore() {
-		return score;
-	}
 
     
 }

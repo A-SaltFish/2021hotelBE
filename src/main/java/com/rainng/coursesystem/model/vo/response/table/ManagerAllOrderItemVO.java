@@ -3,7 +3,7 @@ package com.rainng.coursesystem.model.vo.response.table;
 import lombok.Data;
 
 @Data
-public class TimetableItemVO {
+public class ManagerAllOrderItemVO {
     private String time;
     private String courseName;
     private String teacherName;
