@@ -9,7 +9,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @Student
-@RequestMapping("/customer/info")
+@RequestMapping("/student/info")
 @RestController
 public class InfoController extends BaseController {
     private final InfoService service;

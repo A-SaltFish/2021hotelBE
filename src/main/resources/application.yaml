@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/rainng_course?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
     username: root
     password: 123456
@@ -19,7 +19,6 @@ spring:
 #    mongodb:
 #      uri: mongodb://localhost:27017/rainng_course
 
-#配置mybatis-plus的扫描路径
 mybatis-plus:
   mapper-locations: classpath:mapping/*.xml
   type-aliases-package: com.rainng.coursesystem.model

@@ -16,7 +16,6 @@ public interface StudentMapper extends BaseMapper<StudentEntity> {
 
     Integer count(@Param("majorName")String majorName,@Param("className") String className, @Param("name")String name);
 
-    //分页查询？
     IPage<StudentItemVO> getPage(IPage<StudentItemVO> page, @Param("majorName")String majorName,@Param("className") String className,@Param("name") String name);
 
     StudentInfoVO getStudentInfoById(Integer studentId);
