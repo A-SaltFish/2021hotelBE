@@ -2,11 +2,11 @@ package com.rainng.coursesystem.manager.admin;
 
 import com.rainng.coursesystem.dao.OrderDAO;
 import com.rainng.coursesystem.dao.CustomerOrderDAO;
-import com.rainng.coursesystem.dao.TeacherDAO;
+import com.rainng.coursesystem.dao.ManagerDAO;
 import com.rainng.coursesystem.manager.BaseManager;
 import com.rainng.coursesystem.model.bo.OrderItemBo;
 import com.rainng.coursesystem.model.entity.OrderEntity;
-import com.rainng.coursesystem.model.entity.TeacherEntity;
+import com.rainng.coursesystem.model.entity.ManagerEntity;
 import com.rainng.coursesystem.model.vo.response.IdNameVO;
 import org.springframework.stereotype.Component;
 
@@ -15,12 +15,12 @@ import java.util.List;
 
 @Component
 public class CourseManager extends BaseManager {
-    private final TeacherDAO teacherDAO;
+    private final ManagerDAO managerDAO;
     private final OrderDAO orderDAO;
     private final CustomerOrderDAO customerOrderDAO;
 
-    public CourseManager(TeacherDAO teacherDAO, OrderDAO orderDAO, CustomerOrderDAO customerOrderDAO) {
-        this.teacherDAO = teacherDAO;
+    public CourseManager(ManagerDAO managerDAO, OrderDAO orderDAO, CustomerOrderDAO customerOrderDAO) {
+        this.managerDAO = managerDAO;
         this.orderDAO = orderDAO;
         this.customerOrderDAO = customerOrderDAO;
     }
@@ -50,8 +50,8 @@ public class CourseManager extends BaseManager {
         return orderDAO.delete(id);
     }
 
-    public TeacherEntity getTeacherById(Integer teacherId) {
-        return teacherDAO.get(teacherId);
+    public ManagerEntity getTeacherById(Integer teacherId) {
+        return managerDAO.get(teacherId);
     }
 
     public boolean hasStudentCourse(Integer courseId) {

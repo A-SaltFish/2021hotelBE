@@ -3,7 +3,7 @@ package com.rainng.coursesystem.model.bo;
 import com.rainng.coursesystem.model.constant.UserType;
 import com.rainng.coursesystem.model.entity.AdminEntity;
 import com.rainng.coursesystem.model.entity.CustomerEntity;
-import com.rainng.coursesystem.model.entity.TeacherEntity;
+import com.rainng.coursesystem.model.entity.ManagerEntity;
 import lombok.Data;
 
 @Data
@@ -34,14 +34,14 @@ public class AuthInfoBO {
         if (entity == null) {
             return null;
         }
-        return new AuthInfoBO(entity.getId(), entity.getName(), entity.getPassword(), UserType.STUDENT);
+        return new AuthInfoBO(entity.getId(), entity.getName(), entity.getPassword(), UserType.CUSTOMER);
     }
 
-    public static AuthInfoBO fromTeacher(TeacherEntity entity) {
+    public static AuthInfoBO fromTeacher(ManagerEntity entity) {
         if (entity == null) {
             return null;
         }
-        return new AuthInfoBO(entity.getId(), entity.getNumber(), entity.getPassword(), UserType.TEACHER);
+        return new AuthInfoBO(entity.getId(), entity.getName(), entity.getPassword(), UserType.MANAGER);
     }
 
     public static AuthInfoBO fromAdmin(AdminEntity entity) {

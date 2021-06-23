@@ -1,7 +1,7 @@
 package com.rainng.coursesystem.service.admin;
 
 import com.rainng.coursesystem.manager.admin.TeacherManager;
-import com.rainng.coursesystem.model.entity.TeacherEntity;
+import com.rainng.coursesystem.model.entity.ManagerEntity;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
 import com.rainng.coursesystem.service.BaseService;
 import com.rainng.coursesystem.service.UserService;
@@ -26,7 +26,7 @@ public class TeacherService extends BaseService {
     }
 
     public ResultVO get(Integer id) {
-        TeacherEntity entity = manager.get(id);
+        ManagerEntity entity = manager.get(id);
         if (entity == null) {
             return failedResult("教师Id: " + id + "不存在!");
         }
@@ -36,13 +36,10 @@ public class TeacherService extends BaseService {
         return result(entity);
     }
 
-    public ResultVO update(TeacherEntity entity) {
-        TeacherEntity originEntity = manager.get(entity.getId());
+    public ResultVO update(ManagerEntity entity) {
+        ManagerEntity originEntity = manager.get(entity.getId());
         if (originEntity == null) {
             return failedResult("教师Id: " + entity.getId() + "不存在!");
-        }
-        if (manager.getDepartmentById(entity.getDepartmentId()) == null) {
-            return failedResult("所属系Id: " + entity.getDepartmentId() + "不存在!");
         }
 
       //  if (entity.getPassword().equals("")) {
@@ -67,14 +64,10 @@ public class TeacherService extends BaseService {
         return result("删除成功");
     }
 
-    public ResultVO create(TeacherEntity entity) {
+    public ResultVO create(ManagerEntity entity) {
         if (manager.get(entity.getId()) != null) {
             return failedResult("教师Id: " + entity.getId() + "已存在!");
         }
-        if (manager.getDepartmentById(entity.getDepartmentId()) == null) {
-            return failedResult("所属系Id: " + entity.getDepartmentId() + "不存在!");
-        }
-
    //     entity.setPassword(userService.computePasswordHash(entity.getPassword()));
 
         manager.create(entity);

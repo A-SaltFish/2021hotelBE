@@ -14,11 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CourseService extends BaseService {
+public class OrderService extends BaseService {
     private final CourseManager manager;
     private final LessonTimeConverter lessonTimeConverter;
 
-    public CourseService(CourseManager manager, LessonTimeConverter lessonTimeConverter) {
+    public OrderService(CourseManager manager, LessonTimeConverter lessonTimeConverter) {
         this.manager = manager;
         this.lessonTimeConverter = lessonTimeConverter;
     }

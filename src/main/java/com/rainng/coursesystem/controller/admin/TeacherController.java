@@ -2,7 +2,7 @@ package com.rainng.coursesystem.controller.admin;
 
 import com.rainng.coursesystem.config.themis.annotation.Admin;
 import com.rainng.coursesystem.controller.BaseController;
-import com.rainng.coursesystem.model.entity.TeacherEntity;
+import com.rainng.coursesystem.model.entity.ManagerEntity;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
 import com.rainng.coursesystem.service.admin.TeacherService;
 import org.springframework.validation.annotation.Validated;
@@ -24,7 +24,7 @@ public class TeacherController extends BaseController {
     }
 
     @PostMapping
-    public ResultVO create(@RequestBody @Validated TeacherEntity entity) {
+    public ResultVO create(@RequestBody @Validated ManagerEntity entity) {
         return service.create(entity);
     }
 
@@ -34,7 +34,7 @@ public class TeacherController extends BaseController {
     }
 
     @PutMapping
-    public ResultVO update(@RequestBody @Validated TeacherEntity entity) {
+    public ResultVO update(@RequestBody @Validated ManagerEntity entity) {
         return service.update(entity);
     }
 

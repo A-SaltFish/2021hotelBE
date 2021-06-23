@@ -16,7 +16,7 @@ public class LoginVO {
     private String password;
 
     @NotNull(message = "必须选择用户类型")
-    @Range(min = UserType.STUDENT, max = UserType.ADMIN, message = "无效的用户类型")
+    @Range(min = UserType.CUSTOMER, max = UserType.ADMIN, message = "无效的用户类型")
     private Integer userType;
 
 	public String getUsername() {

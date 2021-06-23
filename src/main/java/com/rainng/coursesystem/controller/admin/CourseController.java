@@ -4,7 +4,7 @@ import com.rainng.coursesystem.config.themis.annotation.Admin;
 import com.rainng.coursesystem.controller.BaseController;
 import com.rainng.coursesystem.model.entity.OrderEntity;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
-import com.rainng.coursesystem.service.admin.CourseService;
+import com.rainng.coursesystem.service.admin.OrderService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/admin/course")
 @RestController
 public class CourseController extends BaseController {
-    private final CourseService service;
+    private final OrderService service;
 
-    public CourseController(CourseService service) {
+    public CourseController(OrderService service) {
         this.service = service;
     }
 

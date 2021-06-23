@@ -37,7 +37,7 @@ public class UserService extends BaseService {
             return failedResult("密码错误");
         }
 
-        if (authInfo.getUserType().equals(UserType.STUDENT)) {
+        if (authInfo.getUserType().equals(UserType.CUSTOMER)) {
             manager.updateStudentLastLoginTime(userId);
         }
 

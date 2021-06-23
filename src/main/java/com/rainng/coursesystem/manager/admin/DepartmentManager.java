@@ -2,7 +2,7 @@ package com.rainng.coursesystem.manager.admin;
 
 import com.rainng.coursesystem.dao.DepartmentDAO;
 import com.rainng.coursesystem.dao.MajorDAO;
-import com.rainng.coursesystem.dao.TeacherDAO;
+import com.rainng.coursesystem.dao.ManagerDAO;
 import com.rainng.coursesystem.manager.BaseManager;
 import com.rainng.coursesystem.model.entity.DepartmentEntity;
 import com.rainng.coursesystem.model.vo.response.IdNameVO;
@@ -16,12 +16,12 @@ import java.util.List;
 @Component
 public class DepartmentManager extends BaseManager {
     private final DepartmentDAO departmentDAO;
-    private final TeacherDAO teacherDAO;
+    private final ManagerDAO managerDAO;
     private final MajorDAO majorDAO;
 
-    public DepartmentManager(DepartmentDAO departmentDAO, TeacherDAO teacherDAO, MajorDAO majorDAO) {
+    public DepartmentManager(DepartmentDAO departmentDAO, ManagerDAO managerDAO, MajorDAO majorDAO) {
         this.departmentDAO = departmentDAO;
-        this.teacherDAO = teacherDAO;
+        this.managerDAO = managerDAO;
         this.majorDAO = majorDAO;
     }
 
@@ -39,7 +39,7 @@ public class DepartmentManager extends BaseManager {
             int id = department.getId();
             String name = department.getName();
             int majorCount = majorDAO.countByDepartmentId(id);
-            int teacherCount = teacherDAO.countByDepartmentId(id);
+            int teacherCount = managerDAO.countByDepartmentId(id);
 
             departmentItemList.add(new DepartmentItemVO(id, name, majorCount, teacherCount));
         }
@@ -68,7 +68,7 @@ public class DepartmentManager extends BaseManager {
     }
 
     public boolean hasTeacher(Integer id) {
-        return teacherDAO.countByDepartmentId(id) > 0;
+        return managerDAO.countByDepartmentId(id) > 0;
     }
 
     public List<IdNameVO> listName() {

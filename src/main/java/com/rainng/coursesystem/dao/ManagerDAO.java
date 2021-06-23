@@ -2,9 +2,9 @@ package com.rainng.coursesystem.dao;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.rainng.coursesystem.dao.mapper.TeacherMapper;
-import com.rainng.coursesystem.model.entity.TeacherEntity;
-import com.rainng.coursesystem.model.vo.response.table.TeacherCourseItemVO;
+import com.rainng.coursesystem.dao.mapper.ManagerMapper;
+import com.rainng.coursesystem.model.entity.ManagerEntity;
+import com.rainng.coursesystem.model.vo.response.table.HotelPreOrderItemVO;
 import com.rainng.coursesystem.model.vo.response.table.TeacherItemVO;
 import com.rainng.coursesystem.model.vo.response.table.TimetableItemVO;
 import org.springframework.stereotype.Repository;
@@ -12,16 +12,16 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class TeacherDAO extends BaseDAO {
+public class ManagerDAO extends BaseDAO {
     public static final int PAGE_SIZE = 20;
 
-    private final TeacherMapper mapper;
+    private final ManagerMapper mapper;
 
-    public TeacherDAO(TeacherMapper mapper) {
+    public ManagerDAO(ManagerMapper mapper) {
         this.mapper = mapper;
     }
 
-    public int insert(TeacherEntity entity) {
+    public int insert(ManagerEntity entity) {
         return mapper.insert(entity);
     }
 
@@ -29,11 +29,11 @@ public class TeacherDAO extends BaseDAO {
         return mapper.deleteById(id);
     }
 
-    public TeacherEntity get(Integer id) {
+    public ManagerEntity get(Integer id) {
         return mapper.selectById(id);
     }
 
-    public int update(TeacherEntity entity) {
+    public int update(ManagerEntity entity) {
         return mapper.updateById(entity);
     }
 
@@ -47,23 +47,23 @@ public class TeacherDAO extends BaseDAO {
         return mapper.getPage(page, departmentName, name).getRecords();
     }
 
-    public TeacherEntity getByNumber(String number) {
-        LambdaQueryWrapper<TeacherEntity> wrapper = new LambdaQueryWrapper<>();
-        wrapper.eq(TeacherEntity::getNumber, number);
+    public ManagerEntity getById(String id) {
+        LambdaQueryWrapper<ManagerEntity> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(ManagerEntity::getId, id);
 
         return mapper.selectOne(wrapper);
     }
 
     public Integer countByDepartmentId(Integer departmentId) {
-        LambdaQueryWrapper<TeacherEntity> wrapper = new LambdaQueryWrapper<>();
-        wrapper.eq(TeacherEntity::getDepartmentId, departmentId);
+        LambdaQueryWrapper<ManagerEntity> wrapper = new LambdaQueryWrapper<>();
+        //wrapper.eq(ManagerEntity::getDepartmentId, departmentId);
 
         return mapper.selectCount(wrapper);
     }
 
-    public List<TeacherEntity> listName() {
-        LambdaQueryWrapper<TeacherEntity> wrapper = new LambdaQueryWrapper<>();
-        wrapper.select(TeacherEntity::getId, TeacherEntity::getName);
+    public List<ManagerEntity> listName() {
+        LambdaQueryWrapper<ManagerEntity> wrapper = new LambdaQueryWrapper<>();
+        wrapper.select(ManagerEntity::getId, ManagerEntity::getName);
 
         return mapper.selectList(wrapper);
     }
@@ -72,7 +72,7 @@ public class TeacherDAO extends BaseDAO {
         return mapper.listTeacherTimetable(teacherId);
     }
 
-    public List<TeacherCourseItemVO> listTeacherCourse(Integer teacherId) {
-        return mapper.listTeacherCourse(teacherId);
+    public List<HotelPreOrderItemVO> HotelPreList(Integer managerId) {
+        return mapper.HotelPreList(managerId);
     }
 }
