@@ -2,7 +2,7 @@ package com.rainng.coursesystem.manager.student;
 
 import com.rainng.coursesystem.dao.CustomerOrderDAO;
 import com.rainng.coursesystem.manager.BaseManager;
-import com.rainng.coursesystem.model.vo.response.table.ManagerAllOrderItemVO;
+import com.rainng.coursesystem.model.vo.response.table.HotelAllOrderItemVO;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -15,7 +15,7 @@ public class TimetableManager extends BaseManager {
         this.customerOrderDAO = customerOrderDAO;
     }
 
-    public List<ManagerAllOrderItemVO> listStudentTimetable(Integer studentId) {
+    public List<HotelAllOrderItemVO> listStudentTimetable(Integer studentId) {
         return customerOrderDAO.listStudentTimetable(studentId);
     }
 }

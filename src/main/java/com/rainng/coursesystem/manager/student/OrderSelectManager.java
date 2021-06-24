@@ -58,9 +58,11 @@ public class OrderSelectManager extends BaseManager {
         return customerDAO.getGradeById(studentId);
     }
 
+
     @Transactional
     public int create(CustomerOrderEntity entity) {
-        orderDAO.increaseSelectedCount(entity.getCourseId());
+        //该处从getCourseId变为getHotelId()
+        orderDAO.increaseSelectedCount(entity.getHotelId());
         return customerOrderDAO.insert(entity);
     }
 

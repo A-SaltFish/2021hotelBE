@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.rainng.coursesystem.dao.BaseDAO;
 import com.rainng.coursesystem.dao.mapper.ManagerOrderMapper;
 import com.rainng.coursesystem.model.entity.ManagerOrderEntity;
-import com.rainng.coursesystem.model.vo.response.table.ManagerAllOrderItemVO;
+import com.rainng.coursesystem.model.vo.response.table.HotelAllOrderItemVO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -20,8 +20,8 @@ public class ManagerOrderDAO extends BaseDAO {
         this.mapper = mapper;
     }
 
-    public List<ManagerAllOrderItemVO> getPage(Integer index, Integer managerId) {
-        Page<ManagerAllOrderItemVO> page = new Page<>(index, PAGE_SIZE);
+    public List<HotelAllOrderItemVO> getPage(Integer index, Integer managerId) {
+        Page<HotelAllOrderItemVO> page = new Page<>(index, PAGE_SIZE);
 
         return mapper.getPage(page, managerId).getRecords();
     }

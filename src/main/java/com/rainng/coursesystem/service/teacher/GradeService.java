@@ -39,7 +39,8 @@ public class GradeService extends BaseService {
         if (studentCourse == null) {
             return failedResult("学生选课Id:" + vo.getStudentCourseId() + "不存在");
         }
-        if (!manager.getCourseById(studentCourse.getCourseId()).getTeacherId().equals(teacherId)) {
+        //该处从getCourseId变为getHotelId()
+        if (!manager.getCourseById(studentCourse.getHotelId()).getTeacherId().equals(teacherId)) {
             return failedResult("此课程非您教授");
         }
 
@@ -59,7 +60,8 @@ public class GradeService extends BaseService {
         if (studentCourse == null) {
             return failedResult("学生选课Id:" + studentCourseId + "不存在");
         }
-        if (!manager.getCourseById(studentCourse.getCourseId()).getTeacherId().equals(teacherId)) {
+        //该处从getCourseId变为getHotelId()
+        if (!manager.getCourseById(studentCourse.getHotelId()).getTeacherId().equals(teacherId)) {
             return failedResult("此课程非您教授");
         }
 

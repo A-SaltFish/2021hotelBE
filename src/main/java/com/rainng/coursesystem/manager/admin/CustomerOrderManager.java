@@ -40,7 +40,7 @@ public class CustomerOrderManager extends BaseManager {
 
     @Transactional
     public int create(CustomerOrderEntity entity) {
-        orderDAO.increaseSelectedCount(entity.getCourseId());
+        //orderDAO.increaseSelectedCount(entity.getCourseId());
         return customerOrderDAO.insert(entity);
     }
 
@@ -50,7 +50,7 @@ public class CustomerOrderManager extends BaseManager {
 
     @Transactional
     public int delete(CustomerOrderEntity entity) {
-        orderDAO.decreaseSelectedCount(entity.getCourseId());
+        //orderDAO.decreaseSelectedCount(entity.getCourseId());
         return customerOrderDAO.delete(entity.getId());
     }
 

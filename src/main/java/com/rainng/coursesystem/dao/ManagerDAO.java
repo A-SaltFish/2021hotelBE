@@ -1,12 +1,11 @@
 package com.rainng.coursesystem.dao;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.rainng.coursesystem.dao.mapper.ManagerMapper;
 import com.rainng.coursesystem.model.entity.ManagerEntity;
 import com.rainng.coursesystem.model.vo.response.table.HotelPreOrderItemVO;
+import com.rainng.coursesystem.model.vo.response.table.HotelAllOrderItemVO;
 import com.rainng.coursesystem.model.vo.response.table.TeacherItemVO;
-import com.rainng.coursesystem.model.vo.response.table.ManagerAllOrderItemVO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -41,6 +40,10 @@ public class ManagerDAO extends BaseDAO {
         return mapper.count(departmentName, name);
     }
 
+    public List<TeacherItemVO> getPage(Integer index, String departmentName, String name){
+        return null;
+    }
+
     public ManagerEntity getById(String id) {
         LambdaQueryWrapper<ManagerEntity> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(ManagerEntity::getId, id);
@@ -62,7 +65,7 @@ public class ManagerDAO extends BaseDAO {
         return mapper.selectList(wrapper);
     }
 
-    public List<ManagerAllOrderItemVO> listTeacherTimetable(Integer teacherId) {
+    public List<HotelAllOrderItemVO> listTeacherTimetable(Integer teacherId) {
         return mapper.listTeacherTimetable(teacherId);
     }
 

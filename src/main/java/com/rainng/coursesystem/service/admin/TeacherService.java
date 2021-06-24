@@ -21,6 +21,7 @@ public class TeacherService extends BaseService {
         return result(manager.getPageCount(departmentName, name));
     }
 
+
     public ResultVO getPage(Integer index, String departmentName, String name) {
         return result(manager.getPage(index, departmentName, name));
     }

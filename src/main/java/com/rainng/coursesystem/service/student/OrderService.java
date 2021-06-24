@@ -10,11 +10,9 @@ import org.springframework.stereotype.Service;
 @Service("student_courseService")
 public class OrderService extends BaseService {
     private final PreOrderManager manager;
-    private final OptionManager optionManager;
 
-    public OrderService(PreOrderManager manager, OptionManager optionManager) {
+    public OrderService(PreOrderManager manager) {
         this.manager = manager;
-        this.optionManager = optionManager;
     }
 
     public ResultVO list() {
@@ -28,6 +26,7 @@ public class OrderService extends BaseService {
         else return result("退单失败！");
     }
 
+    /*
     public ResultVO delete(Integer studentCourseId) {
         Integer studentId = getUserId();
         if (!optionManager.getAllowStudentSelect()) {
@@ -47,4 +46,5 @@ public class OrderService extends BaseService {
         manager.deleteStudentCourse(studentCourse);
         return result("退选成功");
     }
+    */
 }

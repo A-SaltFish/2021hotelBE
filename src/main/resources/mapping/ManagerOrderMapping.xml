@@ -2,22 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.rainng.coursesystem.dao.mapper.ManagerOrderMapper">
-    <select id="getPage" resultType="TeacherItemVO">
-        SELECT teacher_id AS 'id', teacher_number AS 'number', teacher_name AS 'name',
-        department_name AS 'departmentName'
-        FROM rc_teacher
-        JOIN rc_department on teacher_department_id = department_id
-        <where>
-            <if test="departmentName != null and departmentName != ''">
-                AND department_name LIKE CONCAT('%',#{departmentName},'%')
-            </if>
-            <if test="name != null and name != ''">
-                AND teacher_name LIKE CONCAT('%',#{name},'%')
-            </if>
-        </where>
+    <select id="getPage" resultType="HotelAllOrderItemVO">
+        SELECT order_id AS 'orderId', od_room_id AS 'roomId', od_hotel_id AS 'hotelId',od_customer_id as'customerId',
+        room_type AS 'roomType', customer_tel as'customerTel',order_comment as'comment',order_cost as'precost',
+        order_ctime as'createTime',order_payment as 'payment', order_status as'status', order_rank as'rank'
+        FROM ht_manager
+            JOIN ht_order_form on mg_hotel_id=od_hotel_id
+            JOIN ht_customer on customer_id = od_customer_id
+            JOIN ht_room on od_hotel_id=rm_hotel_id and od_room_id=room_id
+        where manager_id=#{managerId}
     </select>
 
-    //根据经理ID返回经理对应酒店的ID
+    <!--根据经理ID返回经理对应酒店的ID-->
     <select id="getHotelIdByManagerId" resultType="Integer">
         SELECT mg_hotel_id
         FROM ht_manager

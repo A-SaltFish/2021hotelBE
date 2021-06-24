@@ -79,7 +79,7 @@
           AND course_time LIKE CONCAT(#{timePart}, '-%')
     </select>
 
-    <select id="listStudentTimetable" resultType="TimetableItemVO">
+    <select id="listStudentTimetable" resultType="TeacherItemVO">
         SELECT course_time     AS 'time',
                course_name     AS 'courseName',
                teacher_name    AS 'teacherName',

@@ -30,5 +30,5 @@ public interface CustomerOrderMapper extends BaseMapper<CustomerOrderEntity> {
 
     Integer countStudentCourseSelectedByTimePart(@Param("studentId")Integer studentId,@Param("timePart") String timePart);
 
-    List<ManagerAllOrderItemVO> listStudentTimetable(Integer studentId);
+    List<HotelAllOrderItemVO> listStudentTimetable(Integer studentId);
 }

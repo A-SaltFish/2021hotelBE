@@ -3,10 +3,13 @@ package com.rainng.coursesystem.model.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
 
 import javax.validation.constraints.NotNull;
-
+@TableName("ht_order_form")
+@Data
 public class ManagerOrderEntity {
     public static final String ID = "order_id";
     public static final String HOTEL_ID = "od_hotel_id";

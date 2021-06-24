@@ -31,14 +31,14 @@
         </where>
     </select>
 
-    //根据经理ID返回经理对应酒店的ID
+    <!--根据经理ID返回经理对应酒店的ID-->
     <select id="getHotelIdByManagerId" resultType="Integer">
         SELECT mg_hotel_id
         FROM ht_manager
         where manager_id=#{managerId}
     </select>
 
-    <select id="listTeacherTimetable" resultType="TimetableItemVO">
+    <select id="listTeacherTimetable" resultType="TeacherItemVO">
         SELECT course_time     AS 'time',
                course_name     AS 'courseName',
                teacher_name    AS 'teacherName',

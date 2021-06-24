@@ -30,6 +30,7 @@ public class TeacherManager extends BaseManager {
         return calcPageCount(count, ManagerDAO.PAGE_SIZE);
     }
 
+
     public List<TeacherItemVO> getPage(Integer index, String departmentName, String name) {
         return managerDAO.getPage(index, departmentName, name);
     }
