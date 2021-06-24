@@ -3,6 +3,7 @@ package com.rainng.coursesystem.dao.mapper;
 
 import com.rainng.coursesystem.model.entity.User;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 
@@ -13,10 +14,10 @@ public interface UserMapper {
      * 注册，插入数据
      */
 
-    void insertUser(User custormer_user);
+    void insertUser(User user);
 
     /**
      * 根据邮箱查询
      */
-    User queryByEmail(String custormer_email);
+    User queryByEmail(@Param("customer_email")String customer_email);
 }
