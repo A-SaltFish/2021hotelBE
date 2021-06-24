@@ -16,9 +16,9 @@ public class RoomController {
     private RoomService roomService;
 
     @GetMapping("/getInfo")
-    public Integer getInfo(@Param("rm_hotel_id") Integer rm_hotel_id) {
-        Room room = roomService.findByHid(rm_hotel_id);
-        return room.getRoom_id();
+    public Room getInfo(@Param("rm_hotel_id") Integer rm_hotel_id, Integer room_id, String room_type, String room_img, Integer room_status, Integer rm_order_id,Integer rm_breakfast_type) {
+        Room room = roomService.findByHid(rm_hotel_id,room_id,room_type,room_img,room_status,rm_order_id,rm_breakfast_type);
+        return room;
     }
 
 

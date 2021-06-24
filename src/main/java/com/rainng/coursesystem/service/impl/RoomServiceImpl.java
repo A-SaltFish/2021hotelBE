@@ -13,8 +13,8 @@ public class RoomServiceImpl implements RoomService {
     private RoomMapper roomMapper;
 
     @Override
-    public Room findByHid(Integer rm_hotel_id){
-        return roomMapper.findByHid(rm_hotel_id);
+    public Room findByHid(Integer rm_hotel_id,Integer room_id,String room_type,String room_img,Integer room_status,Integer rm_order_id,Integer rm_breakfast_type){
+        return roomMapper.findByHid(rm_hotel_id,room_id,room_type,room_img,room_status,rm_order_id,rm_breakfast_type);
     }
 
 }

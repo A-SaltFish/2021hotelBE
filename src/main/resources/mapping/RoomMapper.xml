@@ -7,6 +7,7 @@
         <result property="room_type" column="room_type"/>
         <result property="room_describe" column="room_describe"/>
         <result property="room_status" column="room_status"/>
+        <result property="rm_order_id" column="rm_order_id"/>
         <result property="rm_breakfast_type" column="rm_breakfast_type"/>
     </resultMap>
 

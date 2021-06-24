@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 @Mapper
 @Repository
 public interface RoomMapper {
-    public Room findByHid(Integer rm_hotel_id);
+    public Room findByHid(Integer rm_hotel_id, Integer room_id, String room_type, String room_img, Integer room_status, Integer rm_breakfast_type, Integer rmBreakfastType);
 }
