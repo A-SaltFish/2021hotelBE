@@ -1,9 +1,9 @@
 package com.rainng.coursesystem.service;
 
-import com.rainng.coursesystem.dao.mapper.UserMapper;
-import com.rainng.coursesystem.model.entity.User;
-import com.rainng.coursesystem.model.vo.UserVo;
-import com.rainng.coursesystem.model.vo.UserVoToUser;
+import com.rainng.coursesystem.dao.mapper.CustomerLoginMapper;
+import com.rainng.coursesystem.model.entity.CustomerLogin;
+import com.rainng.coursesystem.model.vo.CustomerLoginVo;
+import com.rainng.coursesystem.model.vo.CustomerLoginVoToCustomerLogin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
@@ -19,7 +19,7 @@ public class MailService {
     private JavaMailSender mailSender;
 
     @Autowired
-    private UserMapper userMapper;
+    private CustomerLoginMapper customerLoginMapper;
 
     @Value("${spring.mail.username}")
     private String from;
@@ -72,18 +72,18 @@ public class MailService {
 
     /**
      * 检验验证码是否一致
-     * @param  userVo
+     * @param  customerLoginVo
      * @param  session
      * return
      */
 
-    public boolean registered(UserVo userVo, HttpSession session){
+    public boolean registered(CustomerLoginVo customerLoginVo, HttpSession session){
         //获取session中的验证信息
         String customer_email = (String) session.getAttribute("customer_email");
         String code = (String) session.getAttribute("code");
 
         //获取表单中的提交的验证信息
-        String voCode = userVo.getCode();
+        String voCode = customerLoginVo.getCode();
 
         //如果email数据为空，或者不一致，注册失败
         if (customer_email == null || customer_email.isEmpty()){
@@ -96,12 +96,12 @@ public class MailService {
         }
 
         //保存数据
-        User user = UserVoToUser.toUser(userVo);
+        CustomerLogin customerLogin = CustomerLoginVoToCustomerLogin.toUser(customerLoginVo);
 
         //将数据写入数据库
         System.out.println("写入数据库");
-        System.out.println(user);
-        userMapper.insertUser(user);
+        System.out.println(customerLogin);
+        customerLoginMapper.insertUser(customerLogin);
         System.out.println("写入完毕");
         //跳转成功页面
         return true;
@@ -115,14 +115,14 @@ public class MailService {
     public boolean loginIn(String customer_email, String customer_password){
         System.out.println(customer_email);
         System.out.println(customer_password);
-        User user = userMapper.queryByEmail(customer_email);
-        if(user==null)
+        CustomerLogin customerLogin = customerLoginMapper.queryByEmail(customer_email);
+        if(customerLogin ==null)
             System.out.println("空");
         else{
-            if(!user.getCustomer_password().equals(customer_password))
+            if(!customerLogin.getCustomer_password().equals(customer_password))
                 return false;
         }
-        System.out.println("登录成功:数据库密码是："+user.getCustomer_password());
+        System.out.println("登录成功:数据库密码是："+ customerLogin.getCustomer_password());
             return true;
     }
 }

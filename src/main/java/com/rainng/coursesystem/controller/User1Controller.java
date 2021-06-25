@@ -2,7 +2,7 @@ package com.rainng.coursesystem.controller;
 
 import com.rainng.coursesystem.model.vo.request.LoginVO;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
-import com.rainng.coursesystem.service.UserService;
+import com.rainng.coursesystem.service.CustomerLoginService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user")
 @RestController
 public class User1Controller extends BaseController {
-    private final UserService service;
+    private final CustomerLoginService service;
 
-    public User1Controller(UserService service) {
+    public User1Controller(CustomerLoginService service) {
         this.service = service;
     }
 

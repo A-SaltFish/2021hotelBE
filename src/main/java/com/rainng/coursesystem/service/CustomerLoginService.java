@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpSession;
 
 @Service
-public class UserService extends BaseService {
+public class CustomerLoginService extends BaseService {
     private static final String PASSWORD_SALT = "_Rain_Ng-_Azure_99";
 
     private final HttpSession session;
@@ -20,7 +20,7 @@ public class UserService extends BaseService {
     private final LoginStatusManager loginStatusManager;
     private final Md5Encrypt md5Encrypt;
 
-    public UserService(HttpSession session, UserManager manager, LoginStatusManager loginStatusManager, Md5Encrypt md5Encrypt) {
+    public CustomerLoginService(HttpSession session, UserManager manager, LoginStatusManager loginStatusManager, Md5Encrypt md5Encrypt) {
         this.session = session;
         this.manager = manager;
         this.loginStatusManager = loginStatusManager;

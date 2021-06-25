@@ -1,17 +1,16 @@
 package com.rainng.coursesystem.controller;
 
-import com.rainng.coursesystem.model.vo.UserVo;
+import com.rainng.coursesystem.model.vo.CustomerLoginVo;
 import com.rainng.coursesystem.service.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
 
 @Controller
-public class UserController {
+public class CustomerLoginController {
     @Autowired
     private MailService mailService;
 
@@ -25,8 +24,8 @@ public class UserController {
 
     @PostMapping("/regist")
     @ResponseBody
-    public String regist(UserVo userVo, HttpSession session){
-        mailService.registered(userVo,session);
+    public String regist(CustomerLoginVo customerLoginVo, HttpSession session){
+        mailService.registered(customerLoginVo,session);
 //        System.out.println(userVo);
         return "success";
     }

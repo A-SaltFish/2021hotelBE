@@ -14,7 +14,7 @@ import java.util.Date;
 
 //@TableName("ht_customer")
 @Data
-public class User {
+public class CustomerLogin {
     private String customer_name;
     private String customer_password;
     private String customer_email;

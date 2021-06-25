@@ -4,17 +4,17 @@ import com.rainng.coursesystem.manager.admin.AdminManager;
 import com.rainng.coursesystem.model.entity.AdminEntity;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
 import com.rainng.coursesystem.service.BaseService;
-import com.rainng.coursesystem.service.UserService;
+import com.rainng.coursesystem.service.CustomerLoginService;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AdminService extends BaseService {
     private final AdminManager manager;
-    private final UserService userService;
+    private final CustomerLoginService customerLoginService;
 
-    public AdminService(AdminManager manager, UserService userService) {
+    public AdminService(AdminManager manager, CustomerLoginService customerLoginService) {
         this.manager = manager;
-        this.userService = userService;
+        this.customerLoginService = customerLoginService;
     }
 
     public ResultVO get(Integer id) {

@@ -4,7 +4,7 @@ package com.rainng.coursesystem.model.vo;
 import lombok.Data;
 
 @Data
-public class UserVo {
+public class CustomerLoginVo {
     private String customer_name;
 
     private String customer_password;

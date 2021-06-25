@@ -5,7 +5,7 @@ import com.rainng.coursesystem.model.entity.StudentEntity;
 import com.rainng.coursesystem.model.vo.request.StudentInfoFormVO;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
 import com.rainng.coursesystem.service.BaseService;
-import com.rainng.coursesystem.service.UserService;
+import com.rainng.coursesystem.service.CustomerLoginService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
 public class InfoService extends BaseService {
-    private final UserService userService;
+    private final CustomerLoginService customerLoginService;
 
     private final InfoManager manager;
 
-    public InfoService(UserService userService, InfoManager manager) {
-        this.userService = userService;
+    public InfoService(CustomerLoginService customerLoginService, InfoManager manager) {
+        this.customerLoginService = customerLoginService;
         this.manager = manager;
     }
 

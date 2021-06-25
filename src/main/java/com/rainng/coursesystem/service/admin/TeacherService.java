@@ -4,17 +4,17 @@ import com.rainng.coursesystem.manager.admin.TeacherManager;
 import com.rainng.coursesystem.model.entity.TeacherEntity;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
 import com.rainng.coursesystem.service.BaseService;
-import com.rainng.coursesystem.service.UserService;
+import com.rainng.coursesystem.service.CustomerLoginService;
 import org.springframework.stereotype.Service;
 
 @Service
 public class TeacherService extends BaseService {
     private final TeacherManager manager;
-    private final UserService userService;
+    private final CustomerLoginService customerLoginService;
 
-    public TeacherService(TeacherManager manager, UserService userService) {
+    public TeacherService(TeacherManager manager, CustomerLoginService customerLoginService) {
         this.manager = manager;
-        this.userService = userService;
+        this.customerLoginService = customerLoginService;
     }
 
     public ResultVO getPageCount(String departmentName, String name) {

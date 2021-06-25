@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace = "com.rainng.coursesystem.dao.mapper.UserMapper">
-    <resultMap id="LoginMap" type="com.rainng.coursesystem.model.entity.User">
+<mapper namespace = "com.rainng.coursesystem.dao.mapper.CustomerLoginMapper">
+    <resultMap id="LoginMap" type="com.rainng.coursesystem.model.entity.CustomerLogin">
         <id property="customer_id" column="customer_id"/>
         <result property="customer_password" column="customer_password"/>
         <result property="customer_email" column="customer_email"/>
@@ -14,7 +14,7 @@
         where customer_email = #{customer_email}
     </select>
 
-    <insert id="insertUser" parameterType="com.rainng.coursesystem.model.entity.User">
+    <insert id="insertUser" parameterType="com.rainng.coursesystem.model.entity.CustomerLogin">
         insert into ht_customer (customer_name,customer_password,customer_email,customer_tel)
          values (#{customer_name},#{customer_password},#{customer_email},#{customer_tel})
     </insert>
