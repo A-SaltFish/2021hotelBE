@@ -1,10 +1,8 @@
 package com.rainng.coursesystem.controller.teacher;
 
 import com.rainng.coursesystem.config.themis.annotation.Teacher;
-import com.rainng.coursesystem.model.vo.TeacherGradeVO;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
 import com.rainng.coursesystem.service.teacher.HotelAfterSalesService;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @Teacher
@@ -27,6 +25,18 @@ public class HotelAfterSalesController {
     public ResultVO getPage(@PathVariable Integer index, Integer orderId, String roomName) {
         System.out.println("售后服务 退单Page获取");
         return service.getPage(index, orderId, roomName);
+    }
+
+    @RequestMapping("/refund")
+    public ResultVO confrimRefund(Integer orderId){
+        System.out.println("退款服务");
+        return service.refund(orderId);
+    }
+
+    @RequestMapping("/judge")
+    public ResultVO judgeOrder(Integer orderId){
+        System.out.println("申请退单仲裁");
+        return service.judge(orderId);
     }
 
     ///@GetMapping("/{id}")

@@ -23,4 +23,6 @@ public interface ManagerOrderMapper extends BaseMapper<ManagerOrderEntity> {
 
     //获取对应的历史订单
     Integer getHotelIdByManagerId(Integer managerId);
+
+    int changeStatusByOrderId(@Param("orderId")Integer orderId,@Param("orderStatus")Integer orderStatus);
 }

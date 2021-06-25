@@ -23,6 +23,14 @@ public class HotelAfterSalesManager extends BaseManager {
                 CustomerOrderDAO.PAGE_SIZE);
     }
 
+    public int refund(Integer orderId){
+        return managerOrderDAO.refund(orderId);
+    }
+
+    public int judge(Integer orderId){
+        return managerOrderDAO.judge(orderId);
+    }
+
     //获取售后订单页面
     public List<HotelAllOrderItemVO> getAfterSalesPage(Integer index, Integer managerId, Integer orderId, String roomName) {
         return managerOrderDAO.getAfterSalesPage(index, managerId, orderId, roomName);

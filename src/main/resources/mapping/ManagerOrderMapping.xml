@@ -49,7 +49,7 @@
         JOIN ht_room on od_hotel_id=rm_hotel_id and od_room_id=room_id
         <where>
             AND manager_id = #{managerId}
-            And order_status=4
+            And order_status=4 or order_status=5
             <if test="orderId != null and orderId != ''">
                 AND order_id LIKE CONCAT('%',#{orderId},'%')
             </if>
@@ -66,7 +66,7 @@
         JOIN ht_room on od_hotel_id=rm_hotel_id and od_room_id=room_id
         <where>
             AND manager_id = #{managerId}
-            And order_status=4
+            And order_status=4 or order_status=5
             <if test="orderId != null and orderId != ''">
                 AND order_id LIKE CONCAT('%',#{orderId},'%')
             </if>
@@ -75,5 +75,10 @@
             </if>
         </where>
     </select>
+
+    <update id="changeStatusByOrderId">
+      update ht_order_form set order_status=#{orderStatus}
+        where order_id=#{orderId}
+    </update>
 
 </mapper>

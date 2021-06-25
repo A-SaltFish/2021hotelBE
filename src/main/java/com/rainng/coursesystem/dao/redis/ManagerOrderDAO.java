@@ -26,6 +26,7 @@ public class ManagerOrderDAO extends BaseDAO {
         return mapper.getPage(page, managerId).getRecords();
     }
 
+
     //统计售后订单
     public Integer countAfterSales(Integer managerId, Integer orderId, String roomName) {
         System.out.println("orderId:"+orderId);
@@ -43,6 +44,14 @@ public class ManagerOrderDAO extends BaseDAO {
 
     public Integer getHotelIdByManagerId(Integer managerId){
         return mapper.getHotelIdByManagerId(managerId);
+    }
+
+    public int refund(Integer orderId){
+        return mapper.changeStatusByOrderId(orderId,6);
+    }
+
+    public int judge(Integer orderId){
+        return mapper.changeStatusByOrderId(orderId,5);
     }
 
     public int getByHotelId(Integer hotelId) {

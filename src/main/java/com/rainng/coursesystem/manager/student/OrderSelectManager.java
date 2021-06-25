@@ -16,12 +16,10 @@ import java.util.List;
 @Component
 public class OrderSelectManager extends BaseManager {
     private final OrderDAO orderDAO;
-    private final CustomerDAO customerDAO;
     private final CustomerOrderDAO customerOrderDAO;
 
-    public OrderSelectManager(OrderDAO orderDAO, CustomerDAO customerDAO, CustomerOrderDAO customerOrderDAO) {
+    public OrderSelectManager(OrderDAO orderDAO, CustomerOrderDAO customerOrderDAO) {
         this.orderDAO = orderDAO;
-        this.customerDAO = customerDAO;
         this.customerOrderDAO = customerOrderDAO;
     }
 
@@ -41,23 +39,6 @@ public class OrderSelectManager extends BaseManager {
         return orderDAO.getExplicitOrderById(orderId);
     }
 
-    public CustomerEntity getStudentById(Integer studentId) {
-        return customerDAO.get(studentId);
-    }
-
-    public boolean inSameDepartment(Integer courseId, Integer studentId) {
-        return orderDAO.getDepartmentIdById(courseId)
-                .equals(customerDAO.getDepartmentIdById(studentId));
-    }
-
-    public CustomerOrderEntity getStudentCourseByCourseIdAndStudentId(Integer courseId, Integer studentId) {
-        return customerOrderDAO.getByCourseIdAndStudentId(courseId, studentId);
-    }
-
-    public Integer getStudentGradeById(Integer studentId) {
-        return customerDAO.getGradeById(studentId);
-    }
-
 
     @Transactional
     public int create(CustomerOrderEntity entity) {
@@ -66,7 +47,4 @@ public class OrderSelectManager extends BaseManager {
         return customerOrderDAO.insert(entity);
     }
 
-    public int countStudentCourseSelectedByTimePart(Integer studentId, String timePart) {
-        return customerOrderDAO.countStudentCourseSelectedByTimePart(studentId, timePart);
-    }
 }

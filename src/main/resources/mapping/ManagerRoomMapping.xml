@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.rainng.coursesystem.dao.mapper.ManagerRoomMapper">
+    <!--获取酒店房间信息-->
+    <select id="listHotelRoom" resultType="HotelRoomVO">
+        SELECT order_id as"hotelId",hotel_name as"hotelName",room_type as"roomName",order_ctime as"cTime",
+        order_cost as"orderCost",order_payment as"payment",order_status as"status",od_customer_id as"customerId",
+        hotel_tel as"hotelTel"
+        FROM ht_manager
+                 JOIN ht_room on mg_hotel_id = rm_hotel_id
+        WHERE manager_id=#{managerId}
+    </select>
+
+    <update id="deleteRoomById" parameterType="Integer">
+        update ht_order_form set order_ifshow=0
+        where order_id=#{orderId}
+    </update>
+
+</mapper>

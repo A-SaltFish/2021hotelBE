@@ -23,6 +23,18 @@ public class HotelAfterSalesService extends BaseService {
         return result(manager.getAfterSalesPage(index, managerId, orderId, roomName));
     }
 
+    public ResultVO refund(Integer orderId){
+        if(manager.refund(orderId)>0)
+            return result("退款成功");
+        else return result("退款失败");
+    }
+
+    public ResultVO judge(Integer orderId){
+        if(manager.judge(orderId)>0)
+            return result("申请成功");
+        else return result("申请失败");
+    }
+
     /*
     public ResultVO update(TeacherGradeVO vo) {
         if (!optionManager.getAllowTeacherGrade()) {
