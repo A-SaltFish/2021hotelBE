@@ -99,8 +99,10 @@ public class MailService {
         User user = UserVoToUser.toUser(userVo);
 
         //将数据写入数据库
+        System.out.println("写入数据库");
+        System.out.println(user);
         userMapper.insertUser(user);
-
+        System.out.println("写入完毕");
         //跳转成功页面
         return true;
     }

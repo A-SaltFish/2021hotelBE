@@ -15,8 +15,8 @@
     </select>
 
     <insert id="insertUser" parameterType="com.rainng.coursesystem.model.entity.User">
-        insert into ht_customer (customer_name,customer_password,customer_email)
-         values (#{customer_name},#{customer_password},#{customer_email})
+        insert into ht_customer (customer_name,customer_password,customer_email,customer_tel)
+         values (#{customer_name},#{customer_password},#{customer_email},#{customer_tel})
     </insert>
 
 

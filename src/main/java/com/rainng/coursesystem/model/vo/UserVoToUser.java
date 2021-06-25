@@ -15,7 +15,7 @@ public class UserVoToUser {
 
         //传值
         user.setCustomer_name(userVo.getCustomer_name());
-//        user.setCustomer_tel(userVo.getCustomer_tel());
+        user.setCustomer_tel(userVo.getCustomer_tel());
         user.setCustomer_password(userVo.getCustomer_password());
         user.setCustomer_email(userVo.getCustomer_email());
 

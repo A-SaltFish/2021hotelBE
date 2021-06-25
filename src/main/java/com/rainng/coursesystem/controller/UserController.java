@@ -18,6 +18,7 @@ public class UserController {
     @PostMapping("/sendEmail")
     @ResponseBody
     public String sendEmail(String customer_email,HttpSession httpSession){
+//        System.out.println(customer_email);
         mailService.sendMimeMail(customer_email,httpSession);
         return "success";
     }
@@ -26,6 +27,7 @@ public class UserController {
     @ResponseBody
     public String regist(UserVo userVo, HttpSession session){
         mailService.registered(userVo,session);
+//        System.out.println(userVo);
         return "success";
     }
 
