@@ -26,7 +26,7 @@ public class OrderSelectManager extends BaseManager {
     }
 
     public Integer getPageCount(Integer customerId) {
-        return calcPageCount(customerOrderDAO.countByCourseId(customerId), CustomerOrderDAO.PAGE_SIZE);
+        return calcPageCount(customerOrderDAO.countByCustomerId(customerId), CustomerOrderDAO.PAGE_SIZE);
     }
 
     public Boolean deleteOrder(Integer orderId){

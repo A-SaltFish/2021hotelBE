@@ -1,7 +1,7 @@
 package com.rainng.coursesystem.service.teacher;
 
 import com.rainng.coursesystem.manager.OptionManager;
-import com.rainng.coursesystem.manager.teacher.GradeManager;
+import com.rainng.coursesystem.manager.teacher.HotelAfterSalesManager;
 import com.rainng.coursesystem.model.entity.CustomerOrderEntity;
 import com.rainng.coursesystem.model.vo.TeacherGradeVO;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
@@ -10,18 +10,18 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 @Service
-public class GradeService extends BaseService {
-    private final GradeManager manager;
+public class HotelAfterSalesService extends BaseService {
+    private final HotelAfterSalesManager manager;
     private final OptionManager optionManager;
 
-    public GradeService(GradeManager manager, OptionManager optionManager) {
+    public HotelAfterSalesService(HotelAfterSalesManager manager, OptionManager optionManager) {
         this.manager = manager;
         this.optionManager = optionManager;
     }
 
-    public ResultVO getPageCount(String courseName, String studentName) {
-        Integer teacherId = getUserId();
-        return result(manager.getTeacherGradePageCount(teacherId, courseName, studentName));
+    public ResultVO getPageCount(Integer orderId,String hotelName) {
+        Integer managerId = getUserId();
+        return result(manager.getTeacherGradePageCount(managerId, orderId, hotelName));
     }
 
     public ResultVO getPage(Integer index, String courseName, String studentName) {

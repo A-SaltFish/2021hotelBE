@@ -11,18 +11,18 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class GradeManager extends BaseManager {
+public class HotelAfterSalesManager extends BaseManager {
     private final OrderDAO orderDAO;
     private final CustomerOrderDAO customerOrderDAO;
 
-    public GradeManager(OrderDAO orderDAO, CustomerOrderDAO customerOrderDAO) {
+    public HotelAfterSalesManager(OrderDAO orderDAO, CustomerOrderDAO customerOrderDAO) {
         this.orderDAO = orderDAO;
         this.customerOrderDAO = customerOrderDAO;
     }
 
-    public Integer getTeacherGradePageCount(Integer teacherId, String courseName, String studentName) {
+    public Integer getTeacherGradePageCount(Integer managerId, Integer orderId, String hotelName) {
         return calcPageCount(
-                customerOrderDAO.countTeacherGrade(teacherId, courseName, studentName),
+                customerOrderDAO.countTeacherGrade(managerId, orderId, hotelName),
                 CustomerOrderDAO.PAGE_SIZE);
     }
 

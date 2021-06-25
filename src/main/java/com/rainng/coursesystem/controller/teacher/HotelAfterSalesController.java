@@ -3,23 +3,24 @@ package com.rainng.coursesystem.controller.teacher;
 import com.rainng.coursesystem.config.themis.annotation.Teacher;
 import com.rainng.coursesystem.model.vo.TeacherGradeVO;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
-import com.rainng.coursesystem.service.teacher.GradeService;
+import com.rainng.coursesystem.service.teacher.HotelAfterSalesService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @Teacher
-@RequestMapping("/teacher/grade")
+@RequestMapping("/manager/aftersales")
 @RestController
-public class GradeController {
-    private final GradeService service;
+public class HotelAfterSalesController {
+    private final HotelAfterSalesService service;
 
-    public GradeController(GradeService service) {
+    public HotelAfterSalesController(HotelAfterSalesService service) {
         this.service = service;
     }
 
     @RequestMapping("/page/count")
-    public ResultVO getPageCount(String courseName, String studentName) {
-        return service.getPageCount(courseName, studentName);
+    public ResultVO getPageCount(Integer orderId,String hotelName) {
+        System.out.println("售后服务 退单订单Page数目获取");
+        return service.getPageCount(orderId, hotelName);
     }
 
     @RequestMapping("/page/{index}")

@@ -20,7 +20,7 @@ public interface CustomerOrderMapper extends BaseMapper<CustomerOrderEntity> {
 
     IPage<CustomerOrderItemVO> getPage(IPage<CustomerOrderItemVO> page, @Param("customerId")Integer customerId);
 
-    Integer countTeacherGrade(@Param("teacherId")Integer teacherId,@Param("courseName") String courseName,@Param("studentName") String studentName);
+    Integer countTeacherGrade(@Param("teacherId")Integer teacherId,@Param("courseName") Integer courseName,@Param("studentName") String studentName);
 
     IPage<TeacherGradeItemVO> getTeacherGradePage(IPage<TeacherGradeItemVO> page, @Param("teacherId")Integer teacherId, @Param("courseName")String courseName,@Param("studentName") String studentName);
 

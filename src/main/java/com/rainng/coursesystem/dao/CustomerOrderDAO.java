@@ -51,17 +51,16 @@ public class CustomerOrderDAO extends BaseDAO {
         return mapper.getPage(page,customerId).getRecords();
     }
 
-    public int countByCourseId(Integer managerId) {
+    public int countByCourseId(Integer customerId) {
         LambdaQueryWrapper<CustomerOrderEntity> wrapper = new LambdaQueryWrapper<>();
-        wrapper.eq(CustomerOrderEntity::getId, managerId);
+        wrapper.eq(CustomerOrderEntity::getId, customerId);
 
         return mapper.selectCount(wrapper);
     }
 
     public int countByCustomerId(Integer customerId) {
         LambdaQueryWrapper<CustomerOrderEntity> wrapper = new LambdaQueryWrapper<>();
-        wrapper.eq(CustomerOrderEntity::getId, customerId);
-
+        wrapper.eq(CustomerOrderEntity::getCustomerId, customerId);
         return mapper.selectCount(wrapper);
     }
 
@@ -91,7 +90,7 @@ public class CustomerOrderDAO extends BaseDAO {
         return mapper.listStudentTimetable(studentId);
     }
 
-    public Integer countTeacherGrade(Integer teacherId, String courseName, String studentName) {
+    public Integer countTeacherGrade(Integer teacherId, Integer courseName, String studentName) {
         return mapper.countTeacherGrade(teacherId, courseName, studentName);
     }
 

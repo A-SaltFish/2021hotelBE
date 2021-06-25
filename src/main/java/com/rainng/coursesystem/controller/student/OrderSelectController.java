@@ -22,11 +22,13 @@ public class OrderSelectController extends BaseController {
 
     @RequestMapping("/page/count")
     public ResultVO getPageCount(Integer Id) {
+        System.out.println("获取页码数");
         return service.getPageCount(Id);
     }
 
     @RequestMapping("/page/{index}")
     public ResultVO getPage(@PathVariable Integer index) {
+        System.out.println("获取index页");
         return service.getPage(index);
     }
 

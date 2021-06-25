@@ -10,6 +10,7 @@ public class HotelAllOrderItemVO {
 	private Integer orderId;
 	private Integer roomId;
 	private Integer hotelId;
+	private Integer customerId;
 	private String roomType;
 	private String customerTel;
 	private String comment;

@@ -8,7 +8,7 @@ import org.hibernate.validator.constraints.Range;
 import javax.validation.constraints.NotNull;
 
 
-@TableName("ht_customer")
+@TableName("ht_order_form")
 @Data
 public class CustomerOrderEntity {
     public static final String ID = "order_id";
