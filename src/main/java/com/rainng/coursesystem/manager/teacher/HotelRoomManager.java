@@ -1,6 +1,7 @@
 package com.rainng.coursesystem.manager.teacher;
 import com.rainng.coursesystem.dao.redis.ManagerRoomDAO;
 import com.rainng.coursesystem.manager.BaseManager;
+import com.rainng.coursesystem.model.entity.HotelRoomEntity;
 import com.rainng.coursesystem.model.vo.response.table.HotelRoomVO;
 import org.springframework.stereotype.Component;
 
@@ -21,8 +22,25 @@ public class HotelRoomManager extends BaseManager {
         return a;
     }
 
-    public int deleteRoom(Integer orderId){
-        return managerRoomDAO.deleteRoom(orderId);
+    public int createRoom(HotelRoomEntity hotelRoomEntity){
+        return managerRoomDAO.insertRoom(hotelRoomEntity);
     }
+
+    public int getHotelIdById(Integer managerId){
+        return managerRoomDAO.getHotelIdById(managerId);
+    }
+
+    public int getRoomId(Integer hotelId){
+        return managerRoomDAO.getRoomId(hotelId);
+    }
+
+    public int deleteRoom(Integer roomId){
+        return managerRoomDAO.deleteRoom(roomId);
+    }
+
+    public int getRoomStatus(Integer roomId){
+        return managerRoomDAO.getRoomStatus(roomId);
+    }
+
 
 }
