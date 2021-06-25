@@ -1,45 +1,30 @@
 package com.rainng.coursesystem.manager.teacher;
-
-import com.rainng.coursesystem.dao.OrderDAO;
 import com.rainng.coursesystem.dao.CustomerOrderDAO;
+import com.rainng.coursesystem.dao.redis.ManagerOrderDAO;
 import com.rainng.coursesystem.manager.BaseManager;
-import com.rainng.coursesystem.model.entity.OrderEntity;
-import com.rainng.coursesystem.model.entity.CustomerOrderEntity;
-import com.rainng.coursesystem.model.vo.response.table.TeacherGradeItemVO;
+import com.rainng.coursesystem.model.vo.response.table.HotelAllOrderItemVO;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
 public class HotelAfterSalesManager extends BaseManager {
-    private final OrderDAO orderDAO;
-    private final CustomerOrderDAO customerOrderDAO;
+    private final ManagerOrderDAO managerOrderDAO;
 
-    public HotelAfterSalesManager(OrderDAO orderDAO, CustomerOrderDAO customerOrderDAO) {
-        this.orderDAO = orderDAO;
-        this.customerOrderDAO = customerOrderDAO;
+    //售后订单管理类
+    public HotelAfterSalesManager(ManagerOrderDAO managerOrderDAO) {
+        this.managerOrderDAO = managerOrderDAO;
     }
 
-    public Integer getTeacherGradePageCount(Integer managerId, Integer orderId, String hotelName) {
+    //统计售后订单
+    public Integer getAfterSalesCount(Integer managerId, Integer orderId, String roomName) {
         return calcPageCount(
-                customerOrderDAO.countTeacherGrade(managerId, orderId, hotelName),
+                managerOrderDAO.countAfterSales(managerId, orderId, roomName),
                 CustomerOrderDAO.PAGE_SIZE);
     }
 
-    public List<TeacherGradeItemVO> getTeacherGradePage(Integer index, Integer teacherId, String courseName, String studentName) {
-        return customerOrderDAO.getTeacherGradePage(index, teacherId, courseName, studentName);
-    }
-
-    public CustomerOrderEntity getStudentCourseById(Integer studentCourseId) {
-        return customerOrderDAO.get(studentCourseId);
-    }
-
-    public OrderEntity getCourseById(Integer courseId) {
-        return orderDAO.get(courseId);
-    }
-
-
-    public int updateStudentCourse(CustomerOrderEntity entity) {
-        return customerOrderDAO.update(entity);
+    //获取售后订单页面
+    public List<HotelAllOrderItemVO> getAfterSalesPage(Integer index, Integer managerId, Integer orderId, String roomName) {
+        return managerOrderDAO.getAfterSalesPage(index, managerId, orderId, roomName);
     }
 }

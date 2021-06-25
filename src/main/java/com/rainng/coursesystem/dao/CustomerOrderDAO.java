@@ -89,13 +89,4 @@ public class CustomerOrderDAO extends BaseDAO {
     public List<HotelAllOrderItemVO> listStudentTimetable(Integer studentId) {
         return mapper.listStudentTimetable(studentId);
     }
-
-    public Integer countTeacherGrade(Integer teacherId, Integer courseName, String studentName) {
-        return mapper.countTeacherGrade(teacherId, courseName, studentName);
-    }
-
-    public List<TeacherGradeItemVO> getTeacherGradePage(Integer index, Integer teacherId, String courseName, String studentName) {
-        Page<TeacherGradeItemVO> page = new Page<>(index, PAGE_SIZE);
-        return mapper.getTeacherGradePage(page, teacherId, courseName, studentName).getRecords();
-    }
 }

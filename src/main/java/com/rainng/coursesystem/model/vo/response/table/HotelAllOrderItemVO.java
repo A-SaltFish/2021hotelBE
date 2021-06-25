@@ -20,6 +20,7 @@ public class HotelAllOrderItemVO {
 	private String payment;
 	private Integer status;
 	private Integer rank;
+	private String reason;
 
 	public Integer getId() {
 		return orderId;

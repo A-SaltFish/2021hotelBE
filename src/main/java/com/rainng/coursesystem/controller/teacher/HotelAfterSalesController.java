@@ -18,23 +18,24 @@ public class HotelAfterSalesController {
     }
 
     @RequestMapping("/page/count")
-    public ResultVO getPageCount(Integer orderId,String hotelName) {
-        System.out.println("售后服务 退单订单Page数目获取");
-        return service.getPageCount(orderId, hotelName);
+    public ResultVO getPageCount(Integer orderId,String roomName) {
+        System.out.println("售后服务 退单数目获取");
+        return service.getPageCount(orderId, roomName);
     }
 
     @RequestMapping("/page/{index}")
-    public ResultVO getPage(@PathVariable Integer index, String courseName, String studentName) {
-        return service.getPage(index, courseName, studentName);
+    public ResultVO getPage(@PathVariable Integer index, Integer orderId, String roomName) {
+        System.out.println("售后服务 退单Page获取");
+        return service.getPage(index, orderId, roomName);
     }
 
-    @GetMapping("/{id}")
-    public ResultVO get(@PathVariable Integer id) {
-        return service.get(id);
-    }
+    ///@GetMapping("/{id}")
+    //public ResultVO get(@PathVariable Integer id) {
+     //   return service.get(id);
+    //}
 
-    @PutMapping
-    public ResultVO update(@RequestBody @Validated TeacherGradeVO vo) {
-        return service.update(vo);
-    }
+    //@PutMapping
+    //public ResultVO update(@RequestBody @Validated TeacherGradeVO vo) {
+    //    return service.update(vo);
+    //}
 }

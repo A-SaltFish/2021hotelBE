@@ -1,34 +1,29 @@
 package com.rainng.coursesystem.service.teacher;
 
-import com.rainng.coursesystem.manager.OptionManager;
 import com.rainng.coursesystem.manager.teacher.HotelAfterSalesManager;
-import com.rainng.coursesystem.model.entity.CustomerOrderEntity;
-import com.rainng.coursesystem.model.vo.TeacherGradeVO;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
 import com.rainng.coursesystem.service.BaseService;
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 @Service
 public class HotelAfterSalesService extends BaseService {
     private final HotelAfterSalesManager manager;
-    private final OptionManager optionManager;
 
-    public HotelAfterSalesService(HotelAfterSalesManager manager, OptionManager optionManager) {
+    public HotelAfterSalesService(HotelAfterSalesManager manager) {
         this.manager = manager;
-        this.optionManager = optionManager;
     }
 
-    public ResultVO getPageCount(Integer orderId,String hotelName) {
+    public ResultVO getPageCount(Integer orderId,String roomName) {
         Integer managerId = getUserId();
-        return result(manager.getTeacherGradePageCount(managerId, orderId, hotelName));
+        return result(manager.getAfterSalesCount(managerId, orderId, roomName));
     }
 
-    public ResultVO getPage(Integer index, String courseName, String studentName) {
-        Integer teacherId = getUserId();
-        return result(manager.getTeacherGradePage(index, teacherId, courseName, studentName));
+    public ResultVO getPage(Integer index, Integer orderId, String roomName) {
+        Integer managerId = getUserId();
+        return result(manager.getAfterSalesPage(index, managerId, orderId, roomName));
     }
 
+    /*
     public ResultVO update(TeacherGradeVO vo) {
         if (!optionManager.getAllowTeacherGrade()) {
             return failedResult("现在不是打分时间!");
@@ -70,5 +65,5 @@ public class HotelAfterSalesService extends BaseService {
         vo.setStudentCourseId(studentCourseId);
 
         return result(vo);
-    }
+    }*/
 }
