@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Teacher
 @RequestMapping("/manager/preorder")
-@RestController("teacher_courseController")
+@RestController("hotel_preorder_Controller")
 public class HotelPreOrderController extends BaseController {
     private final HotelPreOrderService service;
 

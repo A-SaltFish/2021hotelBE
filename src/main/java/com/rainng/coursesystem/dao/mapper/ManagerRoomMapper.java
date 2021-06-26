@@ -14,11 +14,17 @@ public interface ManagerRoomMapper extends BaseMapper<HotelRoomEntity> {
 
     List<HotelRoomVO> listHotelRoom(@Param("managerId")Integer managerId);
 
-    int deleteRoomById(@Param("roomId")Integer roomId);
+    int deleteRoomById(@Param("hotelId")Integer hotelId,@Param("roomId")Integer roomId);
 
-    Integer getRoomStatusById(@Param("roomId")Integer roomId);
+    int decreaseRoomByHotelId(@Param("hotelId")Integer hotelId);
+
+    int increaseRoomByHotelId(@Param("hotelId")Integer hotelId);
+
+    Integer getRoomStatusById(@Param("hotelId")Integer hotelId,@Param("roomId")Integer roomId);
 
     Integer getHotelIdById(@Param("managerId")Integer managerId);
 
-    Integer getMaxRoomId(@Param("managerId")Integer managerId);
+    int updateByBothId(HotelRoomEntity entity);
+
+    Integer getMaxRoomId(@Param("hotelId")Integer hotelId);
 }

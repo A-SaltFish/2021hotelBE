@@ -31,6 +31,11 @@ public class HotelRoomController {
         return service.createRoom(roomVO);
     }
 
+    @PutMapping("/edit")
+    public ResultVO editRoom(@RequestBody @Validated HotelRoomEntity roomVO) {
+        return service.editRoom(roomVO);
+    }
+
     @RequestMapping("/delete")
     public ResultVO deleteRoom(Integer roomId){
         return service.deleteRoom(roomId);

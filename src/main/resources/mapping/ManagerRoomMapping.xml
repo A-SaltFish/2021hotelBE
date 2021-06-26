@@ -11,15 +11,15 @@
         WHERE manager_id=#{managerId}
     </select>
 
-    <update id="deleteRoomById" parameterType="Integer">
-        update ht_room set order_ifshow=0
-        where room_id=#{roomId}
-    </update>
+    <delete id="deleteRoomById" parameterType="Integer">
+        delete  from ht_room
+        where room_id=#{roomId} and rm_hotel_id=#{hotelId}
+    </delete>
 
     <select id="getRoomStatusById" resultType="Integer">
         select room_status
         from ht_room
-        where room_id=#{roomId}
+        where room_id=#{roomId} and rm_hotel_id=#{hotelId}
     </select>
 
     <select id="getHotelIdById" resultType="Integer">
@@ -27,5 +27,29 @@
         from ht_manager
         where manager_id=#{managerId}
     </select>
+
+    <select id="getMaxRoomId" resultType="Integer">
+        select max(room_id)
+        from ht_room
+        where rm_hotel_id=#{hotelId}
+    </select>
+
+    <update id="updateByBothId" parameterType="HotelRoomEntity">
+        update ht_room
+        set room_type=#{type},room_describe=#{desc},room_price=#{price},rm_breakfast_type=#{breakfast}
+        where rm_hotel_id=#{hotelId} and room_id=#{roomId}
+    </update>
+
+    <update id="decreaseRoomByHotelId" parameterType="Integer">
+        update ht_specification
+        set hotel_room_num=hotel_room_num-1
+        where hotel_id=#{hotelId}
+    </update>
+
+    <update id="increaseRoomByHotelId" parameterType="Integer">
+        update ht_specification
+        set hotel_room_num=hotel_room_num+1
+        where hotel_id=#{hotelId}
+    </update>
 
 </mapper>

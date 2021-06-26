@@ -26,9 +26,23 @@ public class ManagerRoomDAO extends BaseDAO {
         return mapper.insert(entity);
     }
 
-    public int deleteRoom(Integer id) {
-        return mapper.deleteRoomById(id);
+    public int updateRoom(HotelRoomEntity entity) {
+        return mapper.updateByBothId(entity);
     }
+
+    public int deleteRoom(Integer hotelId,Integer roomId) {
+        return mapper.deleteRoomById(hotelId,roomId);
+    }
+
+    public int decreaseRoom(Integer hotelId){
+        return mapper.decreaseRoomByHotelId(hotelId);
+    }
+
+    public int increaseRoom(Integer hotelId){
+        return mapper.increaseRoomByHotelId(hotelId);
+    }
+
+
 
     public Integer getHotelIdById(Integer managerId){
         return mapper.getHotelIdById(managerId);
@@ -38,7 +52,7 @@ public class ManagerRoomDAO extends BaseDAO {
         return mapper.getMaxRoomId(hotelId);
     }
 
-    public Integer getRoomStatus(Integer roomId){
-        return mapper.getRoomStatusById(roomId);
+    public Integer getRoomStatus(Integer hotelId,Integer roomId){
+        return mapper.getRoomStatusById(hotelId,roomId);
     }
 }

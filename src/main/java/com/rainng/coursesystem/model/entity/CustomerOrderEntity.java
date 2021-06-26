@@ -18,6 +18,7 @@ public class CustomerOrderEntity {
     public static final String CTIME = "order_ctime";
 	public static final String STATUS = "order_status";
 	public static final String IFSHOW = "order_ifshow";
+	public static final String REASON ="order_reason";
 
     @NotNull
     @TableId(value = ID, type = IdType.AUTO)
@@ -47,6 +48,9 @@ public class CustomerOrderEntity {
 	@NotNull(message = "必须选择是否可见")
 	@TableField(IFSHOW)
 	private Integer ifShow;
+
+	@TableField(REASON)
+	private String reason;
 
 	public Integer getId() {
 		return id;

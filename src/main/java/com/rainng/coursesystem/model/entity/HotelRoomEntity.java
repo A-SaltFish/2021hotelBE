@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import org.apache.ibatis.annotations.MapKey;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -22,18 +24,15 @@ public class HotelRoomEntity {
 	private static final String BREAKFAST = "rm_breakfast_type";
 	private static final String PRICE = "room_price";
 
-	@NotNull
 	@TableId(value = HOTELID, type = IdType.INPUT)
 	private Integer hotelId;
 
-	@NotNull
 	@TableId(value = ROOMID, type = IdType.INPUT)
 	private Integer roomId;
 
 	@TableField(ORDERID)
 	private Integer orderId;
 
-	@NotBlank
 	@TableField(TYPE)
 	private String type;
 
@@ -43,28 +42,14 @@ public class HotelRoomEntity {
 	@TableField(IMG)
     private String img;
 
-	@NotNull
 	@TableField(STATUS)
     private Integer status;
 
-    @NotNull
 	@TableField(PRICE)
 	private Integer price;
 
 	@TableField(BREAKFAST)
 	private String breakfast;
-
-	HotelRoomEntity(RoomInfoVO roomInfoVO){
-		this.hotelId=roomInfoVO.getHotelId();
-		this.roomId=roomInfoVO.getRoomId();
-		this.breakfast=roomInfoVO.getBreakfast();
-		this.desc=roomInfoVO.getDesc();
-		this.img=roomInfoVO.getImg();
-		this.orderId=0;
-		this.price=roomInfoVO.getPrice();
-		this.status=roomInfoVO.getStatus();
-		this.type=roomInfoVO.getType();
-	}
 
 
 	public void setRoomId(Integer roomId) {
