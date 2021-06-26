@@ -1,10 +1,12 @@
 package com.rainng.coursesystem.controller;
 
 import com.rainng.coursesystem.model.vo.CustomerLoginVo;
+import com.rainng.coursesystem.model.vo.response.ResultVO;
 import com.rainng.coursesystem.service.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
@@ -34,7 +36,12 @@ public class CustomerLoginController {
     @ResponseBody
     public String login(String customer_email,String customer_password){
         mailService.loginIn(customer_email,customer_password);
+        System.out.println(customer_email);
         return "success";
+        }
+//    @RequestMapping("/logout")
+//    public ResultVO logout() {
+//        return mailService.logout();
     }
 
-}
+

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "com.rainng.coursesystem.dao.mapper.ManagerLoginMapper">
+    <resultMap id="LoginMap" type="com.rainng.coursesystem.model.entity.ManagerLogin">
+        <id property="manager_id" column="manager_id"/>
+        <result property="manager_password" column="manager_password"/>
+        <result property="manager_email" column="manager_email"/>
+        <result property="manager_name" column="manager_name"/>
+    </resultMap>
+
+    <select id="queryByEmail" resultMap="LoginMap">
+        select manager_name as'manager_name',manager_email as 'manager_email',manager_password as'manager_password'
+        from ht_manager
+        where manager_email = #{manager_email}
+    </select>
+
+    <insert id="insertManager" parameterType="com.rainng.coursesystem.model.entity.ManagerLogin">
+        insert into ht_manager (manager_name,manager_password,manager_email,manager_tel)
+         values (#{manager_name},#{manager_password},#{manager_email},#{manager_tel})
+    </insert>
+
+
+    <!--<insert id="insertUser" parameterType="com.rainng.coursesystem.model.entity.User">-->
+    <!--insert into ht_manager (manager_name,manager_password,manager_email)-->
+    <!--values (#{manager_name},#{manager_password},#{manager_email})-->
+    <!--</insert>-->
+
+    <!--<select id="queryByEmail" resultType="User">-->
+    <!--select manager_name as'manager_name',manager_email as 'manager_email',manager_password as'manager_password',-->
+    <!--manager_tel as'manager_tel'-->
+    <!--from ht_manager-->
+    <!--where manager_email = #{manager_email}-->
+    <!--</select>-->
+
+
+</mapper>

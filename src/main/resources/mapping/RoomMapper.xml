@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace = "com.rainng.coursesystem.dao.mapper.RoomMapper">
     <resultMap id="RoomMap" type="com.rainng.coursesystem.model.entity.Room">
-        <id property="room_id" column="room_id"/>
+
         <result property="rm_hotel_id" column="rm_hotel_id"/>
         <result property="room_type" column="room_type"/>
         <result property="room_describe" column="room_describe"/>

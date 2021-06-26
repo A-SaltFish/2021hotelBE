@@ -1,9 +1,13 @@
 package com.rainng.coursesystem.service;
 
-import com.rainng.coursesystem.dao.mapper.CustomerLoginMapper;
+
+import com.rainng.coursesystem.dao.mapper.ManagerLoginMapper;
 import com.rainng.coursesystem.model.entity.CustomerLogin;
+import com.rainng.coursesystem.model.entity.ManagerLogin;
 import com.rainng.coursesystem.model.vo.CustomerLoginVo;
 import com.rainng.coursesystem.model.vo.CustomerLoginVoToCustomerLogin;
+import com.rainng.coursesystem.model.vo.ManagerLoginVo;
+import com.rainng.coursesystem.model.vo.ManagerLoginVoToManagerLogin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
@@ -14,37 +18,36 @@ import javax.servlet.http.HttpSession;
 import java.util.Random;
 
 @Service
-public class MailService {
+public class ManagerMailService {
     @Autowired
     private JavaMailSender mailSender;
 
     @Autowired
-    private CustomerLoginMapper customerLoginMapper;
+    private ManagerLoginMapper managerLoginMapper;
 
     @Value("${spring.mail.username}")
     private String from;
 
     /**
      * 给前端输入的邮箱发送验证码
-     * @param customer_email
+     * @param manager_email
      * @param session
      * @return
      */
 
-    public boolean sendMimeMail(String customer_email,HttpSession session){
+    public boolean sendMimeMail(String manager_email, HttpSession session){
         try{
             SimpleMailMessage mailMessage = new SimpleMailMessage();
             mailMessage.setSubject("验证码邮件");//主题
             //生成随机数
             String code = randomCode();
 
-            //将随机数放置到session中
-            session.setAttribute("customer_email",customer_email);
+            session.setAttribute("manager_email",manager_email);
             session.setAttribute("code",code);
 
-            mailMessage.setText("您收到的验证码是："+code);//内容
+            mailMessage.setText("收到的验证码是："+code);//内容
 
-            mailMessage.setTo(customer_email);//发给谁
+            mailMessage.setTo(manager_email);//发给谁
 
             mailMessage.setFrom(from);//你自己的邮箱
 
@@ -57,10 +60,7 @@ public class MailService {
         }
     }
 
-    /**
-     * 随机生成六位数验证码
-     * @return String code
-     */
+
     private String randomCode() {
         StringBuilder str = new StringBuilder();
         Random random = new Random();
@@ -70,37 +70,32 @@ public class MailService {
         return str.toString();
     }
 
-    /**
-     * 检验验证码是否一致
-     * @param  customerLoginVo
-     * @param  session
-     */
 
-    public boolean registered(CustomerLoginVo customerLoginVo, HttpSession session){
+
+    public boolean mgregistered(ManagerLoginVo managerLoginVo, HttpSession session){
         //获取session中的验证信息
-        String customer_email = (String) session.getAttribute("customer_email");
+        String manager_email = (String) session.getAttribute("manager_email");
         String code = (String) session.getAttribute("code");
 
-        //获取表单中的提交的验证信息
-        String voCode = customerLoginVo.getCode();
+        String voCode = managerLoginVo.getCode();
 
-        //如果email数据为空，或者不一致，注册失败
-        if (customer_email == null || customer_email.isEmpty()){
-            //return "error,请重新注册";
+
+        if (manager_email == null || manager_email.isEmpty()){
+
             return false;
         }
         if (!code.equals(voCode)){
-            //return "error,请重新注册";
+
             return false;
         }
 
         //保存数据
-        CustomerLogin customerLogin = CustomerLoginVoToCustomerLogin.toUser(customerLoginVo);
+        ManagerLogin managerLogin = ManagerLoginVoToManagerLogin.toManager(managerLoginVo);
 
         //将数据写入数据库
-        System.out.println("写入数据库");
-        System.out.println(customerLogin);
-        customerLoginMapper.insertUser(customerLogin);
+//        System.out.println("写入数据库");
+//        System.out.println(managerLogin);
+        managerLoginMapper.insertManager(managerLogin);
         System.out.println("写入完毕");
         //跳转成功页面
         return true;
@@ -111,20 +106,17 @@ public class MailService {
      * @return
      */
 
-    public boolean loginIn(String customer_email, String customer_password){
-        System.out.println(customer_email);
-        System.out.println(customer_password);
-        CustomerLogin customerLogin = customerLoginMapper.queryByEmail(customer_email);
-        if(customerLogin ==null)
+    public boolean loginIn(String manager_email, String manager_password){
+        System.out.println(manager_email);
+        System.out.println(manager_password);
+       ManagerLogin managerLogin = managerLoginMapper.queryByEmail(manager_email);
+        if(managerLogin ==null)
             System.out.println("空");
         else{
-            if(!customerLogin.getCustomer_password().equals(customer_password))
+            if(!managerLogin.getManager_password().equals(manager_password))
                 return false;
         }
-        System.out.println("登录成功:数据库密码是："+ customerLogin.getCustomer_password());
-            return true;
+        System.out.println("登录成功:数据库密码是："+ managerLogin.getManager_password());
+        return true;
     }
-
 }
-
-

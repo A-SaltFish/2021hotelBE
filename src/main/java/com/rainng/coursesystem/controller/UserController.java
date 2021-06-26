@@ -11,12 +11,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequestMapping("/user")
 @RestController
-public class User1Controller extends BaseController {
+public class UserController extends BaseController {
     private final CustomerLoginService service;
 
-    public User1Controller(CustomerLoginService service) {
+    public UserController(CustomerLoginService service) {
         this.service = service;
     }
+
+//    @PostMapping("/login")
+//    public ResultVO login(@Validated @RequestBody LoginVO loginVO) {
+//        String username = loginVO.getUsername();
+//        String password = loginVO.getPassword();
+//        Integer userType = loginVO.getUserType();
+//        return service.login(username, password, userType);
+//    }
 
     @PostMapping("/login")
     public ResultVO login(@Validated @RequestBody LoginVO loginVO) {

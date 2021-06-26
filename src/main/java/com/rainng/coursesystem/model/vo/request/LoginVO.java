@@ -12,6 +12,7 @@ public class LoginVO {
     @NotBlank(message = "用户名不能为空")
     private String username;
 
+
     @NotBlank(message = "密码不能为空")
     private String password;
 
@@ -23,7 +24,7 @@ public class LoginVO {
 		return username;
 	}
 
-	public void setUsername(String username) {
+	public void setUsername(String customer_email) {
 		this.username = username;
 	}
 
@@ -42,6 +43,5 @@ public class LoginVO {
 	public void setUserType(Integer userType) {
 		this.userType = userType;
 	}
-    
-    
+
 }
