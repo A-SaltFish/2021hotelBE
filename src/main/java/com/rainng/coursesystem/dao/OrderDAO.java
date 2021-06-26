@@ -50,19 +50,6 @@ public class OrderDAO extends BaseDAO {
         return mapper.getPage(page, departmentName, teacherName, name).getRecords();
     }
 
-    public Integer countByTeacherId(Integer teacherId) {
-        LambdaQueryWrapper<OrderEntity> wrapper = new LambdaQueryWrapper<>();
-        wrapper.eq(OrderEntity::getTeacherId, teacherId);
-
-        return mapper.selectCount(wrapper);
-    }
-
-    public List<OrderEntity> listName() {
-        LambdaQueryWrapper<OrderEntity> wrapper = new LambdaQueryWrapper<>();
-        wrapper.select(OrderEntity::getId, OrderEntity::getName);
-
-        return mapper.selectList(wrapper);
-    }
 
     public int increaseSelectedCount(Integer courseId) {
         OrderEntity course = mapper.selectById(courseId);
@@ -76,13 +63,6 @@ public class OrderDAO extends BaseDAO {
         course.setSelectedCount(course.getSelectedCount() - 1);
 
         return mapper.updateById(course);
-    }
-    
-
-    public List<StudentCourseSelectItemBO> getStudentCanSelectPage(Integer index, Integer studentId, Integer departmentId, Integer grade, String courseName, String teacherName) {
-        Page<StudentCourseSelectItemBO> page = new Page<>(index, PAGE_SIZE);
-
-        return mapper.getStudentCanSelectPage(page, studentId, departmentId, grade, courseName, teacherName).getRecords();
     }
 
     public Integer getDepartmentIdById(Integer courseId) {

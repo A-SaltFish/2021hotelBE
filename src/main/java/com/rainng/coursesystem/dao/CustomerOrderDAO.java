@@ -78,15 +78,4 @@ public class CustomerOrderDAO extends BaseDAO {
         return mapper.listCustomerPreOrder(customerId);
     }
 
-    public List<StudentExamItemVO> listStudentExam(Integer studentId) {
-        return mapper.listStudentExam(studentId);
-    }
-
-    public Integer countStudentCourseSelectedByTimePart(Integer studentId, String timePart) {
-        return mapper.countStudentCourseSelectedByTimePart(studentId, timePart);
-    }
-
-    public List<HotelAllOrderItemVO> listStudentTimetable(Integer studentId) {
-        return mapper.listStudentTimetable(studentId);
-    }
 }

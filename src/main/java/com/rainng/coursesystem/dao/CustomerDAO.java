@@ -53,13 +53,6 @@ public class CustomerDAO extends BaseDAO {
         return mapper.getPage(page, majorName, className, name).getRecords();
     }
 
-    //
-   // public Integer countByClassId(Integer id) {
-   //     LambdaQueryWrapper<CustomerEntity> wrapper = new LambdaQueryWrapper<>();
-   //     wrapper.eq(CustomerEntity::getClassId, id);
-//
-   //     return mapper.selectCount(wrapper);
-   // }
 
     public List<CustomerEntity> listName() {
         LambdaQueryWrapper<CustomerEntity> wrapper = new LambdaQueryWrapper<>();
