@@ -20,4 +20,12 @@ public class HotelInfoManager extends BaseManager {
         return hotelDAO.getHotelInfoByManagerId(managerId);
     }
 
+    public int updateHotel(HotelInfoVO hotelInfoVO){
+        return hotelDAO.updateHotelInfo(hotelInfoVO);
+    }
+
+    public int updatePassword(Integer managerId,String password){
+        return hotelDAO.updatePassword(managerId,password);
+    }
+
 }

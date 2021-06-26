@@ -18,4 +18,13 @@ public class HotelDAO extends BaseDAO {
     public HotelInfoVO getHotelInfoByManagerId(Integer managerId) {
         return mapper.getHotelInfoByManagerId(managerId);
     }
+
+    public int updateHotelInfo(HotelInfoVO hotelInfoVO){
+        return mapper.updateHotelInfo(hotelInfoVO);
+    }
+
+    public int updatePassword(Integer managerId,String password){
+        return mapper.updateManagerPassword(managerId,password);
+    }
+
 }

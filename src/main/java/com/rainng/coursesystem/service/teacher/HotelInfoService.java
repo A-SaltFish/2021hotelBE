@@ -26,7 +26,11 @@ public class HotelInfoService extends BaseService {
         return result(manager.getHotelInfoByManagerId(getUserId()));
     }
 
-    public ResultVO update(@RequestBody @Validated HotelInfoVO studentInfoForm) {
+    public ResultVO updateHotel(@RequestBody @Validated HotelInfoVO hotelInfoVO) {
+        manager.updateHotel(hotelInfoVO);
+        Integer managerId=getUserId();
+        System.out.println(hotelInfoVO);
+        manager.updatePassword(managerId,hotelInfoVO.getPassword());
         return result("更新成功");
     }
 }

@@ -10,4 +10,12 @@
         JOIN ht_specification on mg_hotel_id=hotel_id
         WHERE manager_id = #{managerId}
     </select>
+    <update id="updateHotelInfo" parameterType="HotelInfoVO">
+      update ht_specification set hotel_name=#{name},hotel_isopen=#{isOpen},hotel_tel=#{tel}
+      where hotel_id=#{hotelId}
+    </update>
+    <update id="updateManagerPassword" >
+      update ht_manager set manager_password=#{password}
+      where manager_id=#{managerId}
+    </update>
 </mapper>

@@ -25,6 +25,6 @@ public class HotelInfoController extends BaseController {
 
     @PutMapping
     public ResultVO update(@RequestBody @Validated HotelInfoVO formVO) {
-        return service.update(formVO);
+        return service.updateHotel(formVO);
     }
 }

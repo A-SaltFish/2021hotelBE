@@ -51,20 +51,6 @@ public class ManagerDAO extends BaseDAO {
         return mapper.selectOne(wrapper);
     }
 
-    public Integer countByDepartmentId(Integer departmentId) {
-        LambdaQueryWrapper<ManagerEntity> wrapper = new LambdaQueryWrapper<>();
-        //wrapper.eq(ManagerEntity::getDepartmentId, departmentId);
-
-        return mapper.selectCount(wrapper);
-    }
-
-    public List<ManagerEntity> listName() {
-        LambdaQueryWrapper<ManagerEntity> wrapper = new LambdaQueryWrapper<>();
-        wrapper.select(ManagerEntity::getId, ManagerEntity::getName);
-
-        return mapper.selectList(wrapper);
-    }
-
 
     public List<HotelPreOrderItemVO> HotelPreList(Integer managerId) {
         return mapper.HotelPreList(managerId);

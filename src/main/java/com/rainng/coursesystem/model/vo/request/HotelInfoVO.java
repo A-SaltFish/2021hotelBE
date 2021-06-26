@@ -7,18 +7,19 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Data
 public class HotelInfoVO {
-	@NotBlank
+	@NotNull
 	private Integer hotelId;
-	@NotBlank
+	@NotNull
 	private Integer managerId;
 	@NotBlank
 	private String name;
 	//手机号码要为11位
-	@Length(min=11,max=11)
+	@Length(min=11,max=11,message = "手机号必须为11位")
 	private String tel;
 
     private String desc;
@@ -26,6 +27,34 @@ public class HotelInfoVO {
     private Integer isOpen;
 
 	private String password;
+
+	public Integer getHotelId() {
+		return hotelId;
+	}
+
+	public void setDesc(String desc) {
+		this.desc = desc;
+	}
+
+	public String getDesc() {
+		return desc;
+	}
+
+	public Integer getIsOpen() {
+		return isOpen;
+	}
+
+	public void setHotelId(Integer hotelId) {
+		this.hotelId = hotelId;
+	}
+
+	public void setManagerId(Integer managerId) {
+		this.managerId = managerId;
+	}
+
+	public void setIsOpen(Integer isOpen) {
+		this.isOpen = isOpen;
+	}
 
 	public String getName() {
 		return name;
@@ -45,5 +74,8 @@ public class HotelInfoVO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-    
+
+	public Integer getManagerId() {
+		return managerId;
+	}
 }
