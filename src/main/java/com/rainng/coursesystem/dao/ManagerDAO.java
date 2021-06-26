@@ -65,9 +65,6 @@ public class ManagerDAO extends BaseDAO {
         return mapper.selectList(wrapper);
     }
 
-    public List<HotelAllOrderItemVO> listTeacherTimetable(Integer teacherId) {
-        return mapper.listTeacherTimetable(teacherId);
-    }
 
     public List<HotelPreOrderItemVO> HotelPreList(Integer managerId) {
         return mapper.HotelPreList(managerId);
