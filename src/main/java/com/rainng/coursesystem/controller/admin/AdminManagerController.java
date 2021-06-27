@@ -2,6 +2,8 @@ package com.rainng.coursesystem.controller.admin;
 
 import com.rainng.coursesystem.config.themis.annotation.Admin;
 import com.rainng.coursesystem.model.entity.CustomerEntity;
+import com.rainng.coursesystem.model.entity.HotelEntity;
+import com.rainng.coursesystem.model.entity.ManagerEntity;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
 import com.rainng.coursesystem.service.admin.AdminManagerService;
 import org.springframework.validation.annotation.Validated;
@@ -35,10 +37,16 @@ public class AdminManagerController {
         return service.deleteCustomer(customerId);
     }
 
-    @PutMapping("/create")
-    public ResultVO adminInsertCustomer(@RequestBody @Validated CustomerEntity customerEntity) {
-        System.out.println("进行顾客新增服务");
-        return service.adminInsertCustomer(customerEntity);
+    @PutMapping("/create/manager")
+    public ResultVO adminInsertCustomer(@RequestBody @Validated ManagerEntity managerEntity) {
+        System.out.println("进行经理新增服务");
+        return service.adminInsertCustomer(managerEntity);
+    }
+
+    @PutMapping("/create/hotel")
+    public ResultVO adminInsertHotel(@RequestBody @Validated HotelEntity hotelEntity) {
+        System.out.println("进行酒店新增服务");
+        return service.adminInsertHotel(hotelEntity);
     }
 
     ///@GetMapping("/{id}")

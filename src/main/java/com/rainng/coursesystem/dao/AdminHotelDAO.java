@@ -2,41 +2,32 @@ package com.rainng.coursesystem.dao;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.rainng.coursesystem.dao.mapper.AdminHotelMapper;
 import com.rainng.coursesystem.dao.mapper.AdminManagerMapper;
 import com.rainng.coursesystem.model.entity.CustomerEntity;
+import com.rainng.coursesystem.model.entity.HotelEntity;
 import com.rainng.coursesystem.model.entity.ManagerEntity;
 import com.rainng.coursesystem.model.vo.response.ManagerInfoVo;
-import com.rainng.coursesystem.model.vo.response.table.HotelAllOrderItemVO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public class AdminManagerDAO extends BaseDAO {
+public class AdminHotelDAO extends BaseDAO {
     public static final int PAGE_SIZE = 20;
 
-    private final AdminManagerMapper mapper;
+    private final AdminHotelMapper mapper;
 
-    public AdminManagerDAO(AdminManagerMapper mapper) {
+    public AdminHotelDAO(AdminHotelMapper mapper) {
         this.mapper = mapper;
     }
 
-    public int adminInsertManager(ManagerEntity entity) {
+    public int adminInsertHotel(HotelEntity entity) {
         return mapper.insert(entity);
     }
 
-    //获取创建 的最新经理ID
-    public Integer getPreManagerId(){
-        return mapper.getPreManagerId();
-    }
-
-
-    public Integer setHotelIdByManager(Integer managerId,Integer hotelId){
-        return mapper.setHotelIdByManager(managerId,hotelId);
-    }
-    //更新经历中酒店的ID
-    public int updateManagerHotelId(ManagerEntity managerEntity){
-        return mapper.updateById(managerEntity);
+    public Integer getPreHotelId(){
+        return mapper.getPreHotelId();
     }
 
     //统计售后订单
@@ -49,6 +40,8 @@ public class AdminManagerDAO extends BaseDAO {
     //获取售后订单
     public List<ManagerInfoVo> getManagerPage(Integer index, Integer managerId, String managerName) {
         Page<ManagerInfoVo> page = new Page<>(index, PAGE_SIZE);
+  //      System.out.println("orderId2:"+orderId);
+  //      System.out.println("roomName2:"+roomName);
         return mapper.getManagerPage(page, managerId, managerName).getRecords();
     }
 
@@ -62,8 +55,8 @@ public class AdminManagerDAO extends BaseDAO {
     }
 
     public int getByHotelId(Integer hotelId) {
-        LambdaQueryWrapper<ManagerEntity> wrapper=new LambdaQueryWrapper<>();
-        wrapper.eq(ManagerEntity::getId,hotelId);
+        LambdaQueryWrapper<HotelEntity> wrapper=new LambdaQueryWrapper<>();
+        wrapper.eq(HotelEntity::getHotelId,hotelId);
         return mapper.selectCount(wrapper);
     }
 }

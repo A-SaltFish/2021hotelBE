@@ -2,6 +2,8 @@ package com.rainng.coursesystem.service.admin;
 
 import com.rainng.coursesystem.manager.admin.AdminManagerManager;
 import com.rainng.coursesystem.model.entity.CustomerEntity;
+import com.rainng.coursesystem.model.entity.HotelEntity;
+import com.rainng.coursesystem.model.entity.ManagerEntity;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
 import com.rainng.coursesystem.service.BaseService;
 import org.springframework.stereotype.Service;
@@ -32,14 +34,23 @@ public class AdminManagerService extends BaseService {
             return result("删除失败！");
     }
 
-    public ResultVO adminInsertCustomer(@RequestBody @Validated CustomerEntity customerEntity){
-        customerEntity.setDefaultBirthday();
-        customerEntity.setDefaultLastLoginTime();
-        System.out.println(customerEntity);
-        if(manager.adminInsertCustomer(customerEntity)>0) {
-            return result("后端添加成功！");
+    public ResultVO adminInsertCustomer(@RequestBody @Validated ManagerEntity managerEntity){
+        System.out.println(managerEntity);
+        if(manager.adminInsertManager(managerEntity)>0) {
+                 return result("后端经理 添加成功");
         }
-        else return result("后端添加失败！");
+        else return result("后端经理 添加失败");
+    }
+
+    public ResultVO adminInsertHotel(@RequestBody @Validated HotelEntity hotelEntity){
+        Integer managerId=manager.getPreManagerId();
+        hotelEntity.setManagerId(managerId);
+        System.out.println(hotelEntity);
+        if(manager.adminInsertHotel(hotelEntity)>0) {
+            manager.setMgHotelId(managerId,manager.getPreHotelId());
+            return result("后端酒店 添加成功 并更新数据");
+        }
+        else return result("后端酒店 添加失败");
     }
 
     /*

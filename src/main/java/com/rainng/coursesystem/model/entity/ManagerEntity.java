@@ -1,12 +1,10 @@
 package com.rainng.coursesystem.model.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -36,14 +34,18 @@ public class ManagerEntity {
 
     @TableField(HOTELID)
 	private Integer hotelId;
+
+	@Length(min=11,max=11,message="经理手机必须为11位数")
 	@TableField(TEL)
 	private String tel;	//电话
-	@TableField(EMAIL)
+
+	@Email(message = "邮箱格式不正确")
+	@TableField(value = EMAIL, updateStrategy = FieldStrategy.IGNORED)
 	private String email;
 	@TableField(DESC)
-	private String desc;
+	private String desc="普通的一个经理";
 	@TableField(AVAILABLE)
-	private Integer available;
+	private Integer available=0;
 
     @NotNull
     @TableField(PASSWORD)
@@ -65,6 +67,9 @@ public class ManagerEntity {
 		this.name = name;
 	}
 
+	public void setHotelId(Integer hotelId) {
+		this.hotelId = hotelId;
+	}
 
 	public void setPassword(String password) {
 		this.password = password;

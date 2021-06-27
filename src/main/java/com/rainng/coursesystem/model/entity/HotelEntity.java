@@ -5,12 +5,13 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 
-@TableName("ht_hotel")
+@TableName("ht_specification")
 @Data
 public class HotelEntity {
 	public static final String ID = "hotel_id";
@@ -39,30 +40,31 @@ public class HotelEntity {
 
     @TableField(MANAGERID)
 	private Integer managerId;
+    @Length(min=11,max=11,message="售后电话必须为11位数")
 	@TableField(TEL)
 	private String tel;	//电话
 	@TableField(LONGITUDE)
-	private String longitude;
+	private Integer longitude=50;
 	@TableField(LATITUDE)
-	private String latitude;
+	private Integer latitude=50;
 	@TableField(ROOMNUM)
-	private Integer roomnum;
+	private Integer roomnum=0;
 	@TableField(RANK)
-	private Float rank;
+	private Double rank=0.0;
 	@TableField(MONTHSALES)
-	private Integer msales;
+	private Integer msales=0;
 	@TableField(SALES)
-	private Integer sales;
+	private Integer sales=0;
 	@TableField(DESC)
 	private String desc;
 	@TableField(AVAILABLE)
-	private Integer available;
+	private Integer available=0;
 	@TableField(IMG)
 	private String img;
 	@TableField(CITY)
 	private String city;
 	@TableField(ISOPEN)
-	private Integer isopen;
+	private Integer isopen=0;
 	@TableField(MINPRICE)
 	private Integer minprice;
 
@@ -83,7 +85,7 @@ public class HotelEntity {
 		return img;
 	}
 
-	public Float getRank() {
+	public Double getRank() {
 		return rank;
 	}
 
@@ -115,11 +117,11 @@ public class HotelEntity {
 		return city;
 	}
 
-	public String getLatitude() {
+	public Integer getLatitude() {
 		return latitude;
 	}
 
-	public String getLongitude() {
+	public Integer getLongitude() {
 		return longitude;
 	}
 
@@ -155,11 +157,11 @@ public class HotelEntity {
 		this.isopen = isopen;
 	}
 
-	public void setLatitude(String latitude) {
+	public void setLatitude(Integer latitude) {
 		this.latitude = latitude;
 	}
 
-	public void setLongitude(String longitude) {
+	public void setLongitude(Integer longitude) {
 		this.longitude = longitude;
 	}
 
@@ -175,7 +177,7 @@ public class HotelEntity {
 		this.name = name;
 	}
 
-	public void setRank(Float rank) {
+	public void setRank(Double rank) {
 		this.rank = rank;
 	}
 
