@@ -11,6 +11,7 @@ public class Room implements Serializable {
     private String room_type;
     private String room_describe;
     private String room_img;
+    private Integer room_price;
     private Integer room_status;
     private Integer rm_order_id;
     private Integer rm_breakfast_type;

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/roominfo")
 public class RoomController {
@@ -16,9 +18,14 @@ public class RoomController {
     private RoomService roomService;
 
     @GetMapping("/rooms")
-    public Room getInfo(@Param("rm_hotel_id") Integer rm_hotel_id, Integer room_id, String room_type, String room_img, Integer room_status, Integer rm_order_id,Integer rm_breakfast_type) {
-        Room room = roomService.findByHid(rm_hotel_id,room_id,room_type,room_img,room_status,rm_order_id,rm_breakfast_type);
-        return room;
+//    public Room getInfo(@Param("rm_hotel_id") Integer rm_hotel_id) {
+//        Room room = roomService.findByHid(rm_hotel_id);
+//        return room;
+//    }
+    public List<Room> getHid(@Param("rm_hotel_id") Integer rm_hotel_id){
+        List<Room> list = roomService.findByHid(rm_hotel_id);
+        return list;
+
     }
 
 
