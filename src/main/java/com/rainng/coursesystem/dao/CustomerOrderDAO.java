@@ -51,12 +51,6 @@ public class CustomerOrderDAO extends BaseDAO {
         return mapper.getPage(page,customerId).getRecords();
     }
 
-    public int countByCourseId(Integer customerId) {
-        LambdaQueryWrapper<CustomerOrderEntity> wrapper = new LambdaQueryWrapper<>();
-        wrapper.eq(CustomerOrderEntity::getId, customerId);
-
-        return mapper.selectCount(wrapper);
-    }
 
     public int countByCustomerId(Integer customerId) {
         LambdaQueryWrapper<CustomerOrderEntity> wrapper = new LambdaQueryWrapper<>();
@@ -64,14 +58,6 @@ public class CustomerOrderDAO extends BaseDAO {
         return mapper.selectCount(wrapper);
     }
 
-    public CustomerOrderEntity getByCourseIdAndStudentId(Integer courseId, Integer studentId) {
-        LambdaQueryWrapper<CustomerOrderEntity> wrapper = new LambdaQueryWrapper<>();
-        wrapper.select(CustomerOrderEntity::getId)
-                .eq(CustomerOrderEntity::getHotelId, courseId)
-                .eq(CustomerOrderEntity::getId, studentId);
-
-        return mapper.selectOne(wrapper);
-    }
 
     //对应前端顾客端的preorder页面，用于初始化
     public List<CustomerPreOrderVO> listCustomerPreOrder(Integer customerId) {

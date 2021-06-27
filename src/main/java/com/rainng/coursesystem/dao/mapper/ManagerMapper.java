@@ -21,5 +21,5 @@ public interface ManagerMapper extends BaseMapper<ManagerEntity> {
 
     List<HotelAllOrderItemVO> listTeacherTimetable(Integer teacherId);
 
-    List<HotelPreOrderItemVO> HotelPreList(Integer managerId);
+
 }

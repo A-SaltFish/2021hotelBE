@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.rainng.coursesystem.dao.mapper.AdminManagerMapper">
+    <select id="getManagerPage" resultType="ManagerInfoVo">
+        SELECT manager_id as'managerId',manager_name as'name',manager_tel as'tel',manager_email as'email',
+        mg_hotel_id as'hotelId',manager_describe as 'desc',manager_password as 'password',manager_available as'available'
+        FROM ht_manager
+        <where>
+            <if test="managerId != null and managerId != ''">
+                AND manager_id LIKE CONCAT('%',#{managerId},'%')
+            </if>
+            <if test="managerName != null and managerName != ''">
+                AND manager_name LIKE CONCAT('%',#{managerName},'%')
+            </if>
+        </where>
+    </select>
+
+    <select id="getManagerCount" resultType="Integer">
+        SELECT COUNT(*)
+        FROM ht_manager
+        <where>
+            <if test="managerId != null and managerId != ''">
+                AND manager_id LIKE CONCAT('%',#{managerId},'%')
+            </if>
+            <if test="managerName != null and managerName != ''">
+                AND manager_name LIKE CONCAT('%',#{managerName},'%')
+            </if>
+        </where>
+    </select>
+
+    <delete id="deleteCustomerById" parameterType="Integer">
+        delete  from ht_manager
+        where manager_id=#{managerId}
+    </delete>
+
+    <update id="changeStatusByOrderId">
+      update ht_order_form set order_status=#{orderStatus}
+        where order_id=#{orderId}
+    </update>
+
+</mapper>

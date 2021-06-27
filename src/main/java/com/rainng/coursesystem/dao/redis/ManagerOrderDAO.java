@@ -6,6 +6,7 @@ import com.rainng.coursesystem.dao.BaseDAO;
 import com.rainng.coursesystem.dao.mapper.ManagerOrderMapper;
 import com.rainng.coursesystem.model.entity.ManagerOrderEntity;
 import com.rainng.coursesystem.model.vo.response.table.HotelAllOrderItemVO;
+import com.rainng.coursesystem.model.vo.response.table.HotelPreOrderItemVO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -26,12 +27,15 @@ public class ManagerOrderDAO extends BaseDAO {
         return mapper.getPage(page, managerId).getRecords();
     }
 
+    public List<HotelPreOrderItemVO> HotelPreList(Integer managerId) {
+        return mapper.HotelPreList(managerId);
+    }
 
     //统计售后订单
-    public Integer countAdminCustomer(Integer managerId, Integer orderId, String roomName) {
+    public Integer countAfterSales(Integer managerId, Integer orderId, String roomName) {
         System.out.println("orderId:"+orderId);
         System.out.println("roomName:"+roomName);
-        return mapper.countAdminCustomer(managerId, orderId, roomName);
+        return mapper.countAfterSales(managerId, orderId, roomName);
     }
 
     //获取售后订单

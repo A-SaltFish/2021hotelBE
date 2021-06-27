@@ -18,18 +18,32 @@ public class ManagerEntity {
 		return password;
 	}
 
-
 	public static final String ID = "manager_id";
     public static final String NAME = "manager_name";
     public static final String PASSWORD = "manager_password";
+    public static final String HOTELID="mg_hotel_id";
+    public static final String TEL="manager_tel";
+	public static final String EMAIL="manager_email";
+	public static final String DESC="manager_describe";
+	public static final String AVAILABLE="manager_available";
 
-    @NotNull
     @TableId(value = ID, type = IdType.AUTO)
     private Integer id;
 
     @NotBlank(message = "经理姓名不能为空")
     @TableField(NAME)
     private String name;
+
+    @TableField(HOTELID)
+	private Integer hotelId;
+	@TableField(TEL)
+	private String tel;	//电话
+	@TableField(EMAIL)
+	private String email;
+	@TableField(DESC)
+	private String desc;
+	@TableField(AVAILABLE)
+	private Integer available;
 
     @NotNull
     @TableField(PASSWORD)

@@ -59,6 +59,23 @@
         </where>
     </select>
 
+
+    <select id="HotelPreList" resultType="HotelPreOrderItemVO">
+        SELECT order_id             AS 'orderId',
+               od_customer_id           AS 'customerId',
+               room_id          AS 'roomId',
+               room_type         AS 'roomType',
+               customer_tel      AS 'customerTel',
+               order_cost       AS 'precost',
+               order_ctime     AS 'createTime',
+               order_status      AS 'status'
+        FROM ht_manager
+                 JOIN ht_order_form on mg_hotel_id = od_hotel_id and (order_status=0 or order_status=1)
+                 JOIN ht_customer on customer_id=od_customer_id
+                 JOIN ht_room on od_hotel_id=rm_hotel_id and od_room_id=room_id
+        WHERE manager_id = #{managerId}
+    </select>
+
     <select id="countAfterSales" resultType="Integer">
         SELECT COUNT(*)
         FROM ht_manager
