@@ -25,11 +25,11 @@ public class AdminCustomerService extends BaseService {
     }
 
     public ResultVO deleteCustomer(Integer customerId){
-        System.out.println("进行用户删除操作："+roomId);
+        System.out.println("进行用户删除操作："+customerId);
         if (manager.deleteCustomerById(customerId)>0)
-            return result("删除房间成功！");
+            return result("删除用户成功！");
         else
-            return result("房间删除失败！");
+            return result("删除失败！");
     }
 
     public ResultVO adminInsertCustomer(@RequestBody @Validated CustomerEntity customerEntity){

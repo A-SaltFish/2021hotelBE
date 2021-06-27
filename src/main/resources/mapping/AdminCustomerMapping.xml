@@ -65,6 +65,11 @@
         </where>
     </select>
 
+    <delete id="deleteCustomerById" parameterType="Integer">
+        delete  from ht_customer
+        where customer_id=#{customerId}
+    </delete>
+
     <update id="changeStatusByOrderId">
       update ht_order_form set order_status=#{orderStatus}
         where order_id=#{orderId}
