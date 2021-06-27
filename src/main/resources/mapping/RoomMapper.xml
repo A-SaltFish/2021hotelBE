@@ -4,6 +4,8 @@
     <resultMap id="RoomMap" type="com.rainng.coursesystem.model.entity.Room">
 
         <result property="rm_hotel_id" column="rm_hotel_id"/>
+        <result property="room_id" column="room_id"/>
+        <result property="room_img" column="room_img"/>
         <result property="room_type" column="room_type"/>
         <result property="room_describe" column="room_describe"/>
         <result property="room_status" column="room_status"/>

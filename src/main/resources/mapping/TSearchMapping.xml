@@ -25,12 +25,26 @@
         <result property="room_img1" column="room_img1"/>
         <result property="room_img2" column="room_img2"/>
         <result property="hotel_img" column="hotel_img"/>
-
-
     </resultMap>
 
-    <select id="findById" resultMap="BaseMap">
-         SELECT hotel_id,hotel_name FROM ht_specification WHERE hotel_id = #{hotel_id}
+    <resultMap id="FindByHtIdMap" type="com.rainng.coursesystem.model.entity.TSearch">
+        <id property="hotel_id" column="hotel_id"/>
+        <result property="ht_city_name" column="ht_city_name"/>
+        <result property="hotel_name" column="hotel_name"/>
+        <result property="hotel_rank" column="hotel_rank"/>
+        <!--<result property="rm_breakfast_type" column="rm_breakfast_type"/>-->
+        <result property="hotel_min_price" column="hotel_min_price"/>
+        <result property="hotel_longitude" column="hotel_longitude"/>
+        <result property="hotel_latitude" column="hotel_latitude"/>
+        <result property="room_img1" column="room_img1"/>
+        <result property="room_img2" column="room_img2"/>
+        <result property="hotel_img" column="hotel_img"/>
+    </resultMap>
+
+    <select id="findById" resultMap="FindByHtIdMap">
+         SELECT *
+         FROM ht_specification
+         WHERE hotel_id = #{hotel_id}
     </select>
 
     <!--<select id="findTSearchAll" resultMap="BaseMap">-->

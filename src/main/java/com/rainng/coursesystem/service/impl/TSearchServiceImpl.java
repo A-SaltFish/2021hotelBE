@@ -14,7 +14,7 @@ public class TSearchServiceImpl implements TSearchService {
     private TSearchMapper tSearchMapper;
 
     @Override
-    public TSearch findById(Integer hotel_id){
+    public List<TSearch> findById(Integer hotel_id){
         return tSearchMapper.findById(hotel_id);
     }
 
