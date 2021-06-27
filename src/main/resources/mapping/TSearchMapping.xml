@@ -19,6 +19,13 @@
         <!--<result property="rm_breakfast_type" column="rm_breakfast_type"/>-->
         <result property="hotel_room_num" column="hotel_room_num"/>
         <result property="hotel_isopen" column="hotel_isopen"/>
+        <result property="hotel_min_price" column="hotel_min_price"/>
+        <result property="hotel_longitude" column="hotel_longitude"/>
+        <result property="hotel_latitude" column="hotel_latitude"/>
+        <result property="room_img1" column="room_img1"/>
+        <result property="room_img2" column="room_img2"/>
+        <result property="hotel_img" column="hotel_img"/>
+
 
     </resultMap>
 

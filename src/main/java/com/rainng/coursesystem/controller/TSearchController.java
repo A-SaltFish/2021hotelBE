@@ -33,7 +33,7 @@ public class TSearchController {
         return list;
     }
 
-    @GetMapping("/getName")//通过城市获取酒店名称
+    @GetMapping("/hotels")//通过城市获取酒店
     public List<TSearch> getName(@Param("ht_city_name") String ht_city_name){
         List<TSearch> list = tSearchService.findByCity(ht_city_name);
         return list;
