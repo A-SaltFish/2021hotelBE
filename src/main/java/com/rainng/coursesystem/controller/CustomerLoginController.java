@@ -6,6 +6,7 @@ import com.rainng.coursesystem.service.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -19,7 +20,7 @@ public class CustomerLoginController {
     @PostMapping("/sendEmail")
     @ResponseBody
     public String sendEmail(String customer_email,HttpSession httpSession){
-//        System.out.println(customer_email);
+        System.out.println(customer_email);
         mailService.sendMimeMail(customer_email,httpSession);
         return "success";
     }
@@ -27,12 +28,13 @@ public class CustomerLoginController {
     @PostMapping("/regist")
     @ResponseBody
     public String regist(CustomerLoginVo customerLoginVo, HttpSession session){
+        System.out.println(customerLoginVo.getCustomer_email());
         mailService.registered(customerLoginVo,session);
-//        System.out.println(userVo);
+        System.out.println(customerLoginVo);
         return "success";
     }
 
-    @PostMapping("/login")
+    @PostMapping("/login0")
     @ResponseBody
     public String login(String customer_email,String customer_password){
         mailService.loginIn(customer_email,customer_password);

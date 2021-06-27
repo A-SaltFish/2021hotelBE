@@ -77,19 +77,27 @@ public class MailService {
      */
 
     public boolean registered(CustomerLoginVo customerLoginVo, HttpSession session){
+        System.out.println("regist called");
         //获取session中的验证信息
-        String customer_email = (String) session.getAttribute("customer_email");
+//        String customer_email = (String) session.getAttribute("customer_email");
         String code = (String) session.getAttribute("code");
+
+        String customer_email = customerLoginVo.getCustomer_email();
+
+        System.out.println(customer_email);
 
         //获取表单中的提交的验证信息
         String voCode = customerLoginVo.getCode();
-
+        System.out.println(voCode);
+        System.out.println(code);
         //如果email数据为空，或者不一致，注册失败
         if (customer_email == null || customer_email.isEmpty()){
+            System.out.println("quit1");
             //return "error,请重新注册";
             return false;
         }
         if (!code.equals(voCode)){
+            System.out.println("quit2");
             //return "error,请重新注册";
             return false;
         }
