@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.rainng.coursesystem.dao.mapper.AdminCustomerMapper">
+    <!--获取酒店历史订单的page-->
+    <select id="getPage" resultType="HotelAllOrderItemVO">
+        SELECT order_id AS 'orderId', od_room_id AS 'roomId', od_hotel_id AS 'hotelId',od_customer_id as'customerId',
+        room_type AS 'roomType', customer_tel as'customerTel',order_comment as'comment',order_cost as'precost',
+        order_ctime as'createTime',order_payment as 'payment', order_status as'status', order_rank as'rank'
+        FROM ht_manager
+            JOIN ht_order_form on mg_hotel_id=od_hotel_id
+            JOIN ht_customer on customer_id = od_customer_id
+            JOIN ht_room on od_hotel_id=rm_hotel_id and od_room_id=room_id
+        where manager_id=#{managerId}
+    </select>
+
+    <!--根据经理ID返回经理对应酒店的ID-->
+    <select id="getHotelIdByManagerId" resultType="Integer">
+        SELECT mg_hotel_id
+        FROM ht_manager
+        where manager_id=#{managerId}
+    </select>
+
+    <!--获取hotel当前订单的list-->
+    <select id="HotelPreList" resultType="HotelPreOrderItemVO">
+        SELECT order_id             AS 'orderId',
+               od_customer_id           AS 'customerId',
+               room_id          AS 'roomId',
+               room_type         AS 'roomType',
+               customer_tel      AS 'customerTel',
+               order_cost       AS 'precost',
+               order_ctime     AS 'createTime',
+               order_status      AS 'status'
+        FROM ht_manager
+                 JOIN ht_order_form on mg_hotel_id = od_hotel_id and (order_status=0 or order_status=1)
+                 JOIN ht_customer on customer_id=od_customer_id
+                 JOIN ht_room on od_hotel_id=rm_hotel_id and od_room_id=room_id
+        WHERE manager_id = #{managerId}
+    </select>
+
+    <select id="getCustomerPage" resultType="CustomerInfoVo">
+        SELECT customer_id as'id',customer_name as'name',customer_tel as'tel',customer_email as'email',
+        customer_birthday as'birthday',customer_sex as 'sex',customer_password as 'password',customer_last_login_time as'lastLogin'
+        FROM ht_customer
+        <where>
+            <if test="customerId != null and customerId != ''">
+                AND customer_id LIKE CONCAT('%',#{customerId},'%')
+            </if>
+            <if test="customerName != null and customerName != ''">
+                AND customer_name LIKE CONCAT('%',#{customerName},'%')
+            </if>
+        </where>
+    </select>
+
+    <select id="countAdminCustomer" resultType="Integer">
+        SELECT COUNT(*)
+        FROM ht_customer
+        <where>
+            <if test="customerId != null and customerId != ''">
+                AND customer_id LIKE CONCAT('%',#{customerId},'%')
+            </if>
+            <if test="customerName != null and customerName != ''">
+                AND customer_name LIKE CONCAT('%',#{customerName},'%')
+            </if>
+        </where>
+    </select>
+
+    <update id="changeStatusByOrderId">
+      update ht_order_form set order_status=#{orderStatus}
+        where order_id=#{orderId}
+    </update>
+
+</mapper>

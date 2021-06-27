@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Data
 public class CustomerInfoVo {
-    private String number;
+    private String id;
     private String name;	//昵称
     private String tel;	//电话
     private String email;
@@ -15,11 +15,14 @@ public class CustomerInfoVo {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
     private Integer sex;
-	public String getNumber() {
-		return number;
+    private String password;
+	@JsonFormat(pattern = "yyyy-MM-dd")
+    private Date lastLogin;
+	public String getId() {
+		return id;
 	}
-	public void setNumber(String number) {
-		this.number = number;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getTel() {
 		return tel;

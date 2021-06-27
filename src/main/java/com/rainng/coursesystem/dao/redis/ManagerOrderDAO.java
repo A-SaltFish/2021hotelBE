@@ -28,10 +28,10 @@ public class ManagerOrderDAO extends BaseDAO {
 
 
     //统计售后订单
-    public Integer countAfterSales(Integer managerId, Integer orderId, String roomName) {
+    public Integer countAdminCustomer(Integer managerId, Integer orderId, String roomName) {
         System.out.println("orderId:"+orderId);
         System.out.println("roomName:"+roomName);
-        return mapper.countAfterSales(managerId, orderId, roomName);
+        return mapper.countAdminCustomer(managerId, orderId, roomName);
     }
 
     //获取售后订单

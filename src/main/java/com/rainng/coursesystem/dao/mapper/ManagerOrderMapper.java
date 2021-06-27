@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 public interface ManagerOrderMapper extends BaseMapper<ManagerOrderEntity> {
 
     //获取售后订单在该词缀下的页码数
-    Integer countAfterSales(@Param("managerId")Integer managerId, @Param("orderId") Integer orderId, @Param("roomName") String roomName);
+    Integer countAdminCustomer(@Param("managerId")Integer managerId, @Param("orderId") Integer orderId, @Param("roomName") String roomName);
 
     //获取售后订单页面
     IPage<HotelAllOrderItemVO> getAfterSalesPage(IPage<HotelAllOrderItemVO> page, @Param("managerId")Integer managerId,

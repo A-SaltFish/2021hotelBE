@@ -1,7 +1,6 @@
 package com.rainng.coursesystem.model.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.Range;
@@ -11,6 +10,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.text.SimpleDateFormat;
 
 @TableName("ht_customer")
 @Data
@@ -25,7 +25,6 @@ public class CustomerEntity {
     public static final String CITY= "customer_city";
     public static final String LAST_LOGIN_TIME = "customer_last_login_time";
 
-    @NotNull
     @TableId(value = ID, type = IdType.AUTO)
     private Integer id;
 
@@ -33,7 +32,7 @@ public class CustomerEntity {
     @TableField(TEL)
     private String tel;
 
-    @NotBlank(message = "学生姓名不能为空")
+    @NotBlank(message = "客户姓名不为空")
     @TableField(NAME)
     private String name;
 
@@ -46,16 +45,15 @@ public class CustomerEntity {
     private String email;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JsonFormat(pattern = "yyyy-MM-dd")
     @TableField(value = BIRTHDAY, updateStrategy = FieldStrategy.IGNORED)
     private Date birthday;
 
-    @Range(min = 0, max = 1)
+    @Range(min = 0, max = 2)
     @TableField(SEX)
     private Integer sex;
 
     @TableField(LAST_LOGIN_TIME)
-    private Date lastLoginTime;
+    private Date lastLogin;
 
 	@TableField(CITY)
 	private String city;
@@ -124,5 +122,15 @@ public class CustomerEntity {
 		this.sex = sex;
 	}
     
-    
+    public void setDefaultLastLoginTime(){
+		lastLogin=new Date();
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+		sdf.format(this.lastLogin);
+	}
+
+	public void setDefaultBirthday(){
+		birthday=new Date();
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+		sdf.format(this.birthday);
+	}
 }

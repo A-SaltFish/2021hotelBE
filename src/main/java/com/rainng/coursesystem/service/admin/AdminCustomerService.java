@@ -1,38 +1,45 @@
-package com.rainng.coursesystem.service.teacher;
+package com.rainng.coursesystem.service.admin;
 
-import com.rainng.coursesystem.manager.teacher.HotelAfterSalesManager;
+import com.rainng.coursesystem.manager.admin.AdminCustomerManager;
+import com.rainng.coursesystem.model.entity.CustomerEntity;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
 import com.rainng.coursesystem.service.BaseService;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
-public class HotelAfterSalesService extends BaseService {
-    private final HotelAfterSalesManager manager;
+public class AdminCustomerService extends BaseService {
+    private final AdminCustomerManager manager;
 
-    public HotelAfterSalesService(HotelAfterSalesManager manager) {
+    public AdminCustomerService(AdminCustomerManager manager) {
         this.manager = manager;
     }
 
-    public ResultVO getPageCount(Integer orderId,String roomName) {
-        Integer managerId = getUserId();
-        return result(manager.countAdminCustomer(managerId, orderId, roomName));
+    public ResultVO getPageCount(Integer customerId,String customerName) {
+        return result(manager.countAdminCustomer(customerId, customerName));
     }
 
-    public ResultVO getPage(Integer index, Integer orderId, String roomName) {
-        Integer managerId = getUserId();
-        return result(manager.getAfterSalesPage(index, managerId, orderId, roomName));
+    public ResultVO getPage(Integer index, Integer customerId, String customerName) {
+        return result(manager.getCustomerPage(index,customerId, customerName));
     }
 
-    public ResultVO refund(Integer orderId){
-        if(manager.refund(orderId)>0)
-            return result("退款成功");
-        else return result("退款失败");
+    public ResultVO deleteCustomer(Integer customerId){
+        System.out.println("进行用户删除操作："+roomId);
+        if (manager.deleteCustomerById(customerId)>0)
+            return result("删除房间成功！");
+        else
+            return result("房间删除失败！");
     }
 
-    public ResultVO judge(Integer orderId){
-        if(manager.judge(orderId)>0)
-            return result("申请成功");
-        else return result("申请失败");
+    public ResultVO adminInsertCustomer(@RequestBody @Validated CustomerEntity customerEntity){
+        customerEntity.setDefaultBirthday();
+        customerEntity.setDefaultLastLoginTime();
+        System.out.println(customerEntity);
+        if(manager.adminInsertCustomer(customerEntity)>0) {
+            return result("后端添加成功！");
+        }
+        else return result("后端添加失败！");
     }
 
     /*

@@ -17,9 +17,9 @@ public class HotelAfterSalesManager extends BaseManager {
     }
 
     //统计售后订单
-    public Integer getAfterSalesCount(Integer managerId, Integer orderId, String roomName) {
+    public Integer countAdminCustomer(Integer managerId, Integer orderId, String roomName) {
         return calcPageCount(
-                managerOrderDAO.countAfterSales(managerId, orderId, roomName),
+                managerOrderDAO.countAdminCustomer(managerId, orderId, roomName),
                 CustomerOrderDAO.PAGE_SIZE);
     }
 
