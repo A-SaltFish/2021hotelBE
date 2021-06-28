@@ -1,4 +1,4 @@
-package com.rainng.coursesystem.manager.student;
+package com.rainng.coursesystem.manager.customer;
 
 import com.rainng.coursesystem.dao.CustomerDAO;
 import com.rainng.coursesystem.manager.BaseManager;

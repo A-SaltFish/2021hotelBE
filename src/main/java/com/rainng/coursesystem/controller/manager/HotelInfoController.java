@@ -1,10 +1,10 @@
-package com.rainng.coursesystem.controller.teacher;
+package com.rainng.coursesystem.controller.manager;
 
 import com.rainng.coursesystem.config.themis.annotation.Manager;
 import com.rainng.coursesystem.controller.BaseController;
 import com.rainng.coursesystem.model.vo.request.HotelInfoVO;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
-import com.rainng.coursesystem.service.teacher.HotelInfoService;
+import com.rainng.coursesystem.service.manager.HotelInfoService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,6 +1,6 @@
-package com.rainng.coursesystem.service.teacher;
+package com.rainng.coursesystem.service.manager;
 
-import com.rainng.coursesystem.manager.teacher.HotelRoomManager;
+import com.rainng.coursesystem.manager.manager.HotelRoomManager;
 import com.rainng.coursesystem.model.entity.HotelRoomEntity;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
 import com.rainng.coursesystem.service.BaseService;

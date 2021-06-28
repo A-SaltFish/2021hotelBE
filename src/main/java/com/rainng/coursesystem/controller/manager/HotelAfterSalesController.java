@@ -1,8 +1,8 @@
-package com.rainng.coursesystem.controller.teacher;
+package com.rainng.coursesystem.controller.manager;
 
 import com.rainng.coursesystem.config.themis.annotation.Manager;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
-import com.rainng.coursesystem.service.teacher.HotelAfterSalesService;
+import com.rainng.coursesystem.service.manager.HotelAfterSalesService;
 import org.springframework.web.bind.annotation.*;
 
 @Manager

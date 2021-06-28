@@ -1,6 +1,5 @@
-package com.rainng.coursesystem.manager.teacher;
+package com.rainng.coursesystem.manager.manager;
 
-import com.rainng.coursesystem.dao.ManagerDAO;
 import com.rainng.coursesystem.dao.redis.ManagerOrderDAO;
 import com.rainng.coursesystem.manager.BaseManager;
 import com.rainng.coursesystem.model.vo.response.table.HotelPreOrderItemVO;

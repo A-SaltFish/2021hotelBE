@@ -1,9 +1,9 @@
-package com.rainng.coursesystem.controller.student;
+package com.rainng.coursesystem.controller.customer;
 
 import com.rainng.coursesystem.config.themis.annotation.Customer;
 import com.rainng.coursesystem.controller.BaseController;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
-import com.rainng.coursesystem.service.student.OrderService;
+import com.rainng.coursesystem.service.customer.OrderService;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

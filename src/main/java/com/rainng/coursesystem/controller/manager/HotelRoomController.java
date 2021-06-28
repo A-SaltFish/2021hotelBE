@@ -1,9 +1,9 @@
-package com.rainng.coursesystem.controller.teacher;
+package com.rainng.coursesystem.controller.manager;
 
 import com.rainng.coursesystem.config.themis.annotation.Manager;
 import com.rainng.coursesystem.model.entity.HotelRoomEntity;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
-import com.rainng.coursesystem.service.teacher.HotelRoomService;
+import com.rainng.coursesystem.service.manager.HotelRoomService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;

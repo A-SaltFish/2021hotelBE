@@ -1,6 +1,6 @@
-package com.rainng.coursesystem.service.student;
+package com.rainng.coursesystem.service.customer;
 
-import com.rainng.coursesystem.manager.student.PreOrderManager;
+import com.rainng.coursesystem.manager.customer.PreOrderManager;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
 import com.rainng.coursesystem.service.BaseService;
 import org.springframework.stereotype.Service;

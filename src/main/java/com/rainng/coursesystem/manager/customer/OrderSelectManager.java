@@ -1,11 +1,9 @@
-package com.rainng.coursesystem.manager.student;
+package com.rainng.coursesystem.manager.customer;
 
 import com.rainng.coursesystem.dao.OrderDAO;
 import com.rainng.coursesystem.dao.CustomerOrderDAO;
-import com.rainng.coursesystem.dao.CustomerDAO;
 import com.rainng.coursesystem.manager.BaseManager;
 import com.rainng.coursesystem.model.entity.CustomerOrderEntity;
-import com.rainng.coursesystem.model.entity.CustomerEntity;
 import com.rainng.coursesystem.model.vo.response.table.CustomerOrderItemVO;
 import com.rainng.coursesystem.model.vo.response.table.OrderItemVO;
 import org.springframework.stereotype.Component;

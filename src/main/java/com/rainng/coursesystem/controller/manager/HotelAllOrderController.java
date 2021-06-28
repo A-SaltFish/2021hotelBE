@@ -1,9 +1,9 @@
-package com.rainng.coursesystem.controller.teacher;
+package com.rainng.coursesystem.controller.manager;
 
 import com.rainng.coursesystem.config.themis.annotation.Manager;
 import com.rainng.coursesystem.controller.BaseController;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
-import com.rainng.coursesystem.service.teacher.HotelAllOrderService;
+import com.rainng.coursesystem.service.manager.HotelAllOrderService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

@@ -1,6 +1,6 @@
-package com.rainng.coursesystem.service.student;
+package com.rainng.coursesystem.service.customer;
 
-import com.rainng.coursesystem.manager.student.InfoManager;
+import com.rainng.coursesystem.manager.customer.InfoManager;
 import com.rainng.coursesystem.model.entity.CustomerEntity;
 import com.rainng.coursesystem.model.vo.request.CustomerInfoFormVO;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
