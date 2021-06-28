@@ -7,6 +7,7 @@ import java.sql.Date;
 public class OrderEntity {
 	//public Integer id;
 	public Integer customerId;
+	public Integer order_cost;
 	public Integer hotelId;
 	public Integer roomId;
 	public Date ctime ;
@@ -43,5 +44,9 @@ public class OrderEntity {
 	public String getReason(){return reason;}
 
 	public void setReason(String reason){this.reason = reason;}
+
+	public Integer getOrder_cost(){return order_cost;}
+
+	public void setOrder_cost(Integer order_cost){this.order_cost = order_cost;}
 
 }

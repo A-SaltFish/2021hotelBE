@@ -13,11 +13,12 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
     @GetMapping("/order")
-    public String OrderInfo(@RequestParam("customerId") Integer customerId, @RequestParam("hotelId") Integer hotelId, @RequestParam("roomId") Integer roomId, @RequestParam("status") Integer status, @RequestParam("ifShow") Integer ifShow){
+    public String OrderInfo(@RequestParam("order_cost") Integer order_cost,@RequestParam("customerId") Integer customerId, @RequestParam("hotelId") Integer hotelId, @RequestParam("roomId") Integer roomId, @RequestParam("status") Integer status, @RequestParam("ifShow") Integer ifShow){
         System.out.println("插入訂單功能");
         OrderEntity order = new OrderEntity();
         Date now = new Date();
 //        new Date(order.setCtime(ctime));
+        order.setOrder_cost(order_cost);
         order.setCustomerId(customerId);
         order.setHotelId(hotelId);
         order.setRoomId(roomId);
