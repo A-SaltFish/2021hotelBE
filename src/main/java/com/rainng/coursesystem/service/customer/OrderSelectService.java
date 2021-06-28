@@ -25,15 +25,6 @@ public class OrderSelectService extends BaseService {
     public ResultVO getPage(Integer index) {
         Integer customerId = getUserId();
         List<CustomerOrderItemVO> boList = manager.getPage(index, customerId);
-        //List<CustomerOrderItemVO> voList = new ArrayList<>(boList.size());
-        //
-        //  for (CustomerOrderItemVO bo : boList) {
-        //    CustomerOrderItemVO vo = new CustomerOrderItemVO();
-        //    BeanUtils.copyProperties(bo, vo);
-        //    vo.setTime(lessonTimeConverter.covertTimePart(bo.getTime()));
-        //    voList.add(vo);
-        //}
-
         return result(boList);
     }
 

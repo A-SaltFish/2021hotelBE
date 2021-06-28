@@ -55,9 +55,6 @@ public class AdminManagerManager extends BaseManager {
         return adminManagerDAO.setHotelIdByManager(managerId,hotelId);
     }
 
-    public int updateManagerHotelId(ManagerEntity managerEntity){
-        return adminManagerDAO.updateManagerHotelId(managerEntity);
-    }
 
     public int adminInsertHotel(HotelEntity hotelEntity){
         return adminHotelDAO.adminInsertHotel(hotelEntity);

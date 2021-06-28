@@ -20,9 +20,6 @@ public class PreOrderManager extends BaseManager {
         this.orderDAO = orderDAO;
     }
 
-    public CustomerOrderEntity getStudentCourseById(Integer studentCourseId) {
-        return customerOrderDAO.get(studentCourseId);
-    }
 
     public Integer refund(Integer orderId,String reason) {
         System.out.println("orderId"+orderId+"\nreason:"+reason);

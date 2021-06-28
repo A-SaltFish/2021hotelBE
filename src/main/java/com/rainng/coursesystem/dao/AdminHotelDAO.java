@@ -47,13 +47,4 @@ public class AdminHotelDAO extends BaseDAO {
         return mapper.deleteHotelByManagerId(managerId);
     }
 
-    public int judge(Integer orderId){
-        return mapper.changeStatusByOrderId(orderId,5);
-    }
-
-    public int getByHotelId(Integer hotelId) {
-        LambdaQueryWrapper<HotelEntity> wrapper=new LambdaQueryWrapper<>();
-        wrapper.eq(HotelEntity::getHotelId,hotelId);
-        return mapper.selectCount(wrapper);
-    }
 }

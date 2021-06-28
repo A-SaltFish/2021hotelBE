@@ -33,14 +33,7 @@ public class AdminService extends BaseService {
         if (originEntity == null) {
             return failedResult("管理员Id: " + entity.getId() + "不存在!");
         }
-
-    //    if (entity.getPassword().equals("")) {
-            entity.setPassword(originEntity.getPassword());
-     //   } else {
-     //       entity.setPassword(userService.computePasswordHash(entity.getPassword()));
-      //  }
-
-
+        entity.setPassword(originEntity.getPassword());
         manager.update(entity);
         return result("更新成功");
     }

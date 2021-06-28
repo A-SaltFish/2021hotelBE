@@ -59,13 +59,4 @@ public class AdminManagerDAO extends BaseDAO {
         return mapper.passManagerById(managerId);
     }
 
-    public int judge(Integer orderId){
-        return mapper.changeStatusByOrderId(orderId,5);
-    }
-
-    public int getByHotelId(Integer hotelId) {
-        LambdaQueryWrapper<ManagerEntity> wrapper=new LambdaQueryWrapper<>();
-        wrapper.eq(ManagerEntity::getId,hotelId);
-        return mapper.selectCount(wrapper);
-    }
 }

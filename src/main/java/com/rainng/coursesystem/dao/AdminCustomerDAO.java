@@ -41,8 +41,6 @@ public class AdminCustomerDAO extends BaseDAO {
     //获取售后订单
     public List<CustomerInfoVo> getCustomerPage(Integer index, Integer customerId, String customerName) {
         Page<CustomerInfoVo> page = new Page<>(index, PAGE_SIZE);
-  //      System.out.println("orderId2:"+orderId);
-  //      System.out.println("roomName2:"+roomName);
         return mapper.getCustomerPage(page, customerId, customerName).getRecords();
     }
 
@@ -51,13 +49,4 @@ public class AdminCustomerDAO extends BaseDAO {
         return mapper.deleteCustomerById(customerId);
     }
 
-    public int judge(Integer orderId){
-        return mapper.changeStatusByOrderId(orderId,5);
-    }
-
-    public int getByHotelId(Integer hotelId) {
-        LambdaQueryWrapper<CustomerEntity> wrapper=new LambdaQueryWrapper<>();
-        wrapper.eq(CustomerEntity::getId,hotelId);
-        return mapper.selectCount(wrapper);
-    }
 }

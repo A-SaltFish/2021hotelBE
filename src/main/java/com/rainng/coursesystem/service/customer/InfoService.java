@@ -28,14 +28,7 @@ public class InfoService extends BaseService {
 
     public ResultVO update(@RequestBody @Validated CustomerInfoFormVO studentInfoForm) {
         CustomerEntity customer = manager.getCustomerById(getUserId());
-
-        //String password = studentInfoForm.getPassword();
-      //  if (password == null || password.equals("")) {
-            String password = customer.getPassword();
-     //   } else {
-     //       password = userService.computePasswordHash(password);
-     //   }
-
+        String password = customer.getPassword();
         BeanUtils.copyProperties(studentInfoForm, customer);
         customer.setPassword(password);
         manager.updateCustomer(customer);
