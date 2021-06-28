@@ -4,6 +4,7 @@ package com.rainng.coursesystem.controller;
 import com.rainng.coursesystem.model.entity.OrderEntity;
 import com.rainng.coursesystem.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -13,14 +14,15 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
     @GetMapping("/order")
-    public String OrderInfo(@RequestParam("id") Integer id, @RequestParam("customerId") Integer customerId, @RequestParam("hotelId") Integer hotelId, @RequestParam("roomId") Integer roomId, @RequestParam("status") Integer status, @RequestParam("ifShow") Integer ifShow,@RequestParam("reason") String reason){
+    public String OrderInfo(@RequestParam("id") Integer id, @RequestParam("customerId") Integer customerId, @RequestParam("hotelId") Integer hotelId, @RequestParam("roomId") Integer roomId, @RequestParam("status") Integer status, @RequestParam("ifShow") Integer ifShow, @RequestParam("reason") String reason){
         OrderEntity order = new OrderEntity();
         Date now = new Date();
+//        new Date(order.setCtime(ctime));
         order.setId(id);
         order.setCustomerId(customerId);
         order.setHotelId(hotelId);
         order.setRoomId(roomId);
-//        order.ctime(ctime);
+//        order.setCtime((java.sql.Date) ctime);
         order.setStatus(status);
         order.setIfShow(ifShow);
         order.setReason(reason);

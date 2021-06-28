@@ -28,7 +28,15 @@ spring:
 #    store-type: redis
 #    timeout: 86400
   jackson:
-    time-zone: Asia/Shanghai
+    # 返回格式化日期
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    mvc:
+      # 前端参数格式化
+      format:
+        # String格式化日期
+        date: yyyy-MM-dd HH:mm:ss
+#    time-zone: Asia/Shanghai
 #  data:
 #    mongodb:
 #      uri: mongodb://localhost:27017/rainng_course
