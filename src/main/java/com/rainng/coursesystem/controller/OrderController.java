@@ -24,8 +24,8 @@ public class OrderController {
         order.setStatus(status);
         order.setIfShow(ifShow);
         order.setReason(reason);
-
         orderService.insertOrder(order);
+//        System.out.println(insertOrder);
         return "success";
     }
 
