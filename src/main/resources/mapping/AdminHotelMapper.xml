@@ -29,9 +29,9 @@
         </where>
     </select>
 
-    <delete id="deleteCustomerById" parameterType="Integer">
-        delete  from ht_manager
-        where manager_id=#{managerId}
+    <delete id="deleteHotelByManagerId" parameterType="Integer">
+        delete  from ht_specification
+        where hotel_manager_id=#{managerId}
     </delete>
 
     <!--创建酒店时，用于获取酒店ID-->

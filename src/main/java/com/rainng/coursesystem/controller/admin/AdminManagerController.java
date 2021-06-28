@@ -1,7 +1,6 @@
 package com.rainng.coursesystem.controller.admin;
 
 import com.rainng.coursesystem.config.themis.annotation.Admin;
-import com.rainng.coursesystem.model.entity.CustomerEntity;
 import com.rainng.coursesystem.model.entity.HotelEntity;
 import com.rainng.coursesystem.model.entity.ManagerEntity;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
@@ -33,14 +32,21 @@ public class AdminManagerController {
     }
 
     @RequestMapping("/delete")
-    public ResultVO deleteCustomer(Integer customerId){
-        return service.deleteCustomer(customerId);
+    public ResultVO deleteCustomer(Integer managerId){
+        System.out.println("进行经理与酒店的删除");
+        return service.deleteManagerAndHotel(managerId);
+    }
+
+    @RequestMapping("/pass")
+    public ResultVO passManagerById(Integer managerId){
+        System.out.println("进行经理注册审批");
+        return service.passManagerById(managerId);
     }
 
     @PutMapping("/create/manager")
-    public ResultVO adminInsertCustomer(@RequestBody @Validated ManagerEntity managerEntity) {
+    public ResultVO adminInsertManager(@RequestBody @Validated ManagerEntity managerEntity) {
         System.out.println("进行经理新增服务");
-        return service.adminInsertCustomer(managerEntity);
+        return service.adminInsertManager(managerEntity);
     }
 
     @PutMapping("/create/hotel")

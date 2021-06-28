@@ -23,7 +23,9 @@ public interface AdminManagerMapper extends BaseMapper<ManagerEntity> {
                                          @Param("managerName") String managerName);
 
     //删除用户
-    int deleteCustomerById(@Param("managerId") Integer managerId);
+    int deleteManagerById(@Param("managerId") Integer managerId);
+
+    int passManagerById(@Param("managerId") Integer managerId);
 
     int changeStatusByOrderId(@Param("orderId") Integer orderId, @Param("orderStatus") Integer orderStatus);
 }

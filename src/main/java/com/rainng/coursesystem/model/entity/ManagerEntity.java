@@ -42,8 +42,10 @@ public class ManagerEntity {
 	@Email(message = "邮箱格式不正确")
 	@TableField(value = EMAIL, updateStrategy = FieldStrategy.IGNORED)
 	private String email;
+
 	@TableField(DESC)
-	private String desc="普通的一个经理";
+	private String description="普通的一个经理";
+
 	@TableField(AVAILABLE)
 	private Integer available=0;
 

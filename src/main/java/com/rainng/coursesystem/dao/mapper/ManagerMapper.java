@@ -15,7 +15,7 @@ import java.util.List;
 public interface ManagerMapper extends BaseMapper<ManagerEntity> {
     Integer count(@Param("departmentName")String departmentName, @Param("name")String name);
 
-    IPage<HotelAllOrderItemVO> getPage(IPage<TeacherItemVO> page, @Param("managerId")Integer managerId);
+    IPage<HotelAllOrderItemVO> getPage(IPage<HotelAllOrderItemVO> page, @Param("managerId")Integer managerId);
 
     Integer getHotelIdByManagerId(Integer managerId);
 

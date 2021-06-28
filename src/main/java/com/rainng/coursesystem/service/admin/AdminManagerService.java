@@ -1,7 +1,6 @@
 package com.rainng.coursesystem.service.admin;
 
 import com.rainng.coursesystem.manager.admin.AdminManagerManager;
-import com.rainng.coursesystem.model.entity.CustomerEntity;
 import com.rainng.coursesystem.model.entity.HotelEntity;
 import com.rainng.coursesystem.model.entity.ManagerEntity;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
@@ -26,15 +25,23 @@ public class AdminManagerService extends BaseService {
         return result(manager.getManagerPage(index,managerId, managerName));
     }
 
-    public ResultVO deleteCustomer(Integer managerId){
-        System.out.println("进行用户删除操作："+managerId);
-        if (manager.deleteCustomerById(managerId)>0)
-            return result("删除用户成功！");
+    public ResultVO deleteManagerAndHotel(Integer managerId){
+        System.out.println("进行经理删除："+managerId);
+        if (manager.deleteManagerAndHotel(managerId)>0)
+            return result("删除经理成功！");
         else
             return result("删除失败！");
     }
 
-    public ResultVO adminInsertCustomer(@RequestBody @Validated ManagerEntity managerEntity){
+    public ResultVO passManagerById(Integer managerId){
+        System.out.println("审批ID："+managerId);
+        if (manager.passManagerById(managerId)>0)
+            return result("审批成功！");
+        else
+            return result("审批失败！");
+    }
+
+    public ResultVO adminInsertManager(@RequestBody @Validated ManagerEntity managerEntity){
         System.out.println(managerEntity);
         if(manager.adminInsertManager(managerEntity)>0) {
                  return result("后端经理 添加成功");

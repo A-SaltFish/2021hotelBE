@@ -3,10 +3,8 @@ package com.rainng.coursesystem.dao;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.rainng.coursesystem.dao.mapper.AdminManagerMapper;
-import com.rainng.coursesystem.model.entity.CustomerEntity;
 import com.rainng.coursesystem.model.entity.ManagerEntity;
 import com.rainng.coursesystem.model.vo.response.ManagerInfoVo;
-import com.rainng.coursesystem.model.vo.response.table.HotelAllOrderItemVO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -53,8 +51,12 @@ public class AdminManagerDAO extends BaseDAO {
     }
 
 
-    public int deleteCustomerById(Integer customerId ) {
-        return mapper.deleteCustomerById(customerId);
+    public int deleteManagerById(Integer managerId ) {
+        return mapper.deleteManagerById(managerId);
+    }
+
+    public int passManagerById(Integer managerId ) {
+        return mapper.passManagerById(managerId);
     }
 
     public int judge(Integer orderId){

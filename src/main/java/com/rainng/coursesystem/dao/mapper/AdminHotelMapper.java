@@ -22,7 +22,7 @@ public interface AdminHotelMapper extends BaseMapper<HotelEntity> {
     Integer getPreHotelId();
 
     //删除用户
-    int deleteCustomerById(@Param("managerId") Integer managerId);
+    int deleteHotelByManagerId(@Param("managerId") Integer managerId);
 
     int changeStatusByOrderId(@Param("orderId") Integer orderId, @Param("orderStatus") Integer orderStatus);
 }

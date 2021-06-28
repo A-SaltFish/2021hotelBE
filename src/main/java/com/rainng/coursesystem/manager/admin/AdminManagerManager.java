@@ -27,8 +27,16 @@ public class AdminManagerManager extends BaseManager {
                 adminManagerDAO.PAGE_SIZE);
     }
 
-    public int deleteCustomerById(Integer managerId ){
-        return adminManagerDAO.deleteCustomerById(managerId);
+    public int deleteManagerAndHotel(Integer managerId ){
+        if(adminManagerDAO.deleteManagerById(managerId)>0){
+            System.out.println("经理删除完毕");
+            return adminHotelDAO.deleteHotelByManagerId(managerId);
+        }
+        else return 0;
+    }
+
+    public int passManagerById(Integer managerId ){
+        return adminManagerDAO.passManagerById(managerId);
     }
 
     public int adminInsertManager(ManagerEntity managerEntity){

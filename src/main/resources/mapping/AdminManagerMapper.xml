@@ -29,9 +29,14 @@
         </where>
     </select>
 
-    <delete id="deleteCustomerById" parameterType="Integer">
+    <delete id="deleteManagerById" parameterType="Integer">
         delete  from ht_manager
         where manager_id=#{managerId}
+    </delete>
+
+    <delete id="deleteHotelById" parameterType="Integer">
+        delete  from ht_specification
+        where hotel_id=#{hotelId}
     </delete>
 
     <select id="getPreManagerId" resultType="Integer">
@@ -46,6 +51,11 @@
 
     <update id="setHotelIdByManager">
       update ht_manager set mg_hotel_id=#{hotelId}
+        where manager_id=#{managerId}
+    </update>
+
+    <update id="passManagerById">
+      update ht_manager set manager_available=1
         where manager_id=#{managerId}
     </update>
 
