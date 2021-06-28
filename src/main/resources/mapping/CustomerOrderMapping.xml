@@ -53,40 +53,4 @@
                  join ht_specification on od_hotel_id=hotel_id
         WHERE od_customer_id = #{customerId} and (order_status=1 or order_status=2 or order_status=0)
     </select>
-
-    <select id="listStudentExam" resultType="StudentExamItemVO">
-        SELECT sc_id                AS 'studentCourseId',
-               course_name          AS 'courseName',
-               teacher_name         AS 'teacherName',
-               course_exam_date        'examDate',
-               course_exam_location AS 'examLocation'
-        FROM rc_student_course
-                 JOIN rc_course on sc_course_id = course_id
-                 JOIN rc_student on sc_student_id = student_id
-                 JOIN rc_teacher on course_teacher_id = teacher_id
-        WHERE student_id = #{studentId}
-          AND course_exam_date IS NOT NULL
-          AND course_exam_location IS NOT NULL
-          AND sc_exam_score IS NULL
-    </select>
-
-    <select id="countStudentCourseSelectedByTimePart" resultType="Integer">
-        SELECT COUNT(*)
-        FROM rc_student_course
-                 JOIN rc_student on sc_student_id = student_id
-                 JOIN rc_course on sc_course_id = course_id
-        WHERE student_id = #{studentId}
-          AND course_time LIKE CONCAT(#{timePart}, '-%')
-    </select>
-
-    <select id="listStudentTimetable" resultType="TeacherItemVO">
-        SELECT course_time     AS 'time',
-               course_name     AS 'courseName',
-               teacher_name    AS 'teacherName',
-               course_location AS 'location'
-        FROM rc_student_course
-                 JOIN rc_course on sc_course_id = course_id
-                 JOIN rc_teacher on course_teacher_id = teacher_id
-        WHERE sc_student_id = #{studentId}
-    </select>
 </mapper>

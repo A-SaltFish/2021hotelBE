@@ -24,7 +24,7 @@ public interface CustomerOrderMapper extends BaseMapper<CustomerOrderEntity> {
 
     IPage<TeacherGradeItemVO> getTeacherGradePage(IPage<TeacherGradeItemVO> page, @Param("teacherId")Integer teacherId, @Param("courseName")String courseName,@Param("studentName") String studentName);
 
-    List<CustomerPreOrderVO> listCustomerPreOrder(Integer studentId);
+    List<CustomerPreOrderVO> listCustomerPreOrder(@Param("customerId")Integer customerId);
 
     List<StudentExamItemVO> listStudentExam(Integer studentId);
 

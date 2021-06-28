@@ -20,6 +20,8 @@ public class RoomController {
     @GetMapping("/rooms")
     public List<Room> getHid(@Param("rm_hotel_id") Integer rm_hotel_id){
         List<Room> list = roomService.findByHid(rm_hotel_id);
+        System.out.println("11111111111111");
+        System.out.println(list);
         return list;
 
     }

@@ -61,6 +61,7 @@ public class CustomerOrderDAO extends BaseDAO {
 
     //对应前端顾客端的preorder页面，用于初始化
     public List<CustomerPreOrderVO> listCustomerPreOrder(Integer customerId) {
+        System.out.println(customerId);
         return mapper.listCustomerPreOrder(customerId);
     }
 

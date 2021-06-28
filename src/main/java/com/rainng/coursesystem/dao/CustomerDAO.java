@@ -1,6 +1,7 @@
 package com.rainng.coursesystem.dao;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.rainng.coursesystem.dao.mapper.CustomerMapper;
 import com.rainng.coursesystem.model.entity.CustomerEntity;
@@ -20,9 +21,14 @@ public class CustomerDAO extends BaseDAO {
     }
 
     public CustomerEntity getById(String id) {
-        LambdaQueryWrapper<CustomerEntity> wrapper = new LambdaQueryWrapper<>();
-        wrapper.eq(CustomerEntity::getId, id);
-
+        QueryWrapper<CustomerEntity> wrapper = new QueryWrapper<>();
+        wrapper.eq("customer_id", id);
+        if(mapper.selectOne(wrapper)==null){
+            QueryWrapper<CustomerEntity> wrapper1 = new QueryWrapper<>();
+            System.out.println("当前用户ID不匹配"+id);
+            wrapper1.eq("customer_email", id);
+            return mapper.selectOne(wrapper1);
+        }
         return mapper.selectOne(wrapper);
     }
 

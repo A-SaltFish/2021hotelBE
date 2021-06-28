@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 //对应前端页面的student的preorder页面，用于操纵用户进行中 的订单
 @Student
-@RequestMapping("/student/course")
-@RestController("student_courseController")
+@RequestMapping("/customer/preOrder")
+@RestController("customer_preOrderController")
 public class PreOrderController extends BaseController {
     private final OrderService service;
 
@@ -21,6 +21,7 @@ public class PreOrderController extends BaseController {
 
     @RequestMapping("/list")
     public ResultVO list() {
+        System.out.println("開始獲取當前訂單");
         return service.list();
     }
 

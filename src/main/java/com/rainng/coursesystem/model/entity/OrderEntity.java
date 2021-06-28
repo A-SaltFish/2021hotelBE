@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.sql.Date;
 @TableName("ht_order_form")
 public class OrderEntity {
-	public Integer id;
+	//public Integer id;
 	public Integer customerId;
 	public Integer hotelId;
 	public Integer roomId;
@@ -15,11 +15,6 @@ public class OrderEntity {
 	public String reason;
 
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id){this.id = id;}
 
 	public Integer getCustomerId(){return customerId;}
 
@@ -31,7 +26,7 @@ public class OrderEntity {
 
 	public Integer getRoomId() {return roomId;}
 
-	public void setRoomId(Integer roomId) {this.roomId = hotelId;}
+	public void setRoomId(Integer roomId) {this.roomId = roomId;}
 
 	public Date getCtime(){return ctime;}
 

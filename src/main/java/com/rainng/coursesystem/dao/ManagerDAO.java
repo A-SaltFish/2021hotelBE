@@ -1,6 +1,7 @@
 package com.rainng.coursesystem.dao;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.rainng.coursesystem.dao.mapper.ManagerMapper;
 import com.rainng.coursesystem.model.entity.ManagerEntity;
 import com.rainng.coursesystem.model.vo.response.table.HotelPreOrderItemVO;
@@ -20,9 +21,13 @@ public class ManagerDAO extends BaseDAO {
     }
 
     public ManagerEntity getById(String id) {
-        LambdaQueryWrapper<ManagerEntity> wrapper = new LambdaQueryWrapper<>();
-        wrapper.eq(ManagerEntity::getId, id);
-
+        QueryWrapper<ManagerEntity> wrapper = new QueryWrapper<>();
+        wrapper.eq("manager_id", id);
+        if(mapper.selectOne(wrapper)==null){
+            QueryWrapper<ManagerEntity> wrapper1 = new QueryWrapper<>();
+            wrapper1.eq("manager_email", id);
+            return mapper.selectOne(wrapper1);
+        }
         return mapper.selectOne(wrapper);
     }
 

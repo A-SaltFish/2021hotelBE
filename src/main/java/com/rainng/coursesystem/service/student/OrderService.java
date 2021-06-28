@@ -15,6 +15,7 @@ public class OrderService extends BaseService {
 
     public ResultVO list() {
         Integer customerId = getUserId();
+        System.out.println("當前customer ID為"+customerId);
         return result(manager.listCustomerPreOrder(customerId));
     }
 
