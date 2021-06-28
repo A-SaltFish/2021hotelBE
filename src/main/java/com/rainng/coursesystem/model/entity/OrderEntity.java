@@ -1,18 +1,19 @@
 package com.rainng.coursesystem.model.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import net.sf.jsqlparser.expression.DateTimeLiteralExpression;
 
 import java.sql.Date;
-
-public class Order {
-    public Integer id = 0;
-    public Integer customerId = 0;
-    public Integer hotelId = 0;
-    public Integer roomId = 0;
+@TableName("ht_order_form")
+public class OrderEntity {
+    public Integer id;
+    public Integer customerId;
+    public Integer hotelId;
+    public Integer roomId;
     public Date ctime ;
-    public Integer status = 1;
-    public Integer ifShow = 1;
-    public String reason = "";
+    public Integer status;
+    public Integer ifShow;
+    public String reason;
 
 
     public Integer getId() {

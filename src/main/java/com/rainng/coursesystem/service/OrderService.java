@@ -1,8 +1,8 @@
 package com.rainng.coursesystem.service;
 
-import com.rainng.coursesystem.model.entity.Order;
+import com.rainng.coursesystem.model.entity.OrderEntity;
 
 public interface OrderService {
 
-    public Order insertOrder(Order order);
+    int insertOrder(OrderEntity order);
 }

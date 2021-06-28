@@ -3,13 +3,14 @@ package com.rainng.coursesystem.controller;
 import com.rainng.coursesystem.model.entity.CustomerEntity;
 import com.rainng.coursesystem.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.Map;
 import java.util.UUID;
 
-@RestController
+@Controller
 
 public class CustomerController {
     @Autowired(required = false)
@@ -20,6 +21,7 @@ public class CustomerController {
     }
 
     @PostMapping("/register")
+    @ResponseBody
     public String register2(@RequestParam("customer_name") String customer_name,@RequestParam("customer_password") String customer_password,@RequestParam("customer_email") String customer_email,@RequestParam("customer_tel") String customer_tel){
         CustomerEntity checkemail = customerService.findemail(customer_email);//查询数据库里是否有相同的邮箱
         CustomerEntity checkname = customerService.findname(customer_name);
@@ -45,11 +47,13 @@ public class CustomerController {
             customerService.register(customer);
             return "index";
         }
-
-            }
+    }
     @PostMapping("/login")
+    @ResponseBody
     public String login2(@RequestBody Map map){
+        System.out.println("准备登录");
         CustomerEntity customer = customerService.login(map.get("customer_name").toString(), map.get("customer_password").toString());
+        System.out.println(map);
         if(customer != null){
             return "index";
         }
