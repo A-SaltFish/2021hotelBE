@@ -30,8 +30,4 @@ public class HotelAllOrderController extends BaseController {
         this.service = service;
     }
 
-    //@RequestMapping
-    //public ResultVO get() {
-    //    return service.get();
-   // }
 }

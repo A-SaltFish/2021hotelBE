@@ -41,9 +41,7 @@ public class CustomerLoginController {
         System.out.println(customer_email);
         return "success";
         }
-//    @RequestMapping("/logout")
-//    public ResultVO logout() {
-//        return mailService.logout();
+
     }
 
 

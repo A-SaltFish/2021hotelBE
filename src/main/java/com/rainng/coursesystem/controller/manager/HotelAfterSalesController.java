@@ -39,13 +39,4 @@ public class HotelAfterSalesController {
         return service.judge(orderId);
     }
 
-    ///@GetMapping("/{id}")
-    //public ResultVO get(@PathVariable Integer id) {
-     //   return service.get(id);
-    //}
-
-    //@PutMapping
-    //public ResultVO update(@RequestBody @Validated TeacherGradeVO vo) {
-    //    return service.update(vo);
-    //}
 }

@@ -17,15 +17,12 @@ public class OrderController {
         System.out.println("插入訂單功能");
         OrderEntity order = new OrderEntity();
         Date now = new Date();
-//        new Date(order.setCtime(ctime));
         order.setOrder_cost(order_cost);
         order.setCustomerId(customerId);
         order.setHotelId(hotelId);
         order.setRoomId(roomId);
-//        order.setCtime((java.sql.Date) ctime);
         order.setStatus(status);
         order.setIfShow(ifShow);
-//        order.setReason(reason);
         orderService.insertOrder(order);
         System.out.println(order.roomId);
         return "success";
