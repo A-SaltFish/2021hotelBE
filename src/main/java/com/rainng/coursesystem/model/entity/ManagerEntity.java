@@ -27,28 +27,21 @@ public class ManagerEntity {
 
     @TableId(value = ID, type = IdType.AUTO)
     private Integer id;
-
     @NotBlank(message = "经理姓名不能为空")
     @TableField(NAME)
     private String name;
-
     @TableField(HOTELID)
 	private Integer hotelId;
-
 	@Length(min=11,max=11,message="经理手机必须为11位数")
 	@TableField(TEL)
 	private String tel;	//电话
-
 	@Email(message = "邮箱格式不正确")
 	@TableField(value = EMAIL, updateStrategy = FieldStrategy.IGNORED)
 	private String email;
-
 	@TableField(DESC)
 	private String description="普通的一个经理";
-
 	@TableField(AVAILABLE)
 	private Integer available=0;
-
     @NotNull
     @TableField(PASSWORD)
     private String password;
