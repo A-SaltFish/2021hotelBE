@@ -24,12 +24,6 @@ public class PreOrderManager extends BaseManager {
         return customerOrderDAO.get(studentCourseId);
     }
 
-    @Transactional
-    public int deleteStudentCourse(CustomerOrderEntity customerOrderEntity) {
-        //该处从getCourseId变为getHotelId()
-        orderDAO.decreaseSelectedCount(customerOrderEntity.getHotelId());
-        return customerOrderDAO.delete(customerOrderEntity.getId());
-    }
 
     @Transactional
     public Boolean cancelOrder(Integer orderId) {

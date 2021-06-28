@@ -10,9 +10,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CustomerMapper extends BaseMapper<CustomerEntity> {
-    Integer getDepartmentIdById(Integer studentId);
-
-    Integer getGradeById(Integer studentId);
 
     Integer count(@Param("majorName")String majorName,@Param("className") String className, @Param("name")String name);
 

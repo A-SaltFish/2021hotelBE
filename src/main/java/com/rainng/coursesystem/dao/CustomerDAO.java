@@ -61,13 +61,6 @@ public class CustomerDAO extends BaseDAO {
         return mapper.selectList(wrapper);
     }
 
-    public Integer getDepartmentIdById(Integer studentId) {
-        return mapper.getDepartmentIdById(studentId);
-    }
-
-    public Integer getGradeById(Integer studentId) {
-        return mapper.getGradeById(studentId);
-    }
 
     public CustomerInfoVo getStudentInfoById(Integer studentId) {
         return mapper.getStudentInfoById(studentId);

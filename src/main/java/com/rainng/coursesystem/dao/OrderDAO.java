@@ -51,21 +51,4 @@ public class OrderDAO extends BaseDAO {
     }
 
 
-    public int increaseSelectedCount(Integer courseId) {
-        OrderEntity course = mapper.selectById(courseId);
-        course.setSelectedCount(course.getSelectedCount() + 1);
-
-        return mapper.updateById(course);
-    }
-
-    public int decreaseSelectedCount(Integer courseId) {
-        OrderEntity course = mapper.selectById(courseId);
-        course.setSelectedCount(course.getSelectedCount() - 1);
-
-        return mapper.updateById(course);
-    }
-
-    public Integer getDepartmentIdById(Integer courseId) {
-        return mapper.getDepartmentIdById(courseId);
-    }
 }

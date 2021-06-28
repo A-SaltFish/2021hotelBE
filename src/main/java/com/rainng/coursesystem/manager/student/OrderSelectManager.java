@@ -43,7 +43,6 @@ public class OrderSelectManager extends BaseManager {
     @Transactional
     public int create(CustomerOrderEntity entity) {
         //该处从getCourseId变为getHotelId()
-        orderDAO.increaseSelectedCount(entity.getHotelId());
         return customerOrderDAO.insert(entity);
     }
 

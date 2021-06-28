@@ -15,11 +15,7 @@ public interface OrderMapper extends BaseMapper<OrderEntity> {
 
     IPage<OrderItemBo> getPage(IPage<OrderItemBo> page, @Param("departmentName")String departmentName, @Param("teacherName")String teacherName, @Param("name")String name);
 
-    Integer countStudentCanSelect(@Param("studentId")Integer studentId, @Param("departmentId")Integer departmentId, @Param("grade")Integer grade, @Param("courseName")String courseName, @Param("teacherName")String teacherName);
-
-    IPage<StudentCourseSelectItemBO> getStudentCanSelectPage(IPage<StudentCourseSelectItemBO> page,@Param("studentId") Integer studentId,@Param("departmentId")  Integer departmentId,@Param("grade") Integer grade,@Param("courseName") String courseName,@Param("teacherName") String teacherName);
-
     OrderItemVO getExplicitOrderById(@Param("orderId")Integer orderId);
 
-    Integer getDepartmentIdById(Integer courseId);
+
 }
