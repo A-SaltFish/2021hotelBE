@@ -1,6 +1,6 @@
 package com.rainng.coursesystem.controller.admin;
 
-import com.rainng.coursesystem.config.themis.annotation.Admin;
+//import com.rainng.coursesystem.config.themis.annotation.Admin;
 import com.rainng.coursesystem.model.entity.HotelEntity;
 import com.rainng.coursesystem.model.entity.ManagerEntity;
 import com.rainng.coursesystem.model.vo.response.ResultVO;

@@ -3,66 +3,17 @@
 
 <mapper namespace="com.rainng.coursesystem.dao.mapper.CustomerMapper">
     <!--分页-->
-    <select id="getPage" resultType="StudentItemVO">
-        SELECT student_id AS 'id', student_number AS 'number', student_name AS 'name',
-        class_name AS 'className', major_name AS 'majorName', student_sex AS 'sex',
-        student_last_login_time AS 'lastLoginTime'
-        FROM rc_student
-        JOIN rc_class on student_class_id = class_id
-        JOIN rc_major on class_major_id = major_id
-        <where>
-            <if test="majorName != null and majorName != ''">
-                AND major_name LIKE CONCAT('%',#{majorName},'%')
-            </if>
-            <if test="className != null and className != ''">
-                AND class_name LIKE CONCAT('%',#{className},'%')
-            </if>
-            <if test="name != null and name != ''">
-                AND student_name LIKE CONCAT('%',#{name},'%')
-            </if>
-        </where>
-    </select>
     <!--计数-->
-    <select id="count" resultType="Integer">
-        SELECT COUNT(*)
-        FROM rc_student
-        JOIN rc_class on student_class_id = class_id
-        JOIN rc_major on class_major_id = major_id
-        <where>
-            <if test="majorName != null and majorName != ''">
-                AND major_name LIKE CONCAT('%',#{majorName},'%')
-            </if>
-            <if test="className != null and className != ''">
-                AND class_name LIKE CONCAT('%',#{className},'%')
-            </if>
-            <if test="name != null and name != ''">
-                AND student_name LIKE CONCAT('%',#{name},'%')
-            </if>
-        </where>
-    </select>
-    <!--根据ID获取部门-->
-    <select id="getDepartmentIdById" resultType="Integer">
-        SELECT major_department_id
-        FROM rc_student
-                 JOIN rc_class on student_class_id = class_id
-                 JOIN rc_major on class_major_id = major_id
-        WHERE student_id = #{studentId}
-    </select>
 
-    <select id="getGradeById" resultType="Integer">
-        SELECT class_grade
-        FROM rc_student
-                 JOIN rc_class on student_class_id = class_id
-        WHERE student_id = #{studentId}
-    </select>
     <!--根据ID获取基本信息-->
-    <select id="getStudentInfoById" resultType="CustomerInfoVo">
-        SELECT customer_id   AS 'number',
+    <select id="getCustomerInfoById" resultType="CustomerInfoVo">
+        SELECT customer_id   AS 'id',
                customer_name     AS 'name',
                 customer_tel AS 'tel',
                customer_email    AS 'email',
                customer_birthday AS 'birthday',
-               customer_sex      AS 'sex'
+               customer_sex      AS 'sex',
+               customer_password as'password'
         FROM ht_customer
         WHERE customer_id = #{studentId}
     </select>

@@ -17,10 +17,10 @@ public class PermissionScanner {
         } else if (getAnnotation(method, Login.class) != null) {
             return new Permission(UserType.NO, 0);
 
-        } else if (getAnnotation(method, Student.class) != null) {
+        } else if (getAnnotation(method, Customer.class) != null) {
             return new Permission(UserType.CUSTOMER);
 
-        } else if (getAnnotation(method, Teacher.class) != null) {
+        } else if (getAnnotation(method, Manager.class) != null) {
             return new Permission(UserType.MANAGER);
 
         } else if ((annotation = getAnnotation(method, Admin.class)) != null) {

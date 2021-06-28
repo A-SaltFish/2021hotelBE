@@ -1,5 +1,6 @@
 package com.rainng.coursesystem.model.vo.request;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.Range;
@@ -12,7 +13,7 @@ import java.util.Date;
 @Data
 public class CustomerInfoFormVO {
 	@NotBlank
-	private String number;
+	private String id;
 	@NotBlank
 	private String name;
 	//手机号码要为11位
@@ -21,6 +22,7 @@ public class CustomerInfoFormVO {
     @Email(message = "邮箱格式不正确")
     private String email;
 
+	@JsonFormat(pattern = "yyyy-MM-dd")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
 
@@ -28,12 +30,6 @@ public class CustomerInfoFormVO {
     private Integer sex;
 	private String password;
 
-	public String getNumber() {
-		return number;
-	}
-	public void setNumber(String number) {
-		this.number = number;
-	}
 	public String getName() {
 		return name;
 	}

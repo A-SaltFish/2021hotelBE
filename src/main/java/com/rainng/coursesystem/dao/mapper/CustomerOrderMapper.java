@@ -18,17 +18,12 @@ public interface CustomerOrderMapper extends BaseMapper<CustomerOrderEntity> {
 
     Boolean cancelByOrderId(@Param("orderId")Integer orderId);
 
+    Integer refundByOrderId(@Param("orderId")Integer orderId,@Param("reason") String reason);
+
+    Integer remarkByOrderId(@Param("orderId")Integer orderId,@Param("comment") String comment,@Param("rank")Integer rank);
+
     IPage<CustomerOrderItemVO> getPage(IPage<CustomerOrderItemVO> page, @Param("customerId")Integer customerId);
-
-    Integer countTeacherGrade(@Param("teacherId")Integer teacherId,@Param("courseName") Integer courseName,@Param("studentName") String studentName);
-
-    IPage<TeacherGradeItemVO> getTeacherGradePage(IPage<TeacherGradeItemVO> page, @Param("teacherId")Integer teacherId, @Param("courseName")String courseName,@Param("studentName") String studentName);
 
     List<CustomerPreOrderVO> listCustomerPreOrder(@Param("customerId")Integer customerId);
 
-    List<StudentExamItemVO> listStudentExam(Integer studentId);
-
-    Integer countStudentCourseSelectedByTimePart(@Param("studentId")Integer studentId,@Param("timePart") String timePart);
-
-    List<HotelAllOrderItemVO> listStudentTimetable(Integer studentId);
 }

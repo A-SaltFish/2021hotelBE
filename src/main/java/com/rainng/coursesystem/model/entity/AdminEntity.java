@@ -11,7 +11,7 @@ import org.hibernate.validator.constraints.Range;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-@TableName("rc_admin")
+@TableName("ht_admin")
 @Data
 public class AdminEntity {
     public static final String ID = "admin_id";

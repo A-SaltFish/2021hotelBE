@@ -1,6 +1,6 @@
 package com.rainng.coursesystem.controller.student;
 
-import com.rainng.coursesystem.config.themis.annotation.Student;
+import com.rainng.coursesystem.config.themis.annotation.Customer;
 import com.rainng.coursesystem.controller.BaseController;
 import com.rainng.coursesystem.model.vo.request.CustomerInfoFormVO;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
@@ -8,7 +8,7 @@ import com.rainng.coursesystem.service.student.InfoService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-@Student
+@Customer
 @RequestMapping("/customer/info")
 @RestController
 public class InfoController extends BaseController {

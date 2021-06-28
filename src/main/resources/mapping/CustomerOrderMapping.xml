@@ -40,7 +40,17 @@
     </update>
 
     <update id="cancelByOrderId" parameterType="Integer">
-        update ht_order_form set order_status=4
+        update ht_order_form set order_status=6
+        where order_id=#{orderId}
+    </update>
+
+    <update id="refundByOrderId">
+        update ht_order_form set order_status=4,order_reason=#{reason}
+        where order_id=#{orderId}
+    </update>
+
+    <update id="remarkByOrderId">
+        update ht_order_form set order_status=3,order_comment=#{comment},order_rank=#{rank}
         where order_id=#{orderId}
     </update>
 

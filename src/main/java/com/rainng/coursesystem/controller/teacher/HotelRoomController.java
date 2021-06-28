@@ -1,8 +1,7 @@
 package com.rainng.coursesystem.controller.teacher;
 
-import com.rainng.coursesystem.config.themis.annotation.Teacher;
+import com.rainng.coursesystem.config.themis.annotation.Manager;
 import com.rainng.coursesystem.model.entity.HotelRoomEntity;
-import com.rainng.coursesystem.model.vo.request.RoomInfoVO;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
 import com.rainng.coursesystem.service.teacher.HotelRoomService;
 import org.springframework.validation.annotation.Validated;
@@ -11,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@Teacher
+@Manager
 @RequestMapping("/manager/room")
 @RestController
 public class HotelRoomController {

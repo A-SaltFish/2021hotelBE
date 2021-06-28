@@ -5,7 +5,7 @@ import com.rainng.coursesystem.model.vo.response.ResultVO;
 import com.rainng.coursesystem.service.BaseService;
 import org.springframework.stereotype.Service;
 
-@Service("student_courseService")
+@Service("customer_service")
 public class OrderService extends BaseService {
     private final PreOrderManager manager;
 
@@ -21,29 +21,19 @@ public class OrderService extends BaseService {
 
     public ResultVO cancelOrder(Integer OrderId){
         if (manager.cancelOrder(OrderId))
-            return result("退单成功！");
-        else return result("退单失败！");
+            return result("取消成功！");
+        else return result("取消失败！");
     }
 
-    /*
-    public ResultVO delete(Integer studentCourseId) {
-        Integer studentId = getUserId();
-        if (!optionManager.getAllowStudentSelect()) {
-            return failedResult("现在不是选课退课时间!");
-        }
-        CustomerOrderEntity studentCourse = manager.getStudentCourseById(studentCourseId);
-        if (studentCourse == null) {
-            return failedResult("学生选课Id:" + studentCourseId + "不存在");
-        }
-        if (!studentCourse.getStudentId().equals(studentId)) {
-            return failedResult("此课程非此学生所选!");
-        }
-        if (studentCourse.getDailyScore() != null || studentCourse.getExamScore() != null || studentCourse.getScore() != null) {
-            return failedResult("学生已获得成绩, 不能退选");
-        }
-
-        manager.deleteStudentCourse(studentCourse);
-        return result("退选成功");
+    public ResultVO refund(Integer orderId,String reason) {
+        if(manager.refund(orderId,reason)>0)
+            return result("申请退单成功！");
+        return result("申请失败");
     }
-    */
+
+    public ResultVO remark(Integer orderId,String comment,Integer rank) {
+        if(manager.remark(orderId,comment,rank)>0)
+            return result("评论订单成功！");
+        return result("评论失败");
+    }
 }

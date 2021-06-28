@@ -2,11 +2,9 @@ package com.rainng.coursesystem.dao;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.rainng.coursesystem.dao.mapper.CustomerMapper;
 import com.rainng.coursesystem.model.entity.CustomerEntity;
 import com.rainng.coursesystem.model.vo.response.CustomerInfoVo;
-import com.rainng.coursesystem.model.vo.response.table.StudentItemVO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -53,11 +51,7 @@ public class CustomerDAO extends BaseDAO {
         return mapper.count(majorName, className, name);
     }
 
-    public List<StudentItemVO> getPage(Integer index, String majorName, String className, String name) {
-        Page<StudentItemVO> page = new Page<>(index, PAGE_SIZE);
 
-        return mapper.getPage(page, majorName, className, name).getRecords();
-    }
 
 
     public List<CustomerEntity> listName() {
@@ -68,7 +62,7 @@ public class CustomerDAO extends BaseDAO {
     }
 
 
-    public CustomerInfoVo getStudentInfoById(Integer studentId) {
-        return mapper.getStudentInfoById(studentId);
+    public CustomerInfoVo getCustomerInfoById(Integer studentId) {
+        return mapper.getCustomerInfoById(studentId);
     }
 }

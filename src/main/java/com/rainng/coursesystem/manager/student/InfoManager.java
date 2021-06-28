@@ -14,8 +14,8 @@ public class InfoManager extends BaseManager {
         this.customerDAO = customerDAO;
     }
 
-    public CustomerInfoVo getStudentInfoByStudentId(Integer studentId) {
-        return customerDAO.getStudentInfoById(studentId);
+    public CustomerInfoVo getCustomerInfoById(Integer studentId) {
+        return customerDAO.getCustomerInfoById(studentId);
     }
 
     public CustomerEntity getCustomerById(Integer customerId) {

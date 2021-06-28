@@ -24,6 +24,15 @@ public class PreOrderManager extends BaseManager {
         return customerOrderDAO.get(studentCourseId);
     }
 
+    public Integer refund(Integer orderId,String reason) {
+        System.out.println("orderId"+orderId+"\nreason:"+reason);
+        return customerOrderDAO.refund(orderId,reason);
+    }
+
+    public Integer remark(Integer orderId,String comment,Integer rank) {
+        System.out.println("orderId"+orderId+"\ncomment:"+comment+"\nrank"+rank);
+        return customerOrderDAO.remark(orderId,comment,rank);
+    }
 
     @Transactional
     public Boolean cancelOrder(Integer orderId) {

@@ -37,6 +37,14 @@ public class CustomerOrderDAO extends BaseDAO {
         return mapper.selectById(id);
     }
 
+    public Integer refund(Integer orderId,String reason) {
+        return mapper.refundByOrderId(orderId,reason);
+    }
+
+    public Integer remark(Integer orderId,String comment,Integer rank) {
+        return mapper.remarkByOrderId(orderId,comment,rank);
+    }
+
     public int update(CustomerOrderEntity entity) {
         return mapper.updateById(entity);
     }

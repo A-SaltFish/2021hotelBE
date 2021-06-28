@@ -1,11 +1,11 @@
 package com.rainng.coursesystem.controller.teacher;
 
-import com.rainng.coursesystem.config.themis.annotation.Teacher;
+import com.rainng.coursesystem.config.themis.annotation.Manager;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
 import com.rainng.coursesystem.service.teacher.HotelAfterSalesService;
 import org.springframework.web.bind.annotation.*;
 
-@Teacher
+@Manager
 @RequestMapping("/manager/aftersales")
 @RestController
 public class HotelAfterSalesController {

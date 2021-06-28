@@ -23,7 +23,7 @@ public class InfoService extends BaseService {
     }
 
     public ResultVO get() {
-        return result(manager.getStudentInfoByStudentId(getUserId()));
+        return result(manager.getCustomerInfoById(getUserId()));
     }
 
     public ResultVO update(@RequestBody @Validated CustomerInfoFormVO studentInfoForm) {

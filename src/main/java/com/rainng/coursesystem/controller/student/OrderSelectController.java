@@ -1,6 +1,6 @@
 package com.rainng.coursesystem.controller.student;
 
-import com.rainng.coursesystem.config.themis.annotation.Student;
+import com.rainng.coursesystem.config.themis.annotation.Customer;
 import com.rainng.coursesystem.controller.BaseController;
 import com.rainng.coursesystem.model.vo.response.ResultVO;
 import com.rainng.coursesystem.service.student.OrderSelectService;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-@Student
+@Customer
 @RequestMapping("/student/course/select")
 @RestController
 public class OrderSelectController extends BaseController {
